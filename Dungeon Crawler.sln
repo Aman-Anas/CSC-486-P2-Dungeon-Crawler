@@ -1,28 +1,19 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32929.386
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visual Narrative", "Visual Narrative.csproj", "{06908D0C-525D-4E8C-97E0-F82B18EBA3C1}"
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dungeon Crawler", "Dungeon Crawler.csproj", "{7F39796C-04A5-41F5-9C7E-2C38DE745F97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		ExportDebug|Any CPU = ExportDebug|Any CPU
-		ExportRelease|Any CPU = ExportRelease|Any CPU
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{06908D0C-525D-4E8C-97E0-F82B18EBA3C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06908D0C-525D-4E8C-97E0-F82B18EBA3C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06908D0C-525D-4E8C-97E0-F82B18EBA3C1}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{06908D0C-525D-4E8C-97E0-F82B18EBA3C1}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{06908D0C-525D-4E8C-97E0-F82B18EBA3C1}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{06908D0C-525D-4E8C-97E0-F82B18EBA3C1}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CB4CB646-37F5-4713-8C0A-61E58DF8940C}
+		{7F39796C-04A5-41F5-9C7E-2C38DE745F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F39796C-04A5-41F5-9C7E-2C38DE745F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F39796C-04A5-41F5-9C7E-2C38DE745F97}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{7F39796C-04A5-41F5-9C7E-2C38DE745F97}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{7F39796C-04A5-41F5-9C7E-2C38DE745F97}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{7F39796C-04A5-41F5-9C7E-2C38DE745F97}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal
