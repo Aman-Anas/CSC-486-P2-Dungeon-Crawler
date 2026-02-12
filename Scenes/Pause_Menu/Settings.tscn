@@ -1,10 +1,23 @@
 [gd_scene format=3 uid="uid://86na0e3npoj5"]
 
-[ext_resource type="Script" path="res://Game/PauseMenu/SettingsMenu.cs" id="1_k1ybd"]
-[ext_resource type="Script" path="res://Game/PauseMenu/Graphics.cs" id="2_bu8qk"]
-[ext_resource type="Script" path="res://Game/PauseMenu/Controls.cs" id="4_dvcq0"]
+[ext_resource type="Script" uid="uid://b2qc58qed6vn6" path="res://Game/Menu/SettingsMenu.cs" id="1_k1ybd"]
+[ext_resource type="Script" uid="uid://dhbtlk2f785n" path="res://Game/Menu/Graphics.cs" id="2_bu8qk"]
+[ext_resource type="Script" uid="uid://tyto1xtrthl3" path="res://Game/Menu/Controls.cs" id="4_dvcq0"]
 [ext_resource type="PackedScene" uid="uid://dyqtb418xwk78" path="res://Scenes/Pause_Menu/KeymapLine.tscn" id="5_qwwfi"]
-[ext_resource type="Script" path="res://Game/PauseMenu/Gameplay.cs" id="6_67h65"]
+[ext_resource type="Script" uid="uid://cdkisc5g0nuit" path="res://Game/Menu/Gameplay.cs" id="6_67h65"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgt5w"]
+content_margin_left = 10.0
+content_margin_top = 20.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
+border_width_top = 3
+border_color = Color(1, 0.7168099, 0.70323896, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Settings" type="MarginContainer" unique_id=733183531 node_paths=PackedStringArray("applyButton", "settingsSelect", "menuRoot", "resetAllButton", "revertButton")]
 anchors_preset = 15
@@ -33,7 +46,7 @@ theme_override_constants/margin_bottom = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=279579299]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 5
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1583897538]
 layout_mode = 2
@@ -48,11 +61,14 @@ vertical_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1451068563]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 5
 
 [node name="ItemList" type="ItemList" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=696598140]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.76
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 22
 theme_override_font_sizes/font_size = 31
 item_count = 3
 item_0/text = "Graphics"
@@ -63,13 +79,34 @@ item_2/text = "Gameplay"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wgt5w")
 
 [node name="MenuRoot" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer" unique_id=710513100]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Gameplay" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/MenuRoot" unique_id=1324320807 node_paths=PackedStringArray("mouseSensitivityBox")]
+layout_mode = 2
+columns = 2
+script = ExtResource("6_67h65")
+mouseSensitivityBox = NodePath("MouseSens")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/MenuRoot/Gameplay" unique_id=1609071915]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderMedium"
+text = "Mouse Sensitivity"
+
+[node name="MouseSens" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/MenuRoot/Gameplay" unique_id=1025772485]
+layout_mode = 2
+step = 0.001
+value = 0.24
+allow_greater = true
+allow_lesser = true
+
 [node name="Graphics" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/MenuRoot" unique_id=2027365635 node_paths=PackedStringArray("windowModeDropdown", "resolutionX", "resolutionY", "vsyncDropdown", "antialiasDropdown", "fpsBox", "locale")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -164,40 +201,19 @@ script = ExtResource("4_dvcq0")
 keymapScene = ExtResource("5_qwwfi")
 keyPressOverlay = NodePath("../../../../../../../KeyPressOverlay")
 
-[node name="Gameplay" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/MenuRoot" unique_id=1324320807 node_paths=PackedStringArray("mouseSensitivityBox")]
-visible = false
-layout_mode = 2
-columns = 2
-script = ExtResource("6_67h65")
-mouseSensitivityBox = NodePath("MouseSens")
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/MenuRoot/Gameplay" unique_id=1609071915]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"HeaderMedium"
-text = "Mouse Sensitivity"
-
-[node name="MouseSens" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/MenuRoot/Gameplay" unique_id=1025772485]
-layout_mode = 2
-step = 0.001
-value = 0.24
-allow_greater = true
-allow_lesser = true
-
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=307680912]
+custom_minimum_size = Vector2(98.59, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.4
 
 [node name="ResetAll" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=759952669]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -74.0
-offset_top = -6.0
-offset_right = -9.0
-offset_bottom = 48.0
+offset_left = -88.589966
+offset_top = 33.0
+offset_right = -14.589966
+offset_bottom = 87.0
 grow_horizontal = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -209,10 +225,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -80.0
-offset_top = 60.0
-offset_right = -6.0
-offset_bottom = 100.0
+offset_left = -89.589966
+offset_top = 100.0
+offset_right = -15.589966
+offset_bottom = 140.0
 grow_horizontal = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -222,7 +238,7 @@ Saved"
 [node name="ApplyButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1094223233]
 layout_mode = 2
 theme_type_variation = &"TitleButton"
-text = "Save Settings!"
+text = "↪ Apply Settings! ↩"
 
 [node name="KeyPressOverlay" type="PanelContainer" parent="." unique_id=1081758256]
 visible = false

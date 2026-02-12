@@ -1,0 +1,30 @@
+[gd_resource type="Theme" format=3 uid="uid://b8qo3exx0pe34"]
+
+[ext_resource type="FontVariation" uid="uid://bd1pe3yd5cuxt" path="res://assets/fonts/main_merged_font.tres" id="1_e04sg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoe76"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+shadow_color = Color(0.21230483, 0.21230483, 0.21230483, 0.6)
+shadow_size = 13
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e04sg"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
+shadow_color = Color(0.21230483, 0.21230483, 0.21230483, 0.6)
+shadow_size = 13
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuinx"]
+bg_color = Color(0.21950102, 0.21950102, 0.21950093, 1)
+shadow_color = Color(0.21230483, 0.21230483, 0.21230483, 0.6)
+shadow_size = 13
+
+[resource]
+default_font = ExtResource("1_e04sg")
+TitleButton/base_type = &"Button"
+TitleButton/font_sizes/font_size = 28
+TitleButton/styles/hover = SubResource("StyleBoxFlat_xoe76")
+TitleButton/styles/normal = SubResource("StyleBoxFlat_e04sg")
+TitleButton/styles/pressed = SubResource("StyleBoxFlat_tuinx")

@@ -49,6 +49,7 @@ public partial class SettingsMenu : MarginContainer
         {
             menus.Add((ISettingsSubMenu)child);
             settingsSelect.AddItem(child.Name);
+            ((Control)child).Hide();
         }
 
         // Set the right menu depending on the selection
@@ -56,13 +57,14 @@ public partial class SettingsMenu : MarginContainer
             menuHelper.SetSubMenu(menus[(int)index].GetView());
 
         menuHelper.SetSubMenu(menus[0].GetView());
+        settingsSelect.Select(0);
 
         resetAllButton.Pressed += ResetAllSettings;
         applyButton.Pressed += ApplyAllSettings;
         revertButton.Pressed += RevertAllSettings;
     }
 
-    void ApplyAllSettings()
+    public void ApplyAllSettings()
     {
         foreach (var menu in menus)
         {

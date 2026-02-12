@@ -30,10 +30,10 @@ public partial class MainMenu : Control
     Control HelpMenu = null!;
 
     [Export]
-    Control SettingsMenu = null!;
+    SettingsMenu SettingsMenu = null!;
 
-    [Export]
-    PackedScene netSelectScreen = null!;
+    [Export(PropertyHint.File)]
+    string gameScene = null!;
 
     // Helper to manage side menus
     SubMenuHelper mainHelper = null!;
@@ -43,9 +43,21 @@ public partial class MainMenu : Control
     {
         mainHelper = new(HomeButton, MainMenuRoot);
 
-        PlayButton.Pressed += () => GetTree().ChangeSceneToPacked(netSelectScreen);
+        HelpMenu.Hide();
+        SettingsMenu.Hide();
+
+        PlayButton.Pressed += () => GetTree().ChangeSceneToFile(gameScene);
         HelpButton.Pressed += () => mainHelper.SetSubMenu(HelpMenu);
         SettingsButton.Pressed += () => mainHelper.SetSubMenu(SettingsMenu);
         QuitButton.Pressed += () => GetTree().Quit();
+
+        // If the player closes the menu, we should apply settings.
+        mainHelper.OnCloseMenu += (current) =>
+        {
+            if (current == SettingsMenu)
+            {
+                SettingsMenu.ApplyAllSettings();
+            }
+        };
     }
 }

@@ -1,5 +1,6 @@
 namespace Utilities.Logic;
 
+using System;
 using Godot;
 
 public class SubMenuHelper
@@ -9,6 +10,8 @@ public class SubMenuHelper
     public Control? MainRoot { get; set; }
 
     public Button? CloseButton { get; set; }
+
+    public event Action<Control?>? OnCloseMenu;
 
     public SubMenuHelper(Button? closeButton = null, Control? mainRoot = null)
     {
@@ -31,6 +34,8 @@ public class SubMenuHelper
 
     public void CloseSubMenu()
     {
+        OnCloseMenu?.Invoke(CurrentSubMenu);
+
         CurrentSubMenu?.Hide();
         CurrentSubMenu = null;
         CloseButton?.Hide();

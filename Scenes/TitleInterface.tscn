@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://c24o0rqq3onj"]
+
+[ext_resource type="Theme" uid="uid://b8qo3exx0pe34" path="res://assets/theme/main_theme.tres" id="1_sshgn"]
+[ext_resource type="Script" uid="uid://vqs6sflbnvta" path="res://Game/Menu/MainMenu.cs" id="1_x8ln0"]
+[ext_resource type="PackedScene" uid="uid://86na0e3npoj5" path="res://Scenes/Pause_Menu/Settings.tscn" id="3_t7x32"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gj8vk"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0, 0, 0, 0.16862746)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3c23"]
+bg_color = Color(0.1341201, 0.12325799, 0.121105455, 1)
+
+[node name="Interface" type="Control" unique_id=1273395253 node_paths=PackedStringArray("PlayButton", "HelpButton", "QuitButton", "SettingsButton", "HomeButton", "MainMenuRoot", "HelpMenu", "SettingsMenu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sshgn")
+script = ExtResource("1_x8ln0")
+PlayButton = NodePath("TitleMargin/VBoxContainer/ContentMargin/Columns/PanelContainer/ButtonList/Play")
+HelpButton = NodePath("TitleMargin/VBoxContainer/ContentMargin/Columns/PanelContainer/ButtonList/Help")
+QuitButton = NodePath("TitleMargin/VBoxContainer/ContentMargin/Columns/PanelContainer/ButtonList/Quit")
+SettingsButton = NodePath("TitleMargin/VBoxContainer/ContentMargin/Columns/PanelContainer/ButtonList/Settings")
+HomeButton = NodePath("Home")
+MainMenuRoot = NodePath("TitleMargin")
+HelpMenu = NodePath("Help")
+SettingsMenu = NodePath("Settings")
+gameScene = "uid://cxphvpj3hiwcl"
+metadata/_edit_lock_ = true
+
+[node name="Version" type="Label" parent="." unique_id=1453367421]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -111.0
+offset_top = -43.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v0.0.1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TitleMargin" type="MarginContainer" parent="." unique_id=306288840]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleMargin" unique_id=388448340]
+layout_mode = 2
+
+[node name="TitleContainer" type="MarginContainer" parent="TitleMargin/VBoxContainer" unique_id=1483369590]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="TitleMargin/VBoxContainer/TitleContainer" unique_id=638703475]
+custom_minimum_size = Vector2(1000, 92.01)
+layout_mode = 2
+color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+
+[node name="Label" type="Label" parent="TitleMargin/VBoxContainer/TitleContainer" unique_id=158739832]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 63
+text = "The Phantom Sandwich"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContentMargin" type="MarginContainer" parent="TitleMargin/VBoxContainer" unique_id=1680039836]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = 15
+
+[node name="Columns" type="HBoxContainer" parent="TitleMargin/VBoxContainer/ContentMargin" unique_id=457755148]
+layout_mode = 2
+alignment = 1
+
+[node name="Control2" type="Control" parent="TitleMargin/VBoxContainer/ContentMargin/Columns" unique_id=2114258617]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="TitleMargin/VBoxContainer/ContentMargin/Columns" unique_id=117266489]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.63
+theme_override_styles/panel = SubResource("StyleBoxFlat_gj8vk")
+
+[node name="ButtonList" type="VBoxContainer" parent="TitleMargin/VBoxContainer/ContentMargin/Columns/PanelContainer" unique_id=1329618739]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Play" type="Button" parent="TitleMargin/VBoxContainer/ContentMargin/Columns/PanelContainer/ButtonList" unique_id=2003937290]
+layout_mode = 2
+theme_type_variation = &"TitleButton"
+text = "Play"
+
+[node name="Help" type="Button" parent="TitleMargin/VBoxContainer/ContentMargin/Columns/PanelContainer/ButtonList" unique_id=1902688518]
+layout_mode = 2
+theme_type_variation = &"TitleButton"
+text = "Help"
+
+[node name="Quit" type="Button" parent="TitleMargin/VBoxContainer/ContentMargin/Columns/PanelContainer/ButtonList" unique_id=757023168]
+layout_mode = 2
+theme_type_variation = &"TitleButton"
+text = "Quit"
+
+[node name="Settings" type="Button" parent="TitleMargin/VBoxContainer/ContentMargin/Columns/PanelContainer/ButtonList" unique_id=1797658134]
+layout_mode = 2
+theme_type_variation = &"TitleButton"
+theme_override_styles/normal = SubResource("StyleBoxFlat_p3c23")
+text = " Settings"
+
+[node name="Control" type="Control" parent="TitleMargin/VBoxContainer/ContentMargin/Columns" unique_id=1582866425]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Help" type="PanelContainer" parent="." unique_id=1436039563]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Help" unique_id=525262321]
+custom_minimum_size = Vector2(0.1, 0.1)
+layout_mode = 2
+text = "Do you need help? well you've come to the right place. This is the very cool help menu. Hit back to leave. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Settings" parent="." unique_id=712075677 instance=ExtResource("3_t7x32")]
+visible = false
+layout_mode = 1
+
+[node name="Home" type="Button" parent="." unique_id=1045880473]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_top = 15.0
+offset_right = -14.0
+offset_bottom = 50.0
+grow_horizontal = 0
+text = "Back "

@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://be68kkhnkgb6u"]
+[gd_scene format=3 uid="uid://be68kkhnkgb6u"]
 
-[ext_resource type="Script" uid="uid://h5iu8haa063q" path="res://scripts/main_menu/Pause.cs" id="1_344uv"]
-[ext_resource type="PackedScene" uid="uid://86na0e3npoj5" path="res://scenes/main_menu/Settings.tscn" id="2_3mfmm"]
+[ext_resource type="Script" uid="uid://h5iu8haa063q" path="res://Game/Menu/Pause.cs" id="1_344uv"]
+[ext_resource type="PackedScene" uid="uid://86na0e3npoj5" path="res://Scenes/Pause_Menu/Settings.tscn" id="2_3mfmm"]
 
-[node name="Pause" type="Control" node_paths=PackedStringArray("resumeButton", "settingsButton", "quitButton", "backButton", "returnToTitle", "pauseMenuRoot", "settingsMenuRoot")]
+[node name="Pause" type="Control" unique_id=272402731 node_paths=PackedStringArray("resumeButton", "settingsButton", "quitButton", "backButton", "returnToTitle", "pauseMenuRoot", "settingsMenuRoot")]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -21,7 +21,7 @@ returnToTitle = NodePath("PanelContainer/PauseButtons/VBoxContainer/Return To Ti
 pauseMenuRoot = NodePath("PanelContainer/PauseButtons")
 settingsMenuRoot = NodePath("PanelContainer/Settings")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1695301842]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,33 +29,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PauseButtons" type="CenterContainer" parent="PanelContainer"]
+[node name="PauseButtons" type="CenterContainer" parent="PanelContainer" unique_id=1887610613]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/PauseButtons"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/PauseButtons" unique_id=7650922]
 layout_mode = 2
 
-[node name="Resume" type="Button" parent="PanelContainer/PauseButtons/VBoxContainer"]
+[node name="Resume" type="Button" parent="PanelContainer/PauseButtons/VBoxContainer" unique_id=485212614]
 layout_mode = 2
 text = "Resume"
 
-[node name="Settings" type="Button" parent="PanelContainer/PauseButtons/VBoxContainer"]
+[node name="Settings" type="Button" parent="PanelContainer/PauseButtons/VBoxContainer" unique_id=1412551512]
 layout_mode = 2
 text = "Settings"
 
-[node name="Return To Title" type="Button" parent="PanelContainer/PauseButtons/VBoxContainer"]
+[node name="Return To Title" type="Button" parent="PanelContainer/PauseButtons/VBoxContainer" unique_id=965058042]
 layout_mode = 2
 text = "Return To Title"
 
-[node name="Quit" type="Button" parent="PanelContainer/PauseButtons/VBoxContainer"]
+[node name="Quit" type="Button" parent="PanelContainer/PauseButtons/VBoxContainer" unique_id=1744501151]
 layout_mode = 2
 text = "Quit"
 
-[node name="Settings" parent="PanelContainer" instance=ExtResource("2_3mfmm")]
+[node name="Settings" parent="PanelContainer" unique_id=512685594 instance=ExtResource("2_3mfmm")]
 visible = false
 layout_mode = 2
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="Button" parent="." unique_id=204458]
 visible = false
 layout_mode = 1
 anchors_preset = 1
