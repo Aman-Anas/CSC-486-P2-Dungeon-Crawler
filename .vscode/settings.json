@@ -1,0 +1,16 @@
+{
+    // File nesting for godot uid files
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+        "*": "$(capture).import, $(capture).uid"
+    },
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "Visual Narrative.sln"
+    ],
+    "dotrush.roslyn.triggerCompletionOnSpace": true,
+    "dotrush.debugger.projectAssembliesOnly": true,
+    "workbench.editorAssociations": {
+        "*.speedscope.json": "speedscope-in-vscode.speedscope"
+    }
+}

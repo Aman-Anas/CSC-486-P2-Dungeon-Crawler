@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d20qpjy4hol6k"]
+
+[ext_resource type="Script" path="res://Game/PauseMenu/Manager.cs" id="1_n6fj3"]
+[ext_resource type="PackedScene" uid="uid://66g6xxllbjow" path="res://Scenes/MainDialogueViewer.tscn" id="2_7xwus"]
+
+[node name="Manager" type="Node" unique_id=884699410]
+script = ExtResource("1_n6fj3")
+titleScene = ExtResource("2_7xwus")
