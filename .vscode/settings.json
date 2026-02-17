@@ -6,7 +6,8 @@
         "*": "$(capture).import, $(capture).uid"
     },
     "dotrush.roslyn.projectOrSolutionFiles": [
-        "Visual Narrative.sln"
+        "Game.sln",
+        "Game.csproj"
     ],
     "dotrush.roslyn.triggerCompletionOnSpace": true,
     "dotrush.debugger.projectAssembliesOnly": true,
