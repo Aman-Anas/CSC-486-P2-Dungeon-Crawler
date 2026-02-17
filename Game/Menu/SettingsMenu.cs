@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Game;
+using Game.Utilities;
 using Godot;
-using Utilities.Logic;
+
+namespace Game.Menu;
 
 public partial class SettingsMenu : MarginContainer
 {

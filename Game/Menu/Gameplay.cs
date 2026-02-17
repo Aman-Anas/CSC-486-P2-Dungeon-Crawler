@@ -2,6 +2,8 @@ using System;
 using Game;
 using Godot;
 
+namespace Game.Menu;
+
 public partial class Gameplay : GridContainer, SettingsMenu.ISettingsSubMenu
 {
     Manager gameManager = null!;

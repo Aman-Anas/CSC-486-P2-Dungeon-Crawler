@@ -2,6 +2,8 @@ using System;
 using Game;
 using Godot;
 
+namespace Game.Menu;
+
 public partial class Graphics : GridContainer, SettingsMenu.ISettingsSubMenu
 {
     [Export]

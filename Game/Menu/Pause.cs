@@ -1,7 +1,9 @@
 using System;
 using Game;
+using Game.Utilities;
 using Godot;
-using Utilities.Logic;
+
+namespace Game.Menu;
 
 public partial class Pause : Control
 {

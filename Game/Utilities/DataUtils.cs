@@ -1,9 +1,9 @@
-namespace Utilities;
-
 using System.Diagnostics.CodeAnalysis;
 using Game;
 using Godot;
 using MemoryPack;
+
+namespace Game.Utilities;
 
 public static class DataUtils
 {

@@ -1,6 +1,6 @@
 using System;
+using Game.Utilities;
 using Godot;
-using Utilities;
 
 namespace Game;
 

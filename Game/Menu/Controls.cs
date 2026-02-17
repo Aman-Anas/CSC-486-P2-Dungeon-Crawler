@@ -1,6 +1,8 @@
 using Godot;
 using NathanHoad;
 
+namespace Game.Menu;
+
 public partial class Controls : GridContainer, SettingsMenu.ISettingsSubMenu
 {
     [Export]

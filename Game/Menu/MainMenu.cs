@@ -1,8 +1,10 @@
 using System;
 using System.Threading.Tasks;
 using Game;
+using Game.Utilities;
 using Godot;
-using Utilities.Logic;
+
+namespace Game.Menu;
 
 public partial class MainMenu : Control
 {

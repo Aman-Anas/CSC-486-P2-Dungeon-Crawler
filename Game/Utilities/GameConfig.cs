@@ -1,8 +1,8 @@
-namespace Game;
-
 using Godot;
 using MemoryPack;
 using NathanHoad;
+
+namespace Game.Utilities;
 
 [MemoryPackable]
 public partial class GameConfig

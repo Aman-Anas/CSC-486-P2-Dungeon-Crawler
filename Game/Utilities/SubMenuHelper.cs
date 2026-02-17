@@ -1,7 +1,7 @@
-namespace Utilities.Logic;
-
 using System;
 using Godot;
+
+namespace Game.Utilities;
 
 public class SubMenuHelper
 {
