@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cxphvpj3hiwcl"]
 
 [ext_resource type="Script" uid="uid://bm2ha3484vexj" path="res://Scenes/player.gd" id="1_r150o"]
-[ext_resource type="ArrayMesh" uid="uid://dn2qtpeaybrhs" path="res://Guns/OBJ/Pistol_1.obj" id="2_idj7w"]
+[ext_resource type="PackedScene" uid="uid://be2cgv5gar1lm" path="res://assets/models/Guns/glTF/Pistol_1.gltf" id="2_idj7w"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_idj7w"]
 
@@ -19,19 +19,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2202454, 1.3549905)
 script = ExtResource("1_r150o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=370737513]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1055837, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
 mesh = SubResource("CapsuleMesh_idj7w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1864134042]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1324675, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
 shape = SubResource("CapsuleShape3D_kln2b")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=1599787881]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21667993, 1.5707378, -0.55095303)
 
-[node name="Pistol" type="MeshInstance3D" parent="Player/Camera3D" unique_id=1218463733]
-transform = Transform3D(-0.026775355, 0, 0.79955184, 0, 0.8, 0, -0.79955184, 0, -0.026775355, 0.27883363, -0.4129696, -0.2141794)
-mesh = ExtResource("2_idj7w")
+[node name="Pistol_12" parent="Player/Camera3D" unique_id=2137390044 instance=ExtResource("2_idj7w")]
+transform = Transform3D(-3.1035086e-08, 0, 0.71, 0, 0.71, 0, -0.71, 0, -3.1035086e-08, 0.27883363, -0.4129696, -0.2141794)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2070770047]
 transform = Transform3D(1, 0, 0, 0, 0.9153185, 0.4027307, 0, -0.4027307, 0.9153185, 0, 3.7780082, 3.4888241)
