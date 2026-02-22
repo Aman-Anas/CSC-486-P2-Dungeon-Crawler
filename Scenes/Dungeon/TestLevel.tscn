@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bqk1uxs4y1xq3"]
+
+[ext_resource type="Material" uid="uid://cfls41uebm78j" path="res://assets/mats/test_material.tres" id="1_57efk"]
+[ext_resource type="PackedScene" uid="uid://cgv3ggu25ffs1" path="res://Scenes/Entities/Farmer.tscn" id="2_x28rk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_57efk"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_x28rk"]
+sky_material = SubResource("ProceduralSkyMaterial_57efk")
+
+[sub_resource type="Environment" id="Environment_3yyu3"]
+background_mode = 2
+sky = SubResource("Sky_x28rk")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level0" type="Node3D" unique_id=1866122410]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1608809435]
+environment = SubResource("Environment_3yyu3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1631060989]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=2078047977]
+material_override = ExtResource("1_57efk")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1584202782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
+size = Vector3(13, 4.1, 23)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1836784679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9240456, 0)
+operation = 2
+size = Vector3(11.87, 4.013091, 21.475)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1387085020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4869995, 1.45, 0)
+size = Vector3(15.110352, 4.1, 12.466553)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2027759667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.530945, 1.9240456, 0)
+operation = 2
+size = Vector3(16, 4.013091, 11.133789)
+
+[node name="Farmer" parent="." unique_id=483625553 instance=ExtResource("2_x28rk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2583675, 0, -2.65281)
