@@ -31,7 +31,7 @@ HomeButton = NodePath("Home")
 MainMenuRoot = NodePath("TitleMargin")
 HelpMenu = NodePath("Help")
 SettingsMenu = NodePath("Settings")
-gameScene = "uid://cxphvpj3hiwcl"
+gameScene = "uid://bqk1uxs4y1xq3"
 metadata/_edit_lock_ = true
 
 [node name="Version" type="Label" parent="." unique_id=1453367421]
