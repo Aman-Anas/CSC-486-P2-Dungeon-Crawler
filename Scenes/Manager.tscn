@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d20qpjy4hol6k"]
 
 [ext_resource type="Script" uid="uid://cdtf7b73i8f6t" path="res://Game/Manager.cs" id="1_n6fj3"]
-[ext_resource type="PackedScene" uid="uid://cxphvpj3hiwcl" path="res://Scenes/Main.tscn" id="2_7xwus"]
+[ext_resource type="PackedScene" uid="uid://c24o0rqq3onj" path="res://Scenes/TitleInterface.tscn" id="2_7xwus"]
 
 [node name="Manager" type="Node" unique_id=884699410]
 script = ExtResource("1_n6fj3")
