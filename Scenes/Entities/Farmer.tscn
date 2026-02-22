@@ -15,13 +15,8 @@ emission_enabled = true
 emission = Color(0.2530664, 0.93127614, 0.46066934, 1)
 emission_energy_multiplier = 6.03
 
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ecwft"]
-auto_exposure_enabled = true
-frustum_focal_length = 13.63
-auto_exposure_min_exposure_value = -0.4
-
 [node name="Farmer" type="RigidBody3D" unique_id=483625553 node_paths=PackedStringArray("TargetPosition", "floorSensorParent", "yawTarget", "pitchTarget", "headPosition", "grappleCast", "glowyEndPos", "glowyThing")]
-collision_layer = 6
+collision_layer = 7
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_hv5dt")
 continuous_cd = true
@@ -94,10 +89,10 @@ transform = Transform3D(1.2851145e-08, 0, -0.097999975, -0.025364261, 0.09466071
 [node name="Armature2" parent="YawTarget/PitchTarget/grappler" unique_id=349872458 instance=ExtResource("5_bdrmn")]
 transform = Transform3D(-1.1920929e-07, -4.081633, -2.2737368e-13, 4.081633, -1.1920929e-07, -1.4210855e-14, -1.563194e-13, -5.684342e-14, 4.0816336, -1.2244899, 1.2244899, -6.3948846e-14)
 
-[node name="Armature" parent="YawTarget/PitchTarget/grappler/Armature2" index="0" unique_id=1858203536]
+[node name="Armature" parent="YawTarget/PitchTarget/grappler/Armature2" index="0" unique_id=1903091526]
 transform = Transform3D(0.39999995, -7.450581e-09, 2.6645353e-15, 7.450581e-09, 0.39999995, 7.1054274e-15, -8.881784e-16, -7.1054274e-15, 0.40000004, 0.0400002, 0.120000005, 0)
 
-[node name="Skeleton3D" parent="YawTarget/PitchTarget/grappler/Armature2/Armature" index="0" unique_id=952805060]
+[node name="Skeleton3D" parent="YawTarget/PitchTarget/grappler/Armature2/Armature" index="0" unique_id=1875144193]
 bones/1/position = Vector3(0, 1, 1.1920929e-07)
 bones/1/rotation = Quaternion(3.5527164e-14, 1.7763594e-15, 3.725293e-08, 1)
 bones/1/scale = Vector3(0.9999993, 0.9999993, 1)
@@ -108,7 +103,7 @@ bone_name = "Bone.001"
 bone_idx = 1
 override_pose = true
 
-[node name="Cylinder" parent="YawTarget/PitchTarget/grappler/Armature2/Armature/Skeleton3D" index="1" unique_id=1626823385]
+[node name="Cylinder" parent="YawTarget/PitchTarget/grappler/Armature2/Armature/Skeleton3D" index="1" unique_id=118254207]
 surface_material_override/0 = SubResource("StandardMaterial3D_a4evh")
 
 [node name="CamRay" type="RayCast3D" parent="YawTarget/PitchTarget" unique_id=1274839897]
@@ -118,7 +113,7 @@ target_position = Vector3(0, -200, 0)
 
 [node name="Camera3D" type="Camera3D" parent="YawTarget/PitchTarget" unique_id=1255431970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
-attributes = SubResource("CameraAttributesPhysical_ecwft")
+fov = 82.72208
 
 [node name="Node3D" parent="YawTarget/PitchTarget/Camera3D" unique_id=227804251 instance=ExtResource("4_8uk12")]
 transform = Transform3D(0.04952962, 0, 0.9987727, 0, 1, 0, -0.9987727, 0, 0.04952962, 0.6501754, -0.6127966, -0.42544076)
