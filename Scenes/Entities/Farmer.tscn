@@ -21,7 +21,7 @@ frustum_focal_length = 13.63
 auto_exposure_min_exposure_value = -0.4
 
 [node name="Farmer" type="RigidBody3D" unique_id=483625553 node_paths=PackedStringArray("TargetPosition", "floorSensorParent", "yawTarget", "pitchTarget", "headPosition", "grappleCast", "glowyEndPos", "glowyThing")]
-collision_layer = 7
+collision_layer = 6
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_hv5dt")
 continuous_cd = true
@@ -113,8 +113,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_a4evh")
 
 [node name="CamRay" type="RayCast3D" parent="YawTarget/PitchTarget" unique_id=1274839897]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.1)
-visible = false
-target_position = Vector3(0, -888888, 0)
+target_position = Vector3(0, -200, 0)
 
 [node name="Camera3D" type="Camera3D" parent="YawTarget/PitchTarget" unique_id=1255431970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
