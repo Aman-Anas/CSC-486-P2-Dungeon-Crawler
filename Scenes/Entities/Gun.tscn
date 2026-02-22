@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://3dwta8tcqli3"]
+
+[ext_resource type="PackedScene" uid="uid://be2cgv5gar1lm" path="res://assets/models/Guns/glTF/Pistol_1.gltf" id="1_bb23j"]
+[ext_resource type="Script" uid="uid://dth25n64nwid1" path="res://Scenes/Entities/Gun.cs" id="1_yuywd"]
+
+[node name="Node3D" type="Node3D" unique_id=227804251]
+script = ExtResource("1_yuywd")
+
+[node name="Pistol_12" parent="." unique_id=1009415633 instance=ExtResource("1_bb23j")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Muzzle" type="Marker3D" parent="Pistol_12" unique_id=677483238]
+transform = Transform3D(0.99999976, -2.2351742e-08, -5.2154064e-08, -3.7252903e-08, 0.99999976, -3.7252903e-09, 0, -2.7939677e-09, 0.99999976, 0.8165281, 0.35002327, 0.002282858)
