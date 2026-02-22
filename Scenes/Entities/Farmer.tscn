@@ -113,11 +113,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_a4evh")
 
 [node name="CamRay" type="RayCast3D" parent="YawTarget/PitchTarget" unique_id=1274839897]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.1)
+visible = false
 target_position = Vector3(0, -200, 0)
 
 [node name="Camera3D" type="Camera3D" parent="YawTarget/PitchTarget" unique_id=1255431970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
 attributes = SubResource("CameraAttributesPhysical_ecwft")
+
+[node name="Node3D" parent="YawTarget/PitchTarget/Camera3D" unique_id=227804251 instance=ExtResource("4_8uk12")]
+transform = Transform3D(0.04952962, 0, 0.9987727, 0, 1, 0, -0.9987727, 0, 0.04952962, 0.6501754, -0.6127966, -0.42544076)
 
 [node name="OmniLight3D" type="SpotLight3D" parent="." unique_id=1083657613]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -130,8 +134,5 @@ spot_angle_attenuation = 0.23325834
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 radius = 0.303
 height = 1.316
-
-[node name="Node3D" parent="." unique_id=227804251 instance=ExtResource("4_8uk12")]
-transform = Transform3D(0.04952962, 0, 0.9987727, 0, 1, 0, -0.9987727, 0, 0.04952962, 0.6501754, 0.9872034, -0.52544075)
 
 [editable path="YawTarget/PitchTarget/grappler/Armature2"]

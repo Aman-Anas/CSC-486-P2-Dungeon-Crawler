@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://q00ixym4idq5"]
+
+[ext_resource type="Material" path="res://assets/mats/cheese/cheese.tres" id="1_evv7v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i81ln"]
+size = Vector3(0.51898193, 0.19482422, 0.18359375)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qsvho"]
+material = ExtResource("1_evv7v")
+size = Vector3(0.51898193, 0.19482422, 0.18359375)
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=1980703095]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2012479075]
+shape = SubResource("BoxShape3D_i81ln")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=290281061]
+mesh = SubResource("BoxMesh_qsvho")
