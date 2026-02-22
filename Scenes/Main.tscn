@@ -1,46 +1,52 @@
 [gd_scene format=3 uid="uid://cxphvpj3hiwcl"]
 
-[ext_resource type="Script" uid="uid://bm2ha3484vexj" path="res://Scenes/player.gd" id="1_r150o"]
-[ext_resource type="PackedScene" uid="uid://be2cgv5gar1lm" path="res://assets/models/Guns/glTF/Pistol_1.gltf" id="2_idj7w"]
+[ext_resource type="Texture2D" uid="uid://bigwnn62erlmu" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="2_idj7w"]
+[ext_resource type="PackedScene" uid="uid://cgv3ggu25ffs1" path="res://Scenes/Entities/Farmer.tscn" id="3_kln2b"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_idj7w"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_idj7w"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kln2b"]
+[sub_resource type="Sky" id="Sky_kln2b"]
+sky_material = SubResource("ProceduralSkyMaterial_idj7w")
 
-[sub_resource type="BoxMesh" id="BoxMesh_r150o"]
+[sub_resource type="Environment" id="Environment_rgh2o"]
+background_mode = 2
+sky = SubResource("Sky_kln2b")
+tonemap_mode = 2
+glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_r150o"]
-size = Vector3(1, 1.0303955, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kln2b"]
+albedo_texture = ExtResource("2_idj7w")
+uv1_triplanar = true
 
 [node name="Main" type="Node3D" unique_id=672701182]
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=749036446]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2202454, 1.3549905)
-script = ExtResource("1_r150o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=370737513]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
-mesh = SubResource("CapsuleMesh_idj7w")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1864134042]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
-shape = SubResource("CapsuleShape3D_kln2b")
-
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1599787881]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21667993, 1.5707378, -0.55095303)
-
-[node name="Pistol_12" parent="Player/Camera3D" unique_id=2137390044 instance=ExtResource("2_idj7w")]
-transform = Transform3D(-3.1035086e-08, 0, 0.71, 0, 0.71, 0, -0.71, 0, -3.1035086e-08, 0.27883363, -0.4129696, -0.2141794)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2041227571]
+environment = SubResource("Environment_rgh2o")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2070770047]
 transform = Transform3D(1, 0, 0, 0, 0.9153185, 0.4027307, 0, -0.4027307, 0.9153185, 0, 3.7780082, 3.4888241)
 
-[node name="Floor" type="MeshInstance3D" parent="." unique_id=856919333]
-transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_r150o")
+[node name="Farmer" parent="." unique_id=483625553 instance=ExtResource("3_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6538727, 1.575716, -0.8690312)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=829349186]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=516474440]
+material_override = SubResource("StandardMaterial3D_kln2b")
+use_collision = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1389842372]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014209927, 0, 0.007728267)
-shape = SubResource("BoxShape3D_r150o")
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=966687743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.942627, 0.61655974, -4.5341797)
+size = Vector3(18.885254, 1, 20.06836)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2003546475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.867157, 0.9364145, -4.5341797)
+size = Vector3(3.1472778, 1.6397095, 20.06836)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1219448953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.246134, 0.9364145, -9.929443)
+size = Vector3(3.1472778, 1.6397095, 9.277832)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=954668232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.837168, 0.6126964, -7.420288)
+size = Vector3(3.1472778, 1.6397095, 4.2595215)

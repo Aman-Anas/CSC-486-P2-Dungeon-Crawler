@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://cgv3ggu25ffs1"]
+
+[ext_resource type="Script" uid="uid://cbm0nkqv3d50y" path="res://Game/Entities/Farmer.cs" id="1_ry4qv"]
+[ext_resource type="PackedScene" uid="uid://be68kkhnkgb6u" path="res://Scenes/Pause_Menu/Pause.tscn" id="2_hv5dt"]
+[ext_resource type="PackedScene" uid="uid://daryebep268vh" path="res://assets/batch_exports/glowything/Armature.gltf" id="5_bdrmn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hv5dt"]
+friction = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d6kf3"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ecwft"]
+auto_exposure_enabled = true
+frustum_focal_length = 13.63
+auto_exposure_min_exposure_value = -0.4
+
+[node name="Farmer" type="RigidBody3D" unique_id=483625553 node_paths=PackedStringArray("TargetPosition", "floorSensorParent", "yawTarget", "pitchTarget", "headPosition", "grappleCast", "glowyEndPos", "glowyThing")]
+collision_layer = 7
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_hv5dt")
+continuous_cd = true
+script = ExtResource("1_ry4qv")
+TargetPosition = NodePath("Targetpos")
+floorSensorParent = NodePath("Node")
+yawTarget = NodePath("YawTarget")
+pitchTarget = NodePath("YawTarget/PitchTarget")
+headPosition = NodePath("HeadPosition")
+grappleCast = NodePath("YawTarget/PitchTarget/CamRay")
+glowyEndPos = NodePath("YawTarget/PitchTarget/grappler/Armature2/Armature/Skeleton3D/BoneAttachment3D")
+glowyThing = NodePath("YawTarget/PitchTarget/grappler/Armature2")
+
+[node name="Targetpos" type="Node3D" parent="." unique_id=2102345054]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.7, 0.07272027)
+
+[node name="Control" type="CenterContainer" parent="." unique_id=674657845]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="Sprite2D" parent="Control" unique_id=520665987]
+modulate = Color(1, 1, 1, 0.6509804)
+scale = Vector2(0.015, 0.015)
+
+[node name="Pause" parent="." unique_id=982301902 instance=ExtResource("2_hv5dt")]
+
+[node name="Node" type="Node3D" parent="." unique_id=89136036]
+
+[node name="RayCast3D" type="RayCast3D" parent="Node" unique_id=1103327785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100000024, 0)
+target_position = Vector3(0, -0.2, 0)
+
+[node name="RayCast3D4" type="RayCast3D" parent="Node" unique_id=980133980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.100000024, 0)
+target_position = Vector3(0, -0.2, 0)
+
+[node name="RayCast3D5" type="RayCast3D" parent="Node" unique_id=1018912458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.100000024, 0)
+target_position = Vector3(0, -0.2, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="Node" unique_id=2075199185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100000024, -0.3)
+target_position = Vector3(0, -0.2, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="Node" unique_id=1025934976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100000024, 0.3)
+target_position = Vector3(0, -0.2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=299677023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_d6kf3")
+
+[node name="HeadPosition" type="Node3D" parent="." unique_id=887360025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="YawTarget" type="Node3D" parent="." unique_id=29795616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+top_level = true
+
+[node name="PitchTarget" type="Node3D" parent="YawTarget" unique_id=752971039]
+
+[node name="grappler" type="Node3D" parent="YawTarget/PitchTarget" unique_id=72305109]
+transform = Transform3D(1.2851145e-08, 0, -0.097999975, -0.025364261, 0.09466071, -3.3261212e-09, 0.09466071, 0.025364261, 1.24132535e-08, -0.2783507, -0.43626106, -0.25322258)
+
+[node name="Armature2" parent="YawTarget/PitchTarget/grappler" unique_id=349872458 instance=ExtResource("5_bdrmn")]
+transform = Transform3D(-1.1920929e-07, -4.081633, -2.2737368e-13, 4.081633, -1.1920929e-07, -1.4210855e-14, -1.563194e-13, -5.684342e-14, 4.0816336, -1.2244899, 1.2244899, -6.3948846e-14)
+
+[node name="Armature" parent="YawTarget/PitchTarget/grappler/Armature2" index="0" unique_id=1903091526]
+transform = Transform3D(0.39999995, -7.450581e-09, 2.6645353e-15, 7.450581e-09, 0.39999995, 7.1054274e-15, -8.881784e-16, -7.1054274e-15, 0.40000004, 0.0400002, 0.120000005, 0)
+
+[node name="Skeleton3D" parent="YawTarget/PitchTarget/grappler/Armature2/Armature" index="0" unique_id=1875144193]
+bones/1/position = Vector3(0, 1, 1.1920929e-07)
+bones/1/rotation = Quaternion(2.1316296e-14, 3.1763776e-22, 1.490117e-08, 1)
+bones/1/scale = Vector3(0.9999994, 0.9999994, 1)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="YawTarget/PitchTarget/grappler/Armature2/Armature/Skeleton3D" index="0" unique_id=1157995979]
+transform = Transform3D(0.9999994, -2.9802322e-08, 0, 2.9802322e-08, 0.9999994, 0, 0, 4.2632564e-14, 1, 0, 1, 1.1920929e-07)
+bone_name = "Bone.001"
+bone_idx = 1
+override_pose = true
+
+[node name="CamRay" type="RayCast3D" parent="YawTarget/PitchTarget" unique_id=1274839897]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.1)
+visible = false
+target_position = Vector3(0, -888888, 0)
+
+[node name="Camera3D" type="Camera3D" parent="YawTarget/PitchTarget" unique_id=1255431970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+attributes = SubResource("CameraAttributesPhysical_ecwft")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="." unique_id=1083657613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
+spot_range = 65.916
+spot_angle = 13.525834
+spot_angle_attenuation = 0.23325834
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=9943230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+radius = 0.303
+height = 1.316
+
+[editable path="YawTarget/PitchTarget/grappler/Armature2"]
