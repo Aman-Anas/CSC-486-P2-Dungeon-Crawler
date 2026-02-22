@@ -80,7 +80,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
 [node name="YawTarget" type="Node3D" parent="." unique_id=29795616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
-top_level = true
 
 [node name="PitchTarget" type="Node3D" parent="YawTarget" unique_id=752971039]
 
@@ -116,15 +115,20 @@ target_position = Vector3(0, -200, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
 fov = 82.72208
 
+[node name="Flashlight" type="SpotLight3D" parent="YawTarget/PitchTarget/Camera3D" unique_id=1083657613]
+visible = false
+spot_range = 19.95469
+spot_angle = 23.469025
+spot_angle_attenuation = 0.23325834
+
+[node name="Flashlight2" type="SpotLight3D" parent="YawTarget/PitchTarget/Camera3D/Flashlight" unique_id=842304619]
+visible = false
+spot_range = 19.95469
+spot_angle = 9.329762
+spot_angle_attenuation = 0.23325834
+
 [node name="Pistol" parent="YawTarget/PitchTarget/Camera3D" unique_id=227804251 instance=ExtResource("4_8uk12")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.6501754, -0.6127966, -0.42544076)
-
-[node name="OmniLight3D" type="SpotLight3D" parent="." unique_id=1083657613]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-visible = false
-spot_range = 65.916
-spot_angle = 13.525834
-spot_angle_attenuation = 0.23325834
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=9943230]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

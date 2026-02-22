@@ -17,6 +17,9 @@ public partial class Controls : GridContainer, SettingsMenu.ISettingsSubMenu
         KeymapLine keymapLine;
         foreach (var input in InputMap.GetActions())
         {
+            if (input.ToString().StartsWith("ui_"))
+                continue;
+
             keymapLine = keymapScene.Instantiate<KeymapLine>();
             this.AddChild(keymapLine);
             keymapLine.AssignAction(input);

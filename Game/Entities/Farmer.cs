@@ -94,8 +94,7 @@ public partial class Farmer : RigidBody3D
         // Need this to capture the mouse of course
         Input.MouseMode = Input.MouseModeEnum.Captured;
 
-        // Add a callback to update the current anim state
-        // player.CurrentAnimationChanged += (_) => Data.AnimHelper.NetUpdate();
+        yawTarget.TopLevel = true;
     }
 
     void UpdateHeadOrientation()
