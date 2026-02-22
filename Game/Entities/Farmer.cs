@@ -36,10 +36,13 @@ public partial class Farmer : RigidBody3D
     float AIR_MOVEMENT_FORCE = 30;
 
     [Export]
-    float RUN_SPEED = 6;
+    float RUN_SPEED = 10;
 
     [Export]
-    float WALK_SPEED = 4;
+    float WALK_SPEED = 6;
+
+    // [Export]
+    // float JUMP_MOVE_SPEED = 8;
 
     [Export]
     float GRAPPLE_FORCE = 50;
@@ -57,7 +60,7 @@ public partial class Farmer : RigidBody3D
     Vector3 JUMP_IMPULSE = new(0, 5.5f, 0);
 
     [Export]
-    ulong MIN_JUMP_RESET_TIME = 1000; // ms
+    ulong MAX_JUMP_RESET_TIME = 4000; // ms
 
     ////////////////////////////////////////
 
@@ -149,6 +152,7 @@ public partial class Farmer : RigidBody3D
             if (floorSensor.IsColliding())
             {
                 touchingFloor = true;
+                break;
             }
         }
 
@@ -159,11 +163,14 @@ public partial class Farmer : RigidBody3D
 
         // Convert our global linear velocity to local and remove Y
         var actualLocalVelocity = GlobalBasis.Inverse() * state.LinearVelocity;
+        Vector3 localVeloCopy = actualLocalVelocity;
         actualLocalVelocity.Y = 0;
 
         running =
             Input.IsActionPressed(GameActions.PlayerRun)
             || Input.IsMouseButtonPressed(MouseButton.Right);
+
+        maxMovementSpeed = running ? RUN_SPEED : WALK_SPEED;
 
         var intendedLocalVelocity = maxMovementSpeed * movementVec;
 
@@ -183,20 +190,31 @@ public partial class Farmer : RigidBody3D
         // Jumping
 
         // Reset the jump flag if we're in the air or a min time elapsed
-        if ((!touchingFloor) || ((Time.GetTicksMsec() - timeJumped) > MIN_JUMP_RESET_TIME))
+
+
+        if (!touchingFloor)
         {
             justJumped = false;
         }
+        else
+        {
+            if ((Time.GetTicksMsec() - timeJumped) > MAX_JUMP_RESET_TIME)
+            {
+                justJumped = false;
+            }
+        }
 
         // Dev mode jetpack
-        if (false && Input.IsActionPressed(GameActions.PlayerJump))
-        {
-            state.ApplyCentralImpulse(GlobalBasis * Vector3.Up * 0.3f);
-        }
+        // if (false && Input.IsActionPressed(GameActions.PlayerJump))
+        // {
+        //     state.ApplyCentralImpulse(GlobalBasis * Vector3.Up * 0.3f);
+        // }
 
         if (Input.IsActionPressed(GameActions.PlayerJump) && touchingFloor && !justJumped)
         {
-            state.ApplyCentralImpulse(GlobalBasis * JUMP_IMPULSE);
+            state.ApplyCentralImpulse(
+                GlobalBasis * (JUMP_IMPULSE + new Vector3(0, -localVeloCopy.Y * Mass, 0))
+            );
             justJumped = true;
             timeJumped = Time.GetTicksMsec();
         }
