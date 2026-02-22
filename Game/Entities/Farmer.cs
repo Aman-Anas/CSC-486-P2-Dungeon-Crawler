@@ -319,15 +319,15 @@ public partial class Farmer : RigidBody3D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (!grappleCast.IsColliding())
-        {
-            return;
-        }
+        // if (!grappleCast.IsColliding())
+        // {
+        //     return;
+        // }
 
-        // CSGBoxes are detected, but aren't actually CollisionObject3Ds
-        if (grappleCast.GetCollider() is not CollisionObject3D collisionObj)
-        {
-            return;
-        }
+        // // CSGBoxes are detected, but aren't actually CollisionObject3Ds
+        // if (grappleCast.GetCollider() is not CollisionObject3D collisionObj)
+        // {
+        //     return;
+        // }
     }
 }
