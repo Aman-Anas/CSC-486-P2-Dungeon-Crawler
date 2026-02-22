@@ -14,4 +14,6 @@ public static class GameActions
     public static readonly StringName PlayerRun = "player_run";
 
     public static readonly StringName PlayerJump = "player_jump";
+
+    public static readonly StringName PlayerFire = "fire";
 }

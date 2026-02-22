@@ -8,7 +8,6 @@
 script = ExtResource("1_yuywd")
 bulletSpawnPoint = NodePath("Pistol_12/Muzzle")
 bulletScene = ExtResource("2_ks86p")
-bulletSpeed = 80.0
 
 [node name="Pistol_12" parent="." unique_id=1009415633 instance=ExtResource("1_bb23j")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0)
