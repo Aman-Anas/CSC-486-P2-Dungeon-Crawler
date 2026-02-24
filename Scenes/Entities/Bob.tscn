@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dbi28u8ytw1e2"]
+
+[ext_resource type="PackedScene" uid="uid://04al5uvh4ge8" path="res://assets/batch_exports/bob/RIG.gltf" id="1_1vcd5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lapoy"]
+
+[node name="Bob" type="RigidBody3D" unique_id=54794360]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2019877107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_lapoy")
+
+[node name="RIG" parent="." unique_id=1953430170 instance=ExtResource("1_1vcd5")]
