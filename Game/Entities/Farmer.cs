@@ -95,10 +95,9 @@ public partial class Farmer : RigidBody3D
     {
         // Need this to capture the mouse of course
         Input.MouseMode = Input.MouseModeEnum.Captured;
+        yawTarget.TopLevel = true;
 
         progressBar.SetCoolValue(Manager.Instance.Data.CurrentHealth);
-
-        yawTarget.TopLevel = true;
     }
 
     void UpdateHeadOrientation()

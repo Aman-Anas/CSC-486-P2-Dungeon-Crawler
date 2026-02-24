@@ -7,7 +7,7 @@ namespace Game;
 public partial class GameData
 {
     // Add game-related save data here
-    public int CurrentHealth { get; set; } = 200;
+    public int CurrentHealth { get; set; } = 100;
     // TODO add health bar
 
 
