@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dyrjb03w8vw8k"]
+
+[ext_resource type="Script" uid="uid://2d7prqy3oo8e" path="res://Game/UI/FancyProgressBar.cs" id="1_pgwco"]
+
+[sub_resource type="Gradient" id="Gradient_8uk12"]
+offsets = PackedFloat32Array(0.20973782, 0.25842696, 0.52059925, 0.5692884)
+colors = PackedColorArray(0.6431373, 0.007843138, 0.023529412, 0, 0.64240247, 0.009338004, 0.022651246, 1, 0.4877345, 0.2787598, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b03ad"]
+gradient = SubResource("Gradient_8uk12")
+width = 120
+height = 120
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="TextureProgressBar" type="TextureProgressBar" unique_id=811441812]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_right = 120.0
+grow_vertical = 0
+value = 50.0
+fill_mode = 4
+radial_initial_angle = 167.5
+texture_progress = SubResource("GradientTexture2D_b03ad")
+script = ExtResource("1_pgwco")
+
+[node name="Label" type="Label" parent="." unique_id=608856730]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1

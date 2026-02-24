@@ -39,8 +39,9 @@ public partial class Pause : Control
         resumeButton.Pressed += Resume;
         settingsButton.Pressed += () => menu.SetSubMenu(settingsMenuRoot);
         returnToTitle.Pressed += Manager.Instance.ExitToTitle;
-
         quitButton.Pressed += Manager.Instance.QuitGame;
+
+        Hide();
     }
 
     void Resume()

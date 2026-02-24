@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cgv3ggu25ffs1"]
 
 [ext_resource type="Script" uid="uid://cbm0nkqv3d50y" path="res://Game/Entities/Farmer.cs" id="1_ry4qv"]
+[ext_resource type="PackedScene" uid="uid://dyrjb03w8vw8k" path="res://Scenes/UI/FancyProgressBar.tscn" id="2_b03ad"]
 [ext_resource type="PackedScene" uid="uid://be68kkhnkgb6u" path="res://Scenes/Pause_Menu/Pause.tscn" id="2_hv5dt"]
 [ext_resource type="PackedScene" uid="uid://3dwta8tcqli3" path="res://Scenes/Entities/Gun.tscn" id="4_8uk12"]
 [ext_resource type="PackedScene" uid="uid://daryebep268vh" path="res://assets/batch_exports/glowything/Armature.gltf" id="5_bdrmn"]
@@ -21,6 +22,8 @@ collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_hv5dt")
 can_sleep = false
 continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("1_ry4qv")
 TargetPosition = NodePath("Targetpos")
 floorSensorParent = NodePath("Node")
@@ -34,18 +37,41 @@ glowyThing = NodePath("YawTarget/PitchTarget/grappler/Armature2")
 [node name="Targetpos" type="Node3D" parent="." unique_id=2102345054]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.7, 0.07272027)
 
-[node name="Control" type="CenterContainer" parent="." unique_id=674657845]
+[node name="PlayerUI" type="Control" parent="." unique_id=2105536668]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="CenterContainer" parent="PlayerUI" unique_id=674657845]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = 556.0
+offset_top = 304.0
+offset_right = 556.0
+offset_bottom = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Crosshair" type="Sprite2D" parent="Control" unique_id=520665987]
+[node name="Crosshair" type="Sprite2D" parent="PlayerUI/Control" unique_id=520665987]
 modulate = Color(1, 1, 1, 0.6509804)
 scale = Vector2(0.015, 0.015)
+
+[node name="TextureProgressBar" parent="PlayerUI" unique_id=811441812 instance=ExtResource("2_b03ad")]
+layout_mode = 0
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_bottom = 120.0
+grow_vertical = 1
 
 [node name="Pause" parent="." unique_id=982301902 instance=ExtResource("2_hv5dt")]
 

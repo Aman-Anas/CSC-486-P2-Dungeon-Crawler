@@ -2,7 +2,9 @@ using System;
 using System.Linq;
 using Game;
 using Game.Entities;
+using Game.UI;
 using Godot;
+using GodotTask;
 
 namespace Game.Entities;
 
@@ -93,6 +95,8 @@ public partial class Farmer : RigidBody3D
     {
         // Need this to capture the mouse of course
         Input.MouseMode = Input.MouseModeEnum.Captured;
+
+        progressBar.SetCoolValue(Manager.Instance.Data.CurrentHealth);
 
         yawTarget.TopLevel = true;
     }
@@ -334,17 +338,53 @@ public partial class Farmer : RigidBody3D
         }
     }
 
+    // Whether or not we can take damage. Set to false during the invulnerability timer
+    bool canTakeDamage = true;
+
+    // Enemies should be marked with this string metadata
+    public readonly StringName EnemyMeta = "enemy";
+
+    // Decrease health by this much on every hit
+    [Export]
+    public int DamageAmount { get; set; } = 1;
+
+    // Time in seconds to stay invulnerable after a hit
+    [Export]
+    public float InvulnerabilityTime { get; set; } = 0.5f;
+
+    [Export]
+    FancyProgressBar progressBar = null!;
+
     public override void _PhysicsProcess(double delta)
     {
-        // if (!grappleCast.IsColliding())
-        // {
-        //     return;
-        // }
+        // Figure out if we're touching an enemy
+        var colliding = GetCollidingBodies();
+        bool touchingEnemy = false;
+        foreach (var collider in colliding)
+        {
+            if (collider.Owner.HasMeta(EnemyMeta))
+            {
+                touchingEnemy = true;
+                break;
+            }
+        }
 
-        // // CSGBoxes are detected, but aren't actually CollisionObject3Ds
-        // if (grappleCast.GetCollider() is not CollisionObject3D collisionObj)
-        // {
-        //     return;
-        // }
+        // Take damage
+        if (canTakeDamage && touchingEnemy)
+        {
+            // Reduce our health
+            Manager.Instance.Data.CurrentHealth -= DamageAmount;
+            progressBar.SetCoolValue(Manager.Instance.Data.CurrentHealth);
+
+            // Start invulnerability timer
+            canTakeDamage = false;
+            ResetInvulnerability().Forget();
+        }
+    }
+
+    async GDTaskVoid ResetInvulnerability()
+    {
+        await GDTask.Delay(TimeSpan.FromSeconds(InvulnerabilityTime));
+        canTakeDamage = true;
     }
 }
