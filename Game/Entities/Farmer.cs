@@ -343,10 +343,6 @@ public partial class Farmer : RigidBody3D
     // Enemies should be marked with this string metadata
     public readonly StringName EnemyMeta = "enemy";
 
-    // Decrease health by this much on every hit
-    [Export]
-    public int DamageAmount { get; set; } = 1;
-
     // Time in seconds to stay invulnerable after a hit
     [Export]
     public float InvulnerabilityTime { get; set; } = 0.5f;
@@ -354,16 +350,24 @@ public partial class Farmer : RigidBody3D
     [Export]
     FancyProgressBar progressBar = null!;
 
+    [Export]
+    AnimationPlayer damagePlayer = null!;
+    StringName damageAnimName = "takedamage";
+
     public override void _PhysicsProcess(double delta)
     {
         // Figure out if we're touching an enemy
         var colliding = GetCollidingBodies();
         bool touchingEnemy = false;
+        int amountToReduceHealth = 0;
         foreach (var collider in colliding)
         {
-            if (collider.Owner.HasMeta(EnemyMeta))
+            if (collider.HasMeta(EnemyMeta))
             {
                 touchingEnemy = true;
+
+                // Grab the amount to reduce health by
+                amountToReduceHealth = (int)collider.GetMeta(EnemyMeta);
                 break;
             }
         }
@@ -372,8 +376,9 @@ public partial class Farmer : RigidBody3D
         if (canTakeDamage && touchingEnemy)
         {
             // Reduce our health
-            Manager.Instance.Data.CurrentHealth -= DamageAmount;
+            Manager.Instance.Data.CurrentHealth -= amountToReduceHealth;
             progressBar.SetCoolValue(Manager.Instance.Data.CurrentHealth);
+            damagePlayer.Play(damageAnimName);
 
             // Start invulnerability timer
             canTakeDamage = false;

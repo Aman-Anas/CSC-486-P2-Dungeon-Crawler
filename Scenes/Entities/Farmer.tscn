@@ -9,6 +9,43 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hv5dt"]
 friction = 0.1
 
+[sub_resource type="Animation" id="Animation_b03ad"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.14999998, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3bb7h"]
+resource_name = "takedamage"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.99, 0.14849998, 0, 0.25882354), Color(1, 0.14999998, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_27jcv"]
+_data = {
+&"RESET": SubResource("Animation_b03ad"),
+&"takedamage": SubResource("Animation_3bb7h")
+}
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d6kf3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4evh"]
@@ -16,7 +53,7 @@ emission_enabled = true
 emission = Color(0.2530664, 0.93127614, 0.46066934, 1)
 emission_energy_multiplier = 6.03
 
-[node name="Farmer" type="RigidBody3D" unique_id=483625553 node_paths=PackedStringArray("TargetPosition", "floorSensorParent", "yawTarget", "pitchTarget", "headPosition", "grappleCast", "glowyEndPos", "glowyThing", "progressBar")]
+[node name="Farmer" type="RigidBody3D" unique_id=483625553 node_paths=PackedStringArray("TargetPosition", "floorSensorParent", "yawTarget", "pitchTarget", "headPosition", "grappleCast", "glowyEndPos", "glowyThing", "progressBar", "damagePlayer")]
 collision_layer = 7
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_hv5dt")
@@ -34,6 +71,7 @@ grappleCast = NodePath("YawTarget/PitchTarget/CamRay")
 glowyEndPos = NodePath("YawTarget/PitchTarget/grappler/Armature2/Armature/Skeleton3D/BoneAttachment3D")
 glowyThing = NodePath("YawTarget/PitchTarget/grappler/Armature2")
 progressBar = NodePath("PlayerUI/TextureProgressBar")
+damagePlayer = NodePath("PlayerUI/damageplayer")
 
 [node name="Targetpos" type="Node3D" parent="." unique_id=2102345054]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.7, 0.07272027)
@@ -66,13 +104,20 @@ modulate = Color(1, 1, 1, 0.6509804)
 scale = Vector2(0.015, 0.015)
 
 [node name="TextureProgressBar" parent="PlayerUI" unique_id=811441812 instance=ExtResource("2_b03ad")]
-layout_mode = 0
-anchors_preset = 0
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_bottom = 120.0
-grow_vertical = 1
+layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="PlayerUI" unique_id=1344338588]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.14999998, 0, 0)
+
+[node name="damageplayer" type="AnimationPlayer" parent="PlayerUI" unique_id=1602030607]
+libraries/ = SubResource("AnimationLibrary_27jcv")
 
 [node name="Pause" parent="." unique_id=982301902 instance=ExtResource("2_hv5dt")]
 
