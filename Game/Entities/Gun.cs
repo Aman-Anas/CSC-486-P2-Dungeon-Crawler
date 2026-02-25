@@ -8,51 +8,51 @@ namespace Game.Entities;
 
 public partial class Gun : Node3D
 {
-    [Export]
-    Node3D bulletSpawnPoint = null!;
+	[Export]
+	Node3D bulletSpawnPoint = null!;
 
-    [Export]
-    PackedScene bulletScene = null!;
+	[Export]
+	PackedScene bulletScene = null!;
 
-    [Export]
-    float bulletSpeed = 80.0f;
+	[Export]
+	float bulletSpeed = 80.0f;
 
-    [Export]
-    float despawnTime = 15.0f;
+	[Export]
+	float despawnTime = 15.0f;
 
-    [Export]
-    float reloadTime = 0.15f;
+	[Export]
+	float reloadTime = 0.15f;
 
-    bool readyToFire = true;
+	bool readyToFire = true;
 
-    public override void _Ready()
-    {
-        // Nothing to do on ready for now.
-    }
+	public override void _Ready()
+	{
+		// Nothing to do on ready for now.
+	}
 
-    public override void _Process(double delta)
-    {
-        if (Input.IsActionPressed(GameActions.PlayerFire) && readyToFire)
-        {
-            var newBullet = bulletScene.Instantiate<RigidBody3D>();
+	public override void _Process(double delta)
+	{
+		if (Input.IsActionPressed(GameActions.PlayerFire) && readyToFire)
+		{
+			var newBullet = bulletScene.Instantiate<RigidBody3D>();
 
-            newBullet.GlobalTransform = bulletSpawnPoint.GlobalTransform;
-            newBullet.LinearVelocity = GlobalBasis * new Vector3(bulletSpeed, 0, 0);
+			newBullet.GlobalTransform = bulletSpawnPoint.GlobalTransform;
+			newBullet.LinearVelocity = GlobalBasis * new Vector3(bulletSpeed, 0, 0);
 
-            GetTree().CurrentScene.AddChild(newBullet);
+			GetTree().CurrentScene.AddChild(newBullet);
 
-            // Remove the bullet after some time
-            var timer = GetTree().CreateTimer(despawnTime);
-            timer.Timeout += newBullet.QueueFree;
+			// Remove the bullet after some time
+			var timer = GetTree().CreateTimer(despawnTime);
+			timer.Timeout += newBullet.QueueFree;
 
-            readyToFire = false;
-            StartReload();
-        }
-    }
+			readyToFire = false;
+			StartReload();
+		}
+	}
 
-    async void StartReload()
-    {
-        await GDTask.Delay(TimeSpan.FromSeconds(reloadTime));
-        readyToFire = true;
-    }
+	async void StartReload()
+	{
+		await GDTask.Delay(TimeSpan.FromSeconds(reloadTime));
+		readyToFire = true;
+	}
 }

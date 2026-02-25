@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cgv3ggu25ffs1" path="res://Scenes/Entities/Farmer.tscn" id="2_x28rk"]
 [ext_resource type="Script" uid="uid://ur22d8wmd12u" path="res://Game/Entities/GravityArea.cs" id="3_3yyu3"]
 [ext_resource type="Texture2D" uid="uid://dxc8av0a5bgvm" path="res://addons/kenney_prototype_textures/dark/texture_12.png" id="3_8txr7"]
+[ext_resource type="PackedScene" uid="uid://dbi28u8ytw1e2" path="res://Scenes/Entities/Bob.tscn" id="6_0lhxs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x28rk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -118,3 +119,9 @@ material = ExtResource("1_57efk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1449856817]
 shape = SubResource("SphereShape3D_x28rk")
+
+[node name="Bob" parent="." unique_id=54794360 instance=ExtResource("6_0lhxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.280094, 0.5002469, -2.4203496)
+TargetPath = NodePath("../Farmer")
+speed = 1.0
+stopDistance = 0.1

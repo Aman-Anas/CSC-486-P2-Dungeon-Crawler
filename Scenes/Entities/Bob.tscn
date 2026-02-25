@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://dbi28u8ytw1e2"]
 
 [ext_resource type="PackedScene" uid="uid://de0wqqfkwwk6k" path="res://assets/batch_exports/bob/BobRig.gltf" id="1_1vcd5"]
+[ext_resource type="Script" uid="uid://ct8trd3qbho1g" path="res://Scenes/Entities/Bob.cs" id="1_b8lay"]
 [ext_resource type="AnimationLibrary" uid="uid://b0gkk7074s4vm" path="res://assets/models/UAL1_Standard.glb" id="1_b8pc6"]
 [ext_resource type="PackedScene" uid="uid://6jsad3j1o1fx" path="res://assets/batch_exports/bob/weapon_001.gltf" id="3_yxp7o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lapoy"]
 
 [node name="Bob" type="RigidBody3D" unique_id=54794360]
+script = ExtResource("1_b8lay")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2019877107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -18,7 +20,7 @@ libraries/UAL1_Standard = ExtResource("1_b8pc6")
 
 [node name="BobRig2" parent="." unique_id=309617028 instance=ExtResource("1_1vcd5")]
 
-[node name="GeneralSkeleton" parent="BobRig2/BobRig" parent_id_path=PackedInt32Array(309617028, 1937517773) index="0" unique_id=11169179]
+[node name="GeneralSkeleton" parent="BobRig2/BobRig" parent_id_path=PackedInt32Array(309617028, 66578090) index="0" unique_id=1752035219]
 bones/1/position = Vector3(0.005295508, 0.8736359, -0.08614569)
 bones/1/rotation = Quaternion(-0.04628033, -0.11588846, -0.005405691, 0.9921687)
 bones/3/rotation = Quaternion(0.09260246, 0.000112654714, 0.00025388045, 0.99570316)
