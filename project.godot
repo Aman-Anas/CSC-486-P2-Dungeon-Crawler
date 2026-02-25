@@ -46,6 +46,7 @@ enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/in
 [file_customization]
 
 folder_colors={
+"res://Game/": "purple",
 "res://Scenes/": "green"
 }
 
