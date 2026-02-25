@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b3ik2bwecsbva"]
+
+[ext_resource type="PackedScene" uid="uid://dk30fk7rndok4" path="res://assets/batch_exports/dungeonwalls/Cylinder.gltf" id="1_dmpks"]
+[ext_resource type="Material" uid="uid://buvera7aogvu6" path="res://assets/batch_exports/dungeonwalls/metal.tres" id="2_lbfk4"]
+
+[node name="Light" type="Node3D" unique_id=1543946459]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=803781533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8399999, 0)
+light_color = Color(1, 0.8926667, 0.72, 1)
+light_energy = 4.723
+shadow_enabled = true
+omni_range = 32.403606
+
+[node name="Cylinder2" parent="." unique_id=1273999705 instance=ExtResource("1_dmpks")]
+transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0)
+
+[node name="Cylinder" parent="Cylinder2" index="0" unique_id=1111109450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2, 0)
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_lbfk4")
+
+[node name="Torus" parent="Cylinder2/Cylinder" index="1" unique_id=873467295]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_lbfk4")
+
+[editable path="Cylinder2"]
