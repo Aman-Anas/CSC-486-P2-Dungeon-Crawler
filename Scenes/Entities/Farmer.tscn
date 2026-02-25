@@ -143,6 +143,18 @@ target_position = Vector3(0, -0.2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100000024, 0.3)
 target_position = Vector3(0, -0.2, 0)
 
+[node name="Flashlight" type="SpotLight3D" parent="." unique_id=1083657613]
+transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0, 1.6, -0.1)
+spot_range = 19.95469
+spot_angle = 49.51
+spot_angle_attenuation = 0.23325834
+
+[node name="Flashlight2" type="SpotLight3D" parent="Flashlight" unique_id=842304619]
+visible = false
+spot_range = 19.95469
+spot_angle = 9.329762
+spot_angle_attenuation = 0.23325834
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=299677023]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_d6kf3")
@@ -186,18 +198,6 @@ target_position = Vector3(0, -200, 0)
 [node name="Camera3D" type="Camera3D" parent="YawTarget/PitchTarget" unique_id=1255431970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
 fov = 82.72208
-
-[node name="Flashlight" type="SpotLight3D" parent="YawTarget/PitchTarget/Camera3D" unique_id=1083657613]
-visible = false
-spot_range = 19.95469
-spot_angle = 23.469025
-spot_angle_attenuation = 0.23325834
-
-[node name="Flashlight2" type="SpotLight3D" parent="YawTarget/PitchTarget/Camera3D/Flashlight" unique_id=842304619]
-visible = false
-spot_range = 19.95469
-spot_angle = 9.329762
-spot_angle_attenuation = 0.23325834
 
 [node name="Pistol" parent="YawTarget/PitchTarget/Camera3D" unique_id=227804251 instance=ExtResource("4_8uk12")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.6501754, -0.6127966, -0.42544076)

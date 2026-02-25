@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://be3p3nqh34byr"]
+
+[ext_resource type="PackedScene" uid="uid://y241jbjvwc6r" path="res://assets/batch_exports/dungeonwalls/Block.gltf" id="1_8lvjm"]
+[ext_resource type="PackedScene" uid="uid://cbhxppf4wejdt" path="res://assets/batch_exports/dungeonwalls/Wall.gltf" id="2_b1iko"]
+
+[node name="MeshLibTemplate" type="Node3D" unique_id=588862806]
+
+[node name="Block2" parent="." unique_id=952423063 instance=ExtResource("1_8lvjm")]
+
+[node name="Wall2" parent="." unique_id=1996558561 instance=ExtResource("2_b1iko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
