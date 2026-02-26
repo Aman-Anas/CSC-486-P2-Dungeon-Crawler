@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://dbi28u8ytw1e2"]
 
 [ext_resource type="PackedScene" uid="uid://de0wqqfkwwk6k" path="res://assets/batch_exports/bob/BobRig.gltf" id="1_1vcd5"]
-[ext_resource type="Script" uid="uid://ct8trd3qbho1g" path="res://Scenes/Entities/Bob.cs" id="1_b8lay"]
+[ext_resource type="Script" uid="uid://ctvmvcb3n2pgw" path="res://Game/Entities/NewBob.cs" id="1_b8lay"]
 [ext_resource type="AnimationLibrary" uid="uid://b0gkk7074s4vm" path="res://assets/models/UAL1_Standard.glb" id="1_b8pc6"]
 [ext_resource type="PackedScene" uid="uid://6jsad3j1o1fx" path="res://assets/batch_exports/bob/weapon_001.gltf" id="3_yxp7o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lapoy"]
 
-[node name="Bob" type="RigidBody3D" unique_id=54794360]
+[node name="Bob" type="RigidBody3D" unique_id=54794360 node_paths=PackedStringArray("animPlayer")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 script = ExtResource("1_b8lay")
+animPlayer = NodePath("RetargetedAnims")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2019877107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -19,36 +22,42 @@ root_node = NodePath("../BobRig2/AnimationPlayer")
 libraries/UAL1_Standard = ExtResource("1_b8pc6")
 
 [node name="BobRig2" parent="." unique_id=309617028 instance=ExtResource("1_1vcd5")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="GeneralSkeleton" parent="BobRig2/BobRig" parent_id_path=PackedInt32Array(309617028, 66578090) index="0" unique_id=1752035219]
-bones/1/position = Vector3(0.005295508, 0.8736359, -0.08614569)
-bones/1/rotation = Quaternion(-0.04628033, -0.11588846, -0.005405691, 0.9921687)
-bones/3/rotation = Quaternion(0.09260246, 0.000112654714, 0.00025388045, 0.99570316)
-bones/4/rotation = Quaternion(0.092602395, 0.00032065847, 0.00024720546, 0.9957031)
-bones/5/rotation = Quaternion(-0.09260248, -0.00021697924, -0.0002602538, 0.9957031)
-bones/6/rotation = Quaternion(0.07725409, 0.0957206, 0.007964551, 0.99237394)
-bones/8/rotation = Quaternion(0.48748106, 0.52661544, 0.52638143, -0.4560275)
-bones/9/rotation = Quaternion(-0.06222128, 0.8176802, -0.5722163, 0.00980104)
-bones/10/rotation = Quaternion(0.18998532, -0.651041, 0.18306458, 0.7117153)
+[node name="GeneralSkeleton" parent="BobRig2/BobRig" parent_id_path=PackedInt32Array(309617028, 1937517773) index="0" unique_id=11169179]
+bones/1/position = Vector3(0.0038885665, 0.86861295, -0.0864626)
+bones/1/rotation = Quaternion(-0.0441161, -0.115899965, -0.0051529105, 0.9922674)
+bones/3/rotation = Quaternion(0.085251704, 0.00011069146, 0.00025768048, 0.99635947)
+bones/4/rotation = Quaternion(0.08525169, 0.00031471596, 0.00025117293, 0.9963594)
+bones/5/rotation = Quaternion(-0.08525164, -0.00021301096, -0.00026318387, 0.9963594)
+bones/6/rotation = Quaternion(0.05487349, 0.09533408, 0.011731936, 0.99386257)
+bones/8/rotation = Quaternion(0.4968053, 0.52340555, 0.52926064, -0.4462224)
+bones/9/rotation = Quaternion(-0.032864906, 0.8223444, -0.56795675, 0.009728105)
+bones/10/rotation = Quaternion(0.1634547, -0.6753983, 0.1679877, 0.69921374)
 bones/11/rotation = Quaternion(0.09913024, 0.70686626, 0.0629003, 0.69753635)
-bones/12/rotation = Quaternion(0.53972095, -0.47448963, -0.47470158, -0.5081529)
-bones/14/rotation = Quaternion(0.29214105, 0.54285806, -0.20492761, 0.760239)
+bones/12/rotation = Quaternion(0.54885876, -0.47239807, -0.47648624, -0.4985531)
+bones/13/rotation = Quaternion(0.0840418, 0.82381594, -0.56051075, -0.009600518)
+bones/14/rotation = Quaternion(0.29128024, 0.5458353, -0.20611355, 0.7581141)
 bones/15/rotation = Quaternion(0.12024976, -0.69903094, -0.056890074, 0.702609)
-bones/18/rotation = Quaternion(-0.00077796273, 0.12214074, 0.98626107, -0.11122178)
-bones/19/rotation = Quaternion(0.016344335, 0.98224515, -0.14901444, 0.11279213)
-bones/20/rotation = Quaternion(-0.09455208, 0.7292354, -0.67767, 0.006254539)
+bones/18/rotation = Quaternion(-0.000810232, 0.13948365, 0.98342526, -0.115838565)
+bones/19/rotation = Quaternion(0.019440651, 0.97756684, -0.17799738, 0.110914536)
+bones/20/rotation = Quaternion(-0.09553628, 0.719885, -0.6874615, 0.005931499)
 bones/21/rotation = Quaternion(4.664862e-08, 1, 5.9604645e-08, 2.7766912e-08)
-bones/23/rotation = Quaternion(0.0008066073, -0.110076316, 0.9872104, 0.11531823)
-bones/24/rotation = Quaternion(-0.028729852, 0.92896134, -0.08071508, -0.36012587)
-bones/25/rotation = Quaternion(0.17156829, 0.646951, -0.74297434, -0.0027946231)
+bones/23/rotation = Quaternion(0.0009110189, -0.09169165, 0.98723227, 0.13024688)
+bones/24/rotation = Quaternion(-0.044049505, 0.9258009, -0.12147549, -0.35524076)
+bones/25/rotation = Quaternion(0.17159063, 0.6304079, -0.75706154, 0.00059238885)
 bones/26/rotation = Quaternion(-6.703263e-08, 1, 8.940697e-08, 2.1454163e-09)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="BobRig2/BobRig/GeneralSkeleton" index="2" unique_id=395134942]
-transform = Transform3D(0.6289088, -0.7305181, 0.26611412, -0.28208005, -0.53335047, -0.7974761, 0.7245029, 0.42647436, -0.5414935, -1.145084, 1.2296493, -0.09442192)
+transform = Transform3D(0.0681963, -0.1474511, 0.98671544, 0.53038144, -0.83232373, -0.1610363, 0.8450117, 0.5343175, 0.021444118, -0.5609417, 0.5777792, -0.13580188)
 bone_name = "RightHand"
 bone_idx = 15
 
 [node name="weapon_0012" parent="BobRig2/BobRig/GeneralSkeleton/BoneAttachment3D" unique_id=513473103 instance=ExtResource("3_yxp7o")]
 transform = Transform3D(0.23210526, 0.6656728, 0.0056458213, -0.6656465, 0.23215283, -0.006687158, -0.0081732655, -0.0031290741, 0.7049456, 0.03306853, 0.10972894, 0.021598017)
+
+[node name="AnimationPlayer" parent="BobRig2" index="1" unique_id=2115114905]
+process_mode = 4
+active = false
 
 [editable path="BobRig2"]

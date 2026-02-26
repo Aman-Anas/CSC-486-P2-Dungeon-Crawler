@@ -120,8 +120,6 @@ material = ExtResource("1_57efk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1449856817]
 shape = SubResource("SphereShape3D_x28rk")
 
-[node name="Bob" parent="." unique_id=54794360 instance=ExtResource("6_0lhxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.280094, 0.5002469, -2.4203496)
-TargetPath = NodePath("../Farmer")
-speed = 1.0
-stopDistance = 0.1
+[node name="Bob" parent="." unique_id=54794360 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_0lhxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.69489, -0.08249879, -2.324669)
+playerToFollow = NodePath("../Farmer")
