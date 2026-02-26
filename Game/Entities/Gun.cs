@@ -25,6 +25,9 @@ public partial class Gun : Node3D
 
     bool readyToFire = true;
 
+    [Export]
+    AudioStreamPlayer? shootfx;
+
     public override void _Ready()
     {
         // Nothing to do on ready for now.
@@ -40,6 +43,7 @@ public partial class Gun : Node3D
             newBullet.LinearVelocity = GlobalBasis * new Vector3(bulletSpeed, 0, 0);
 
             GetTree().CurrentScene.AddChild(newBullet);
+            shootfx?.Play();
 
             // Remove the bullet after some time
             var timer = GetTree().CreateTimer(despawnTime);
