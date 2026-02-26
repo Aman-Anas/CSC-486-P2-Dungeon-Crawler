@@ -20,6 +20,10 @@ config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://vsaovvnwh8yh"
+
 [autoload]
 
 InputHelper="*uid://cholww48njaeh"
@@ -38,6 +42,11 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="Game"
+
+[editor_overrides]
+
+text_editor/behavior/indent/type=1
+text_editor/behavior/indent/size=4
 
 [editor_plugins]
 

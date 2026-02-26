@@ -5,6 +5,7 @@
 [ext_resource type="MeshLibrary" uid="uid://cda066fneq4b3" path="res://assets/batch_exports/dungeonwalls/dungeonwalls_library.res" id="3_7fw27"]
 [ext_resource type="PackedScene" uid="uid://b3ik2bwecsbva" path="res://assets/batch_exports/dungeonwalls/Light.tscn" id="4_kaumn"]
 [ext_resource type="PackedScene" uid="uid://dbi28u8ytw1e2" path="res://Scenes/Entities/Bob.tscn" id="5_w6yup"]
+[ext_resource type="PackedScene" path="res://Scenes/Entities/NewBurger.tscn" id="6_heuc8"]
 
 [sub_resource type="Environment" id="Environment_7fw27"]
 tonemap_mode = 4
@@ -76,4 +77,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.770214, 5.6015906, -49.684
 
 [node name="Bob" parent="." unique_id=54794360 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("5_w6yup")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47703528, 1.999609, -10.845552)
+playerToFollow = NodePath("../Farmer")
+
+[node name="NewBurger" parent="." unique_id=941241180 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5069251, 2.5303798, -23.286293)
+playerToFollow = NodePath("../Farmer")
+
+[node name="NewBurger2" parent="." unique_id=850938697 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.713774, 2.5303798, -19.855196)
+playerToFollow = NodePath("../Farmer")
+
+[node name="NewBurger3" parent="." unique_id=475152509 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.813708, 2.5303798, -26.173399)
 playerToFollow = NodePath("../Farmer")
