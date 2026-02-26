@@ -5,11 +5,15 @@
 [ext_resource type="AnimationLibrary" uid="uid://b0gkk7074s4vm" path="res://assets/models/UAL1_Standard.glb" id="1_b8pc6"]
 [ext_resource type="PackedScene" uid="uid://6jsad3j1o1fx" path="res://assets/batch_exports/bob/weapon_001.gltf" id="3_yxp7o"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b8lay"]
+friction = 0.21
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lapoy"]
 
 [node name="Bob" type="RigidBody3D" unique_id=54794360 node_paths=PackedStringArray("animPlayer")]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_b8lay")
 script = ExtResource("1_b8lay")
 animPlayer = NodePath("RetargetedAnims")
 
