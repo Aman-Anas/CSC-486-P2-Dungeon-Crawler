@@ -90,6 +90,9 @@ public partial class Farmer : RigidBody3D
     Vector3 currentGrapplePos;
     Node3D? currentGrappleNode = null;
 
+    [Export]
+    PackedScene returnToTitleScene = null!;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -379,6 +382,12 @@ public partial class Farmer : RigidBody3D
             Manager.Instance.Data.CurrentHealth -= amountToReduceHealth;
             progressBar.SetCoolValue(Manager.Instance.Data.CurrentHealth);
             damagePlayer.Play(damageAnimName);
+
+            if (Manager.Instance.Data.CurrentHealth < 0)
+            {
+                Input.MouseMode = Input.MouseModeEnum.Visible;
+                GetTree().ChangeSceneToPacked(returnToTitleScene);
+            }
 
             // Start invulnerability timer
             canTakeDamage = false;

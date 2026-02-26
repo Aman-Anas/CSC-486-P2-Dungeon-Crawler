@@ -48,7 +48,12 @@ public partial class MainMenu : Control
         HelpMenu.Hide();
         SettingsMenu.Hide();
 
-        PlayButton.Pressed += () => GetTree().ChangeSceneToFile(gameScene);
+        PlayButton.Pressed += () =>
+        {
+            // Reset all the game data.
+            Manager.Instance.Data = new GameData();
+            GetTree().ChangeSceneToFile(gameScene);
+        };
         HelpButton.Pressed += () => mainHelper.SetSubMenu(HelpMenu);
         SettingsButton.Pressed += () => mainHelper.SetSubMenu(SettingsMenu);
         QuitButton.Pressed += () => GetTree().Quit();
