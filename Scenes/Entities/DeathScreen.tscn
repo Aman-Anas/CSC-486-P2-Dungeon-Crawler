@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://deao460oonoxl"]
+
+[ext_resource type="Script" uid="uid://dj8g20cgfnkil" path="res://Game/UI/ReturnToTitleBtn.cs" id="1_10ofd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r42lw"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 5
+
+[node name="DeathScreen" type="Control" unique_id=2021365019]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1946770291]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.021434637, 0.021434635, 0.021434633, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1149057260]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -8.0
+offset_right = 45.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 120
+text = "YOU DIED."
+
+[node name="Button" type="Button" parent="." unique_id=1388527119]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.5
+offset_top = -131.0
+offset_right = 98.5
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 49
+theme_override_styles/normal = SubResource("StyleBoxFlat_r42lw")
+text = "Return to title"
+script = ExtResource("1_10ofd")

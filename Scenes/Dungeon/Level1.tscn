@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cgv3ggu25ffs1" path="res://Scenes/Entities/Farmer.tscn" id="2_7fw27"]
 [ext_resource type="MeshLibrary" uid="uid://cda066fneq4b3" path="res://assets/batch_exports/dungeonwalls/dungeonwalls_library.res" id="3_7fw27"]
 [ext_resource type="PackedScene" uid="uid://b3ik2bwecsbva" path="res://assets/batch_exports/dungeonwalls/Light.tscn" id="4_kaumn"]
+[ext_resource type="PackedScene" uid="uid://dbi28u8ytw1e2" path="res://Scenes/Entities/Bob.tscn" id="5_w6yup"]
 
 [sub_resource type="Environment" id="Environment_7fw27"]
 tonemap_mode = 4
@@ -17,7 +18,7 @@ ssao_horizon = 0.03
 sdfgi_use_occlusion = true
 glow_enabled = true
 
-[node name="Level0" type="Node3D" unique_id=1866122410]
+[node name="Level1" type="Node3D" unique_id=1866122410]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1975801360]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -65,10 +66,14 @@ metadata/_editor_floor_ = Vector3(0, 2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6983813, 5.601591, -21.171919)
 
 [node name="Light2" parent="." unique_id=466497162 instance=ExtResource("4_kaumn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2487335, 5.601591, -14.013678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.695206, 5.601591, -38.323822)
 
 [node name="Light3" parent="." unique_id=897453576 instance=ExtResource("4_kaumn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.485905, 5.601591, -10.163239)
 
 [node name="Light4" parent="." unique_id=731434084 instance=ExtResource("4_kaumn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.770214, 5.6015906, -49.684097)
+
+[node name="Bob" parent="." unique_id=54794360 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("5_w6yup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47703528, 1.999609, -10.845552)
+playerToFollow = NodePath("../Farmer")

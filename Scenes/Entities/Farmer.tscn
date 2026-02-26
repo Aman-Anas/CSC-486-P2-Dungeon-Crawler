@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cgv3ggu25ffs1"]
 
 [ext_resource type="Script" uid="uid://cbm0nkqv3d50y" path="res://Game/Entities/Farmer.cs" id="1_ry4qv"]
+[ext_resource type="PackedScene" uid="uid://deao460oonoxl" path="res://Scenes/Entities/DeathScreen.tscn" id="2_3bb7h"]
 [ext_resource type="PackedScene" uid="uid://dyrjb03w8vw8k" path="res://Scenes/UI/FancyProgressBar.tscn" id="2_b03ad"]
 [ext_resource type="PackedScene" uid="uid://be68kkhnkgb6u" path="res://Scenes/Pause_Menu/Pause.tscn" id="2_hv5dt"]
 [ext_resource type="PackedScene" uid="uid://3dwta8tcqli3" path="res://Scenes/Entities/Gun.tscn" id="4_8uk12"]
@@ -68,6 +69,7 @@ yawTarget = NodePath("YawTarget")
 pitchTarget = NodePath("YawTarget/PitchTarget")
 headPosition = NodePath("HeadPosition")
 grappleCast = NodePath("YawTarget/PitchTarget/CamRay")
+returnToTitleScene = ExtResource("2_3bb7h")
 glowyEndPos = NodePath("YawTarget/PitchTarget/grappler/Armature2/Armature/Skeleton3D/BoneAttachment3D")
 glowyThing = NodePath("YawTarget/PitchTarget/grappler/Armature2")
 progressBar = NodePath("PlayerUI/TextureProgressBar")
@@ -203,8 +205,8 @@ fov = 82.72208
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.6501754, -0.6127966, -0.42544076)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=9943230]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7449746, 0)
 radius = 0.303
-height = 1.316
+height = 0.8059492
 
 [editable path="YawTarget/PitchTarget/grappler/Armature2"]
