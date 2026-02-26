@@ -1,4 +1,5 @@
 using Godot;
+using GodotTask;
 
 namespace Game.Entities;
 
@@ -7,6 +8,7 @@ public partial class NewBurger : RigidBody3D
     [Export]
     Farmer? playerToFollow;
 
+    [Export]
     AnimationPlayer animPlayer = null!;
 
     [Export]
@@ -27,10 +29,7 @@ public partial class NewBurger : RigidBody3D
     [Export]
     float animationBlendAmount = 0.5f;
 
-    public override void _Ready()
-    {
-        animPlayer = GetNode<AnimationPlayer>("Model/AnimationPlayer");
-    }
+    public override void _Ready() { }
 
     public void Kill()
     {

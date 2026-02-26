@@ -5,7 +5,7 @@
 [ext_resource type="MeshLibrary" uid="uid://cda066fneq4b3" path="res://assets/batch_exports/dungeonwalls/dungeonwalls_library.res" id="3_7fw27"]
 [ext_resource type="PackedScene" uid="uid://b3ik2bwecsbva" path="res://assets/batch_exports/dungeonwalls/Light.tscn" id="4_kaumn"]
 [ext_resource type="PackedScene" uid="uid://dbi28u8ytw1e2" path="res://Scenes/Entities/Bob.tscn" id="5_w6yup"]
-[ext_resource type="PackedScene" path="res://Scenes/Entities/NewBurger.tscn" id="6_heuc8"]
+[ext_resource type="PackedScene" uid="uid://dqh0kwyoy2mw0" path="res://Scenes/Entities/NewBurger.tscn" id="6_heuc8"]
 
 [sub_resource type="Environment" id="Environment_7fw27"]
 tonemap_mode = 4
