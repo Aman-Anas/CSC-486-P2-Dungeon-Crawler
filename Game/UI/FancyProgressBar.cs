@@ -3,6 +3,7 @@ using Godot;
 
 namespace Game.UI;
 
+[GlobalClass]
 public partial class FancyProgressBar : TextureProgressBar
 {
     [Export]

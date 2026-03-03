@@ -2,17 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://ded50nkld8k0r" path="res://assets/batch_exports/burger_enemy/Empty.gltf" id="1_bh6g0"]
 [ext_resource type="Script" uid="uid://qjkxuubcyvlr" path="res://Game/Entities/NewBurger.cs" id="1_bpufl"]
+[ext_resource type="PackedScene" uid="uid://bp37w4rh4ucg7" path="res://Scenes/UI/HealthBar.tscn" id="3_bpj5e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bpufl"]
 height = 1.8
 
-[node name="NewBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer")]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bidsx"]
+viewport_path = NodePath("SubViewport")
+
+[node name="NewBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer", "healthBar")]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_bpufl")
 animPlayer = NodePath("Model/AnimationPlayer")
 maximumFollowingDistance = 15.0
 followSpeed = 3.5
+healthBar = NodePath("SubViewport/HealthBar/TextureProgressBar")
 metadata/enemy = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1949105434]
@@ -22,4 +27,14 @@ shape = SubResource("CapsuleShape3D_bpufl")
 [node name="Model" parent="." unique_id=567961269 instance=ExtResource("1_bh6g0")]
 transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, 0.068365514, 0)
 
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2099743218]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2.3492863, 0)
+texture = SubResource("ViewportTexture_bidsx")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1896480913]
+transparent_bg = true
+
+[node name="HealthBar" parent="SubViewport" unique_id=1682764994 instance=ExtResource("3_bpj5e")]
+
 [editable path="Model"]
+[editable path="SubViewport/HealthBar"]

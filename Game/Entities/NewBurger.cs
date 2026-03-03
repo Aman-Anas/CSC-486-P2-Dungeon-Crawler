@@ -1,5 +1,6 @@
 using Godot;
 using GodotTask;
+using Game.UI;
 
 namespace Game.Entities;
 
@@ -19,6 +20,11 @@ public partial class NewBurger : RigidBody3D
 
     [Export]
     float followSpeed = 5.0f;
+    
+    [Export]
+    float maxHealth = 100.0f;
+    
+    float currentHealth = 0.0f;
 
     [Export]
     StringName runAnimation = "BAKED_Walk";
@@ -29,7 +35,26 @@ public partial class NewBurger : RigidBody3D
     [Export]
     float animationBlendAmount = 0.5f;
 
-    public override void _Ready() { }
+    public override void _Ready()
+    {
+        currentHealth = maxHealth;
+        updateHealthBar();
+    }
+
+    [Export]
+    FancyProgressBar healthBar = null!;
+
+    public void updateHealthBar()
+    {
+        healthBar.SetCoolValue((int) currentHealth);
+    }
+
+    public void Damage(float amount)
+    {
+        currentHealth -= amount;
+        updateHealthBar();
+        if (currentHealth <= 0.0) Kill();
+    }
 
     public void Kill()
     {
