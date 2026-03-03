@@ -8,6 +8,8 @@ namespace Game.Entities;
 
 public partial class Gun : Node3D
 {
+    const float DefaultPickupDelaySeconds = 0.35f;
+
     [Export]
     Node3D bulletSpawnPoint = null!;
 
@@ -28,13 +30,57 @@ public partial class Gun : Node3D
     [Export]
     AudioStreamPlayer? shootfx;
 
+    Area3D pickupArea = null!;
+    ulong pickupEnabledAt;
+
+    public bool IsEquipped { get; private set; } = true;
+
     public override void _Ready()
     {
-        // Nothing to do on ready for now.
+        EnsurePickupArea();
+        SetEquippedState();
+    }
+
+    void EnsurePickupArea()
+    {
+        var existingArea = GetNodeOrNull<Area3D>("PickupArea");
+        if (existingArea != null)
+        {
+            pickupArea = existingArea;
+        }
+        else
+        {
+            pickupArea = new Area3D
+            {
+                Name = "PickupArea",
+                CollisionLayer = 0u,
+                CollisionMask = 7u,
+                Monitoring = true,
+                Monitorable = true,
+            };
+            AddChild(pickupArea);
+
+            var shape = new CollisionShape3D
+            {
+                Name = "CollisionShape3D",
+                Position = new Vector3(0.0f, 0.2f, 0.0f),
+                Shape = new SphereShape3D { Radius = 0.95f },
+            };
+            pickupArea.AddChild(shape);
+        }
+
+        pickupArea.BodyEntered -= OnPickupBodyEntered;
+        pickupArea.BodyEntered += OnPickupBodyEntered;
     }
 
     public override void _Process(double delta)
     {
+        if (!IsEquipped)
+        {
+            TryAutoPickupOverlappingFarmer();
+            return;
+        }
+
         if (Input.IsActionPressed(GameActions.PlayerFire) && readyToFire)
         {
             var newBullet = bulletScene.Instantiate<RigidBody3D>();
@@ -52,6 +98,85 @@ public partial class Gun : Node3D
             readyToFire = false;
             StartReload();
         }
+    }
+
+    public override void _ExitTree()
+    {
+        if (pickupArea != null)
+        {
+            pickupArea.BodyEntered -= OnPickupBodyEntered;
+        }
+    }
+
+    public void SetEquippedState()
+    {
+        IsEquipped = true;
+        Visible = true;
+        SetPickupAreaEnabled(false);
+    }
+
+    public void SetDroppedState(double pickupDelaySeconds = DefaultPickupDelaySeconds)
+    {
+        IsEquipped = false;
+        readyToFire = true;
+        Visible = true;
+        pickupEnabledAt = Time.GetTicksMsec() + (ulong)(pickupDelaySeconds * 1000.0);
+        SetPickupAreaEnabled(true);
+    }
+
+    void SetPickupAreaEnabled(bool enabled)
+    {
+        if (pickupArea == null)
+        {
+            return;
+        }
+
+        pickupArea.Monitoring = enabled;
+        pickupArea.Monitorable = enabled;
+
+        foreach (var child in pickupArea.GetChildren())
+        {
+            if (child is CollisionShape3D shape)
+            {
+                shape.Disabled = !enabled;
+            }
+        }
+    }
+
+    void OnPickupBodyEntered(Node3D body)
+    {
+        if (!CanBePickedUpBy(body, out var farmer))
+        {
+            return;
+        }
+
+        farmer!.EquipGun(this);
+    }
+
+    void TryAutoPickupOverlappingFarmer()
+    {
+        if (pickupArea == null || IsEquipped || Time.GetTicksMsec() < pickupEnabledAt)
+        {
+            return;
+        }
+
+        foreach (var body in pickupArea.GetOverlappingBodies())
+        {
+            if (CanBePickedUpBy(body, out var farmer))
+            {
+                farmer!.EquipGun(this);
+                return;
+            }
+        }
+    }
+
+    bool CanBePickedUpBy(Node body, out Farmer? farmer)
+    {
+        farmer = body as Farmer;
+        return !IsEquipped
+            && Time.GetTicksMsec() >= pickupEnabledAt
+            && farmer != null
+            && !farmer.HasGun;
     }
 
     async void StartReload()

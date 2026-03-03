@@ -93,12 +93,84 @@ public partial class Farmer : RigidBody3D
     [Export]
     PackedScene returnToTitleScene = null!;
 
+    [Export]
+    public bool SpawnStartingSword { get; set; } = true;
+
+    [Export]
+    public Vector2 StartingSwordSpawnOffset { get; set; } = new(1.4f, 2.0f);
+
+    [Export]
+    public float StartingSwordSpawnHeight { get; set; } = 2.5f;
+
+    [Export]
+    public float StartingSwordRayDistance { get; set; } = 6.0f;
+
+    [Export]
+    public float StartingSwordFloorClearance { get; set; } = 0.15f;
+
+    [Export]
+    public Vector2 WeaponSwapDropOffset { get; set; } = new(1.2f, 1.5f);
+
+    [Export]
+    public float WeaponPickupDelay { get; set; } = 0.35f;
+
+    [Export]
+    public Vector3 EquippedSwordPosition { get; set; } = new(0.32f, -0.28f, -0.55f);
+
+    [Export]
+    public Vector3 EquippedSwordRotationDegrees { get; set; } = new(-70.0f, 12.0f, 100.0f);
+
+    [Export]
+    public float SwordSwingDuration { get; set; } = 0.11f;
+
+    [Export]
+    public float SwordSwingRecoverDuration { get; set; } = 0.17f;
+
+    [Export]
+    public float SwordSwingCooldown { get; set; } = 0.35f;
+
+    [Export]
+    public Vector3 SwordSwingPositionOffset { get; set; } = new(0.22f, -0.14f, 0.14f);
+
+    [Export]
+    public Vector3 SwordSwingRotationOffsetDegrees { get; set; } = new(-32.0f, -72.0f, -28.0f);
+
+    [Export]
+    public float SwordHitRange { get; set; } = 1.75f;
+
+    [Export]
+    public float SwordHitRadius { get; set; } = 1.0f;
+
+    [Export]
+    public int SwordHitMaxResults { get; set; } = 12;
+
+    Camera3D? playerCamera;
+    Gun? equippedGun;
+    Transform3D equippedGunTransform = Transform3D.Identity;
+    Node3D? swordHolder;
+    Node3D? equippedSword;
+    bool hasSword;
+    bool startingSwordSpawned;
+    bool swordSwingActive;
+    bool swordSwingRecovering;
+    float swordSwingTimer;
+    ulong swordSwingAvailableAt;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         // Need this to capture the mouse of course
         Input.MouseMode = Input.MouseModeEnum.Captured;
         yawTarget.TopLevel = true;
+
+        playerCamera = pitchTarget.GetNodeOrNull<Camera3D>("Camera3D");
+        equippedGun = playerCamera?.GetNodeOrNull<Gun>("Pistol");
+        if (equippedGun != null)
+        {
+            equippedGunTransform = equippedGun.Transform;
+            equippedGun.SetEquippedState();
+        }
+        swordHolder = EnsureSwordHolder();
 
         progressBar.SetCoolValue(Manager.Instance.Data.CurrentHealth);
     }
@@ -304,6 +376,9 @@ public partial class Farmer : RigidBody3D
     {
         UpdateHeadOrientation();
 
+        TryStartSwordSwing();
+        UpdateSwordSwing(delta);
+
         var localVelo = GlobalBasis.Inverse() * LinearVelocity;
         localVelo.Y = 0;
 
@@ -340,6 +415,348 @@ public partial class Farmer : RigidBody3D
         }
     }
 
+    Node3D? EnsureSwordHolder()
+    {
+        if (swordHolder != null && IsInstanceValid(swordHolder))
+        {
+            return swordHolder;
+        }
+
+        if (playerCamera == null || !IsInstanceValid(playerCamera))
+        {
+            return null;
+        }
+
+        var existingHolder = playerCamera.GetNodeOrNull<Node3D>("SwordHolder");
+        if (existingHolder != null)
+        {
+            swordHolder = existingHolder;
+            return swordHolder;
+        }
+
+        swordHolder = new Node3D { Name = "SwordHolder" };
+        playerCamera.AddChild(swordHolder);
+        return swordHolder;
+    }
+
+    public bool HasSword => hasSword;
+    public bool HasGun => equippedGun != null && IsInstanceValid(equippedGun) && equippedGun.IsEquipped;
+
+    public void EquipSword(Vector3? swapPosition = null)
+    {
+        if (hasSword)
+        {
+            return;
+        }
+
+        if (HasGun)
+        {
+            DropGunAt(swapPosition ?? FindWeaponDropPosition());
+        }
+
+        hasSword = true;
+
+        var holder = EnsureSwordHolder();
+        if (holder == null)
+        {
+            return;
+        }
+
+        if (equippedSword != null && IsInstanceValid(equippedSword))
+        {
+            equippedSword.QueueFree();
+        }
+
+        equippedSword = SwordVisualFactory.CreateVisual(firstPerson: true);
+        equippedSword.Name = "EquippedSword";
+        holder.AddChild(equippedSword);
+        equippedSword.Position = EquippedSwordPosition;
+        equippedSword.RotationDegrees = EquippedSwordRotationDegrees;
+        equippedSword.Scale = Vector3.One * 0.35f;
+        ResetSwordSwing();
+    }
+
+    public void EquipGun(Gun gun)
+    {
+        if (playerCamera == null || !IsInstanceValid(playerCamera) || !IsInstanceValid(gun))
+        {
+            return;
+        }
+
+        var swapPosition = gun.GlobalPosition;
+
+        if (hasSword)
+        {
+            DropSwordAt(swapPosition);
+        }
+
+        equippedGun = gun;
+        equippedGun.Reparent(playerCamera);
+        equippedGun.Transform = equippedGunTransform;
+        equippedGun.SetEquippedState();
+    }
+
+    void DropGunAt(Vector3 worldPosition)
+    {
+        if (equippedGun == null || !IsInstanceValid(equippedGun))
+        {
+            return;
+        }
+
+        var currentScene = GetTree().CurrentScene;
+        if (currentScene == null)
+        {
+            return;
+        }
+
+        equippedGun.Reparent(currentScene);
+        equippedGun.GlobalPosition = worldPosition;
+        equippedGun.RotationDegrees = new Vector3(0.0f, yawTarget.RotationDegrees.Y, 90.0f);
+        equippedGun.SetDroppedState(WeaponPickupDelay);
+    }
+
+    void DropSwordAt(Vector3 worldPosition)
+    {
+        hasSword = false;
+        ResetSwordSwing();
+
+        if (equippedSword != null && IsInstanceValid(equippedSword))
+        {
+            equippedSword.QueueFree();
+            equippedSword = null;
+        }
+
+        var currentScene = GetTree().CurrentScene;
+        if (currentScene == null)
+        {
+            return;
+        }
+
+        var swordPickup = new SwordPickup();
+        currentScene.AddChild(swordPickup);
+        swordPickup.GlobalPosition = worldPosition;
+        swordPickup.SetPickupDelay(WeaponPickupDelay);
+    }
+
+    void TryStartSwordSwing()
+    {
+        if (
+            !hasSword
+            || equippedSword == null
+            || !IsInstanceValid(equippedSword)
+            || swordSwingActive
+            || Time.GetTicksMsec() < swordSwingAvailableAt
+            || !Input.IsActionJustPressed(GameActions.PlayerFire)
+        )
+        {
+            return;
+        }
+
+        swordSwingActive = true;
+        swordSwingRecovering = false;
+        swordSwingTimer = 0.0f;
+        swordSwingAvailableAt = Time.GetTicksMsec() + (ulong)(SwordSwingCooldown * 1000.0);
+        PerformSwordHit();
+    }
+
+    void UpdateSwordSwing(double delta)
+    {
+        if (equippedSword == null || !IsInstanceValid(equippedSword))
+        {
+            return;
+        }
+
+        if (!swordSwingActive)
+        {
+            ApplySwordPose(0.0f);
+            return;
+        }
+
+        swordSwingTimer += (float)delta;
+
+        if (!swordSwingRecovering)
+        {
+            var attackProgress = Mathf.Clamp(swordSwingTimer / SwordSwingDuration, 0.0f, 1.0f);
+            ApplySwordPose(Mathf.SmoothStep(0.0f, 1.0f, attackProgress));
+
+            if (attackProgress >= 1.0f)
+            {
+                swordSwingRecovering = true;
+                swordSwingTimer = 0.0f;
+            }
+
+            return;
+        }
+
+        var recoverProgress = Mathf.Clamp(swordSwingTimer / SwordSwingRecoverDuration, 0.0f, 1.0f);
+        ApplySwordPose(1.0f - Mathf.SmoothStep(0.0f, 1.0f, recoverProgress));
+
+        if (recoverProgress >= 1.0f)
+        {
+            ResetSwordSwing();
+        }
+    }
+
+    void ApplySwordPose(float swingBlend)
+    {
+        if (equippedSword == null || !IsInstanceValid(equippedSword))
+        {
+            return;
+        }
+
+        equippedSword.Position = EquippedSwordPosition.Lerp(
+            EquippedSwordPosition + SwordSwingPositionOffset,
+            swingBlend
+        );
+        equippedSword.RotationDegrees = EquippedSwordRotationDegrees.Lerp(
+            EquippedSwordRotationDegrees + SwordSwingRotationOffsetDegrees,
+            swingBlend
+        );
+    }
+
+    void ResetSwordSwing()
+    {
+        swordSwingActive = false;
+        swordSwingRecovering = false;
+        swordSwingTimer = 0.0f;
+        ApplySwordPose(0.0f);
+    }
+
+    void PerformSwordHit()
+    {
+        var swingOrigin = playerCamera?.GlobalPosition ?? headPosition.GlobalPosition;
+        var swingForward = -(playerCamera?.GlobalBasis.Z ?? yawTarget.GlobalBasis.Z).Normalized();
+        var hitCenter = swingOrigin + (swingForward * SwordHitRange);
+
+        var sphere = new SphereShape3D { Radius = SwordHitRadius };
+        var query = new PhysicsShapeQueryParameters3D
+        {
+            Shape = sphere,
+            Transform = new Transform3D(Basis.Identity, hitCenter),
+            CollideWithBodies = true,
+            CollideWithAreas = false,
+        };
+        query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
+
+        var results = GetWorld3D().DirectSpaceState.IntersectShape(query, SwordHitMaxResults);
+        foreach (Godot.Collections.Dictionary result in results)
+        {
+            if (!result.TryGetValue("collider", out var colliderVariant))
+            {
+                continue;
+            }
+
+            if (TryKillSwordTarget(colliderVariant.AsGodotObject()))
+            {
+                continue;
+            }
+        }
+    }
+
+    bool TryKillSwordTarget(GodotObject? collider)
+    {
+        if (collider is not Node node || !IsInstanceValid(node))
+        {
+            return false;
+        }
+
+        if (node is NewBurger burger)
+        {
+            burger.Kill();
+            return true;
+        }
+
+        if (node is NewBob bob)
+        {
+            bob.QueueFree();
+            return true;
+        }
+
+        if (node.HasMethod("Kill"))
+        {
+            node.Call("Kill");
+            return true;
+        }
+
+        if (node.HasMeta(EnemyMeta))
+        {
+            node.QueueFree();
+            return true;
+        }
+
+        return false;
+    }
+
+    void TrySpawnStartingSword()
+    {
+        if (!SpawnStartingSword || startingSwordSpawned || hasSword)
+        {
+            return;
+        }
+
+        var currentScene = GetTree().CurrentScene;
+        if (currentScene == null)
+        {
+            return;
+        }
+
+        var swordPickup = new SwordPickup();
+        currentScene.AddChild(swordPickup);
+        swordPickup.GlobalPosition = FindStartingSwordSpawnPosition();
+        swordPickup.SetPickupDelay(0.15f);
+        startingSwordSpawned = true;
+    }
+
+    Vector3 FindStartingSwordSpawnPosition()
+    {
+        return FindGroundPickupPosition(StartingSwordSpawnOffset);
+    }
+
+    Vector3 FindWeaponDropPosition()
+    {
+        return FindGroundPickupPosition(WeaponSwapDropOffset);
+    }
+
+    Vector3 FindGroundPickupPosition(Vector2 planarOffset)
+    {
+        var up = GlobalBasis.Y.Normalized();
+
+        var forward = -yawTarget.GlobalBasis.Z;
+        forward -= up * forward.Dot(up);
+        if (forward.LengthSquared() <= Mathf.Epsilon)
+        {
+            forward = -GlobalBasis.Z;
+            forward -= up * forward.Dot(up);
+        }
+        forward = forward.Normalized();
+
+        var right = yawTarget.GlobalBasis.X;
+        right -= up * right.Dot(up);
+        if (right.LengthSquared() <= Mathf.Epsilon)
+        {
+            right = GlobalBasis.X;
+            right -= up * right.Dot(up);
+        }
+        right = right.Normalized();
+
+        var offset = (right * planarOffset.X) + (forward * planarOffset.Y);
+        var rayStart = GlobalPosition + offset + (up * StartingSwordSpawnHeight);
+        var rayEnd = rayStart - (up * StartingSwordRayDistance);
+
+        var query = PhysicsRayQueryParameters3D.Create(rayStart, rayEnd);
+        query.CollideWithBodies = true;
+        query.CollideWithAreas = false;
+        query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
+
+        var result = GetWorld3D().DirectSpaceState.IntersectRay(query);
+        if (result.Count > 0)
+        {
+            return result["position"].AsVector3() + (up * StartingSwordFloorClearance);
+        }
+
+        return GlobalPosition + offset;
+    }
+
     // Whether or not we can take damage. Set to false during the invulnerability timer
     bool canTakeDamage = true;
 
@@ -359,6 +776,8 @@ public partial class Farmer : RigidBody3D
 
     public override void _PhysicsProcess(double delta)
     {
+        TrySpawnStartingSword();
+
         // Figure out if we're touching an enemy
         var colliding = GetCollidingBodies();
         bool touchingEnemy = false;
