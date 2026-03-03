@@ -371,6 +371,9 @@ public partial class Farmer : RigidBody3D
 
                 // Grab the amount to reduce health by
                 amountToReduceHealth = (int)collider.GetMeta(EnemyMeta);
+                
+                if (collider is NewBurger burger) burger.Kill();
+                
                 break;
             }
         }
