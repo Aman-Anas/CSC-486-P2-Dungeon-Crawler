@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://q00ixym4idq5"]
 
 [ext_resource type="Material" path="res://assets/mats/cheese/cheese.tres" id="1_evv7v"]
+[ext_resource type="Script" uid="uid://dedb5phdfy5ha" path="res://Game/Entities/Bullet.cs" id="1_i81ln"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i81ln"]
 size = Vector3(0.51898193, 0.19482422, 0.18359375)
@@ -11,6 +12,7 @@ size = Vector3(0.51898193, 0.19482422, 0.18359375)
 
 [node name="RigidBody3D" type="RigidBody3D" unique_id=1980703095]
 continuous_cd = true
+script = ExtResource("1_i81ln")
 metadata/enemy = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2012479075]

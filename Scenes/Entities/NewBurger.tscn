@@ -11,8 +11,12 @@ height = 1.8
 viewport_path = NodePath("SubViewport")
 
 [node name="NewBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer", "healthBar")]
+collision_layer = 7
+collision_mask = 3
 axis_lock_angular_x = true
 axis_lock_angular_z = true
+contact_monitor = true
+max_contacts_reported = 2
 script = ExtResource("1_bpufl")
 animPlayer = NodePath("Model/AnimationPlayer")
 maximumFollowingDistance = 15.0

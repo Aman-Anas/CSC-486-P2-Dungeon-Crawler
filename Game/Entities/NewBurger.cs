@@ -60,6 +60,40 @@ public partial class NewBurger : RigidBody3D
     {
         this.QueueFree();
     }
+    
+    public readonly StringName EnemyMeta = "enemy";
+    bool canTakeDamage = true;
+    
+    public override void _PhysicsProcess(double delta)
+    {
+        //GD.Print("physics");
+        // Figure out if burger is touching a bullet
+        var colliding = GetCollidingBodies();
+        bool touchingBullet = false;
+        int amountToReduceHealth = 0;
+        foreach (var collider in colliding)
+        {
+            if (collider.HasMeta(EnemyMeta))
+            {
+                touchingBullet = true;
+
+                // Grab the amount to reduce health by
+                amountToReduceHealth = (int)collider.GetMeta(EnemyMeta);
+                
+                // Kill bullet
+                if (collider is Bullet bullet) bullet.Kill();
+                
+                break;
+            }
+        }
+
+        // Take damage
+        if (canTakeDamage && touchingBullet)
+        {
+            // Reduce burger health
+            Damage(amountToReduceHealth);
+        }
+    }
 
     public override void _IntegrateForces(PhysicsDirectBodyState3D state)
     {
