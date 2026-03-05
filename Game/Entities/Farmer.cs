@@ -365,7 +365,7 @@ public partial class Farmer : RigidBody3D
         int amountToReduceHealth = 0;
         foreach (var collider in colliding)
         {
-            if (collider.HasMeta(EnemyMeta))
+            if (collider.HasMeta(EnemyMeta) && !(collider is Bullet))
             {
                 touchingEnemy = true;
 
