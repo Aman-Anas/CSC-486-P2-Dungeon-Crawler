@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgv3ggu25ffs1" path="res://Scenes/Entities/Farmer.tscn" id="4_7vtrp"]
 [ext_resource type="PackedScene" uid="uid://0ditxd0bw80v" path="res://Scenes/Entities/DualDoor.tscn" id="5_7vtrp"]
 [ext_resource type="PackedScene" uid="uid://dqh0kwyoy2mw0" path="res://Scenes/Entities/NewBurger.tscn" id="6_7fqh0"]
+[ext_resource type="PackedScene" uid="uid://mf8hry3h34j7" path="res://Scenes/Entities/BobTrigger.tscn" id="7_w1y05"]
 
 [sub_resource type="Environment" id="Environment_730ue"]
 tonemap_mode = 4
@@ -198,6 +199,8 @@ transform = Transform3D(0.26326707, 0, -0.964723, 0, 1, 0, 0.964723, 0, 0.263267
 
 [node name="Bob" parent="." unique_id=54794360 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("3_730ue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.711714, -3.120597, 39.692833)
+contact_monitor = false
+max_contacts_reported = 0
 playerToFollow = NodePath("../Farmer")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1726079520]
@@ -242,8 +245,26 @@ collision_layer = 1
 collision_mask = 1
 playerToFollow = NodePath("../Farmer")
 
+[node name="BobTrigger" parent="." unique_id=760553805 instance=ExtResource("7_w1y05")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.426214, -2.6205971, 38.70434)
+visible = false
+Dialogue = "That was a pretty bad crash."
+
+[node name="BobTrigger2" parent="." unique_id=1008142765 instance=ExtResource("7_w1y05")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.530764, -2.6205976, 10.378297)
+Dialogue = "I think we stand on the buttons."
+
+[node name="MeshInstance3D" parent="BobTrigger2" index="0" unique_id=866451377]
+visible = false
+
+[node name="BobTrigger3" parent="." unique_id=197740610 instance=ExtResource("7_w1y05")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.605942, -3.003419, -11.2683325)
+visible = false
+Dialogue = "Are those mutant cheeseburgers?"
+
 [editable path="Light2"]
 [editable path="Light2/Cylinder2"]
 [editable path="Light4"]
 [editable path="Light4/Cylinder2"]
 [editable path="Node3D"]
+[editable path="BobTrigger2"]

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://ur22d8wmd12u" path="res://Game/Entities/GravityArea.cs" id="3_3yyu3"]
 [ext_resource type="Texture2D" uid="uid://dxc8av0a5bgvm" path="res://addons/kenney_prototype_textures/dark/texture_12.png" id="3_8txr7"]
 [ext_resource type="PackedScene" uid="uid://dbi28u8ytw1e2" path="res://Scenes/Entities/Bob.tscn" id="6_0lhxs"]
-[ext_resource type="PackedScene" uid="uid://mf8hry3h34j7" path="res://Game/Entities/BobTrigger.tscn" id="8_gp5al"]
+[ext_resource type="PackedScene" uid="uid://mf8hry3h34j7" path="res://Scenes/Entities/BobTrigger.tscn" id="8_gp5al"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x28rk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
