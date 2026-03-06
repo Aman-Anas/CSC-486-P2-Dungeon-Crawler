@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bqojwc168v4eo"]
+
+[ext_resource type="Texture2D" uid="uid://cemhdh0e4kiiv" path="res://assets/batch_exports/dungeonwalls/Ucupaint Cube Color.png" id="1_w7r0o"]
+[ext_resource type="Texture2D" uid="uid://cg55tacdsagic" path="res://assets/batch_exports/dungeonwalls/Ucupaint Cube Normal.png" id="2_a3g8q"]
+
+[resource]
+resource_name = "Cube"
+cull_mode = 2
+albedo_texture = ExtResource("1_w7r0o")
+normal_enabled = true
+normal_texture = ExtResource("2_a3g8q")

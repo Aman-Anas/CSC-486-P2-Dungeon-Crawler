@@ -34,11 +34,21 @@ public partial class NewBob : RigidBody3D
             return;
         }
 
+        Node3D nodeToFollow = playerToFollow;
+        float followDistance = minimumFollowingDistance;
+
+        if (playerToFollow.OtherButtonToPress != null)
+        {
+            // we need to go and stand on a button.
+            nodeToFollow = playerToFollow.OtherButtonToPress;
+            followDistance = 0.1f;
+        }
+
         var localLinearVelocity = GlobalBasis.Inverse() * state.LinearVelocity;
         localLinearVelocity.X = 0;
 
         var myPos = GlobalPosition;
-        var playerPos = playerToFollow.GlobalPosition with { Y = myPos.Y };
+        var playerPos = nodeToFollow.GlobalPosition with { Y = myPos.Y };
 
         // Make Bob look at the player
         this.LookAt(playerPos, Vector3.Up);
@@ -46,7 +56,7 @@ public partial class NewBob : RigidBody3D
         var distanceToPlayer = myPos.DistanceTo(playerPos);
 
         // If we're close enough to the player, just do nothing
-        if (distanceToPlayer <= minimumFollowingDistance)
+        if (distanceToPlayer <= followDistance)
         {
             localLinearVelocity.Z = 0;
             animPlayer.Play(idleAnimation, customBlend: animationBlendAmount);

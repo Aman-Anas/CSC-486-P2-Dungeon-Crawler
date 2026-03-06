@@ -1,6 +1,7 @@
+using System;
+using Game.UI;
 using Godot;
 using GodotTask;
-using Game.UI;
 
 namespace Game.Entities;
 
@@ -20,10 +21,10 @@ public partial class NewBurger : RigidBody3D
 
     [Export]
     float followSpeed = 5.0f;
-    
+
     [Export]
     float maxHealth = 100.0f;
-    
+
     float currentHealth = 0.0f;
 
     [Export]
@@ -34,6 +35,9 @@ public partial class NewBurger : RigidBody3D
 
     [Export]
     float animationBlendAmount = 0.5f;
+
+    [Export]
+    float InvulnerabilityTime = 0.1f;
 
     public override void _Ready()
     {
@@ -46,27 +50,27 @@ public partial class NewBurger : RigidBody3D
 
     public void updateHealthBar()
     {
-        healthBar.SetCoolValue((int) currentHealth);
+        healthBar.SetCoolValue((int)currentHealth);
     }
 
     public void Damage(float amount)
     {
         currentHealth -= amount;
         updateHealthBar();
-        if (currentHealth <= 0.0) Kill();
+        if (currentHealth <= 0.0)
+            Kill();
     }
 
     public void Kill()
     {
         this.QueueFree();
     }
-    
+
     public readonly StringName EnemyMeta = "enemy";
     bool canTakeDamage = true;
-    
+
     public override void _PhysicsProcess(double delta)
     {
-        //GD.Print("physics");
         // Figure out if burger is touching a bullet
         var colliding = GetCollidingBodies();
         bool touchingBullet = false;
@@ -79,10 +83,11 @@ public partial class NewBurger : RigidBody3D
 
                 // Grab the amount to reduce health by
                 amountToReduceHealth = (int)collider.GetMeta(EnemyMeta);
-                
+
                 // Kill bullet
-                if (collider is Bullet bullet) bullet.Kill();
-                
+                if (collider is Bullet bullet)
+                    bullet.Kill();
+
                 break;
             }
         }
@@ -92,7 +97,17 @@ public partial class NewBurger : RigidBody3D
         {
             // Reduce burger health
             Damage(amountToReduceHealth);
+
+            // Start invulnerability timer
+            canTakeDamage = false;
+            ResetInvulnerability().Forget();
         }
+    }
+
+    async GDTaskVoid ResetInvulnerability()
+    {
+        await GDTask.Delay(TimeSpan.FromSeconds(InvulnerabilityTime));
+        canTakeDamage = true;
     }
 
     public override void _IntegrateForces(PhysicsDirectBodyState3D state)

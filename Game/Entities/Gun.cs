@@ -40,7 +40,8 @@ public partial class Gun : Node3D
             var newBullet = bulletScene.Instantiate<RigidBody3D>();
 
             newBullet.GlobalTransform = bulletSpawnPoint.GlobalTransform;
-            newBullet.LinearVelocity = GlobalBasis * new Vector3(bulletSpeed, 0, 0);
+            newBullet.LinearVelocity =
+                bulletSpawnPoint.GlobalBasis * new Vector3(bulletSpeed, 0, 0);
 
             GetTree().CurrentScene.AddChild(newBullet);
             shootfx?.Play();

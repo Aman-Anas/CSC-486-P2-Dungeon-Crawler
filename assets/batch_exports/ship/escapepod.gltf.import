@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://y241jbjvwc6r"
-path="res://.godot/imported/Block.gltf-177e5bdad32f0e5eefe42fff1fc70bfb.scn"
+uid="uid://bf7havo7wf07d"
+path="res://.godot/imported/escapepod.gltf-bfd484e09f31770b8067d55085e9be62.scn"
 
 [deps]
 
-source_file="res://assets/batch_exports/dungeonwalls/Block.gltf"
-dest_files=["res://.godot/imported/Block.gltf-177e5bdad32f0e5eefe42fff1fc70bfb.scn"]
+source_file="res://assets/batch_exports/ship/escapepod.gltf"
+dest_files=["res://.godot/imported/escapepod.gltf-bfd484e09f31770b8067d55085e9be62.scn"]
 
 [params]
 
@@ -37,14 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"materials": {
-"Cube": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://assets/batch_exports/dungeonwalls/Dungeonwall.tres",
-"use_external/path": "uid://bqojwc168v4eo"
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
