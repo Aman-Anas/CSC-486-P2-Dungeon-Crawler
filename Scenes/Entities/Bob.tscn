@@ -4,17 +4,21 @@
 [ext_resource type="Script" uid="uid://ctvmvcb3n2pgw" path="res://Game/Entities/NewBob.cs" id="1_b8lay"]
 [ext_resource type="AnimationLibrary" uid="uid://b0gkk7074s4vm" path="res://assets/models/UAL1_Standard.glb" id="1_b8pc6"]
 [ext_resource type="PackedScene" uid="uid://6jsad3j1o1fx" path="res://assets/batch_exports/bob/weapon_001.gltf" id="3_yxp7o"]
+[ext_resource type="PackedScene" uid="uid://cw5gytud2ffvq" path="res://Scenes/Entities/DialogueBox.tscn" id="5_nafxl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b8lay"]
 friction = 0.21
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lapoy"]
 
-[node name="Bob" type="RigidBody3D" unique_id=54794360 node_paths=PackedStringArray("animPlayer")]
+[node name="Bob" type="RigidBody3D" unique_id=54794360 node_paths=PackedStringArray("something", "animPlayer")]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_b8lay")
+contact_monitor = true
+max_contacts_reported = 10
 script = ExtResource("1_b8lay")
+something = NodePath("Interface2/ScrollContainer/VBoxContainer/bruh")
 animPlayer = NodePath("RetargetedAnims")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2019877107]
@@ -28,7 +32,7 @@ libraries/UAL1_Standard = ExtResource("1_b8pc6")
 [node name="BobRig2" parent="." unique_id=309617028 instance=ExtResource("1_1vcd5")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="GeneralSkeleton" parent="BobRig2/BobRig" parent_id_path=PackedInt32Array(309617028, 1937517773) index="0" unique_id=11169179]
+[node name="GeneralSkeleton" parent="BobRig2/BobRig" parent_id_path=PackedInt32Array(309617028, 1738739550) index="0" unique_id=693311898]
 bones/1/position = Vector3(0.0038885665, 0.86861295, -0.0864626)
 bones/1/rotation = Quaternion(-0.0441161, -0.115899965, -0.0051529105, 0.9922674)
 bones/3/rotation = Quaternion(0.085251704, 0.00011069146, 0.00025768048, 0.99635947)
@@ -60,8 +64,11 @@ bone_idx = 15
 [node name="weapon_0012" parent="BobRig2/BobRig/GeneralSkeleton/BoneAttachment3D" unique_id=513473103 instance=ExtResource("3_yxp7o")]
 transform = Transform3D(0.23210526, 0.6656728, 0.0056458213, -0.6656465, 0.23215283, -0.006687158, -0.0081732655, -0.0031290741, 0.7049456, 0.03306853, 0.10972894, 0.021598017)
 
-[node name="AnimationPlayer" parent="BobRig2" index="1" unique_id=2115114905]
+[node name="AnimationPlayer" parent="BobRig2" index="1" unique_id=513004592]
 process_mode = 4
 active = false
 
+[node name="Interface2" parent="." unique_id=1273395253 instance=ExtResource("5_nafxl")]
+
 [editable path="BobRig2"]
+[editable path="Interface2"]

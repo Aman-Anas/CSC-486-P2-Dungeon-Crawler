@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://ur22d8wmd12u" path="res://Game/Entities/GravityArea.cs" id="3_3yyu3"]
 [ext_resource type="Texture2D" uid="uid://dxc8av0a5bgvm" path="res://addons/kenney_prototype_textures/dark/texture_12.png" id="3_8txr7"]
 [ext_resource type="PackedScene" uid="uid://dbi28u8ytw1e2" path="res://Scenes/Entities/Bob.tscn" id="6_0lhxs"]
+[ext_resource type="PackedScene" uid="uid://c5pmrlfygdv3a" path="res://Game/Entities/dialogue_trigger.tscn" id="6_silom"]
+[ext_resource type="PackedScene" uid="uid://opr5t5t1o528" path="res://Game/Entities/BobTrigger.tscn" id="8_gp5al"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x28rk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -106,6 +108,9 @@ LocalDirection = Vector3(0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.536743e-07, -0.7041321)
 shape = SubResource("BoxShape3D_x28rk")
 
+[node name="DialogueTrigger" parent="CSGCombiner3D" unique_id=956096909 instance=ExtResource("6_silom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9132876, 0.463035, -0.65144897)
+
 [node name="Farmer" parent="." unique_id=483625553 instance=ExtResource("2_x28rk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2583675, 0, -2.65281)
 
@@ -123,3 +128,7 @@ shape = SubResource("SphereShape3D_x28rk")
 [node name="Bob" parent="." unique_id=54794360 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_0lhxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.69489, -0.08249879, -2.324669)
 playerToFollow = NodePath("../Farmer")
+
+[node name="Area3D" parent="." unique_id=760553805 instance=ExtResource("8_gp5al")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1984596, 0.4175012, 1.5382845)
+dialogue = "u suck bob"
