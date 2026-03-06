@@ -8,7 +8,7 @@ public partial class NewBob : RigidBody3D
     Farmer? playerToFollow;
 
     [Export]
-    public Label something {get; set;}
+    public Label SpeechLabel { get; set; } = null!;
 
     [Export]
     AnimationPlayer animPlayer = null!;
@@ -71,6 +71,5 @@ public partial class NewBob : RigidBody3D
         }
 
         state.LinearVelocity = GlobalBasis * localLinearVelocity;
-
     }
 }
