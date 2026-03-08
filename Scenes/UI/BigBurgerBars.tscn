@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://belxh31phcn2i"]
+
+[ext_resource type="Script" uid="uid://mhwbsb2lowna" path="res://Game/UI/BigBurgerBars.cs" id="1_llgd8"]
+[ext_resource type="PackedScene" uid="uid://dyrjb03w8vw8k" path="res://Scenes/UI/FancyProgressBar.tscn" id="1_ua80r"]
+
+[sub_resource type="Gradient" id="Gradient_lkre2"]
+offsets = PackedFloat32Array(0, 0.56554306)
+colors = PackedColorArray(0.6034727, 0.21525976, 0.06329192, 1, 0.7610605, 0.18474758, 2.2140146e-06, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r0cg3"]
+gradient = SubResource("Gradient_lkre2")
+width = 186
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_ua80r"]
+offsets = PackedFloat32Array(0, 0.56554306)
+colors = PackedColorArray(0.041003786, 0.2997225, 0.37986293, 1, 0.067638576, 0.39726043, 0.49778497, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_llgd8"]
+gradient = SubResource("Gradient_ua80r")
+width = 186
+height = 32
+
+[node name="Control" type="Control" unique_id=834127113 node_paths=PackedStringArray("healthBar", "reloadBar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_llgd8")
+healthBar = NodePath("HealthBar")
+reloadBar = NodePath("ReloadBar")
+
+[node name="HealthBar" parent="." unique_id=811441812 instance=ExtResource("1_ua80r")]
+layout_mode = 1
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_right = 186.00049
+offset_bottom = 32.0
+grow_vertical = 1
+max_value = 200.0
+value = 100.0
+fill_mode = 0
+texture_progress = SubResource("GradientTexture2D_r0cg3")
+
+[node name="Label" parent="HealthBar" index="0" unique_id=608856730]
+text = "100"
+
+[node name="ReloadBar" parent="." unique_id=1616142645 instance=ExtResource("1_ua80r")]
+layout_mode = 1
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 38.0
+offset_right = 186.0
+offset_bottom = 70.0
+grow_vertical = 1
+value = 100.0
+fill_mode = 0
+texture_progress = SubResource("GradientTexture2D_llgd8")
+
+[node name="Label" parent="ReloadBar" index="0" unique_id=608856730]
+text = "100%"
+
+[editable path="HealthBar"]
+[editable path="ReloadBar"]

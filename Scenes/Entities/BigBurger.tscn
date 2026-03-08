@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://8pprligilybt" path="res://Game/Entities/BigBurger.cs" id="1_fg4nj"]
 [ext_resource type="PackedScene" uid="uid://ded50nkld8k0r" path="res://assets/batch_exports/burger_enemy/Empty.gltf" id="2_mntqf"]
 [ext_resource type="PackedScene" uid="uid://bp37w4rh4ucg7" path="res://Scenes/UI/HealthBar.tscn" id="3_em2t3"]
+[ext_resource type="PackedScene" uid="uid://belxh31phcn2i" path="res://Scenes/UI/BigBurgerBars.tscn" id="4_mntqf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bpufl"]
 radius = 1.5
@@ -15,7 +16,7 @@ height = 2.4856985
 [sub_resource type="ViewportTexture" id="ViewportTexture_bidsx"]
 viewport_path = NodePath("SubViewport")
 
-[node name="BigBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer", "activatedCollisionShape", "disabledCollisionShape", "healthBar")]
+[node name="BigBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer", "activatedCollisionShape", "disabledCollisionShape", "bars")]
 collision_layer = 7
 collision_mask = 3
 axis_lock_angular_x = true
@@ -27,7 +28,7 @@ script = ExtResource("1_fg4nj")
 animPlayer = NodePath("Model/AnimationPlayer")
 activatedCollisionShape = NodePath("ActivatedCollisionShape")
 disabledCollisionShape = NodePath("DisabledCollisionShape")
-healthBar = NodePath("SubViewport/HealthBar/TextureProgressBar")
+bars = NodePath("SubViewport/Control")
 metadata/enemy = 10
 
 [node name="ActivatedCollisionShape" type="CollisionShape3D" parent="." unique_id=1949105434]
@@ -43,17 +44,18 @@ disabled = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.173, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=2099743218]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 0, 4.396249, 0)
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 0, 4.795813, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_bidsx")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1896480913]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(186, 32)
+size = Vector2i(186, 70)
 render_target_update_mode = 4
 
 [node name="HealthBar" parent="SubViewport" unique_id=1682764994 instance=ExtResource("3_em2t3")]
+visible = false
 
 [node name="TextureProgressBar" parent="SubViewport/HealthBar" index="0" unique_id=811441812]
 anchors_preset = 0
@@ -67,6 +69,13 @@ offset_right = 186.0
 offset_bottom = 32.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Control" parent="SubViewport" unique_id=834127113 instance=ExtResource("4_mntqf")]
+anchors_preset = -1
+anchor_right = 1.6630001
+anchor_bottom = 4.1870003
+offset_right = -47.318024
+offset_bottom = -58.98401
 
 [editable path="Model"]
 [editable path="SubViewport/HealthBar"]
