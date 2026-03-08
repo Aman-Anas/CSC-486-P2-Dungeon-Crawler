@@ -14,7 +14,7 @@ public partial class BigBurger : RigidBody3D
     AnimationPlayer animPlayer = null!;
 
     [Export]
-    float maximumFollowingDistance = 5.0f;
+    float maximumFollowingDistance = 15.0f;
 
     [Export]
     float minimumFollowingDistance = 1.0f;
