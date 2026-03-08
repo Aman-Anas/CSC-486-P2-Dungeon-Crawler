@@ -64,7 +64,9 @@ public partial class NewBurger : RigidBody3D
 
     public void updateHealthBar()
     {
-        healthBar.SetCoolValue((int)currentHealth);
+        // scale health to 100
+        healthBar.SetCoolValue((int)(currentHealth / maxHealth * 100.0f));
+        healthBar.SetLabelValue($"{currentHealth}");
     }
 
     public void Damage(float amount)
