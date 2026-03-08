@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ded50nkld8k0r" path="res://assets/batch_exports/burger_enemy/Empty.gltf" id="1_bh6g0"]
 [ext_resource type="Script" uid="uid://qjkxuubcyvlr" path="res://Game/Entities/NewBurger.cs" id="1_bpufl"]
 [ext_resource type="PackedScene" uid="uid://bp37w4rh4ucg7" path="res://Scenes/UI/HealthBar.tscn" id="3_bpj5e"]
+[ext_resource type="AudioStream" uid="uid://1ldvkmu71kdd" path="res://assets/sounds/hurt.wav" id="4_bidsx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bpufl"]
 height = 1.8
@@ -41,6 +42,9 @@ transparent_bg = true
 size = Vector2i(128, 32)
 
 [node name="HealthBar" parent="SubViewport" unique_id=1682764994 instance=ExtResource("3_bpj5e")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=17746506]
+stream = ExtResource("4_bidsx")
 
 [editable path="Model"]
 [editable path="SubViewport/HealthBar"]

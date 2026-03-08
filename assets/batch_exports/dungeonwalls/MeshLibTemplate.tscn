@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://y241jbjvwc6r" path="res://assets/batch_exports/dungeonwalls/Block.gltf" id="1_8lvjm"]
 [ext_resource type="PackedScene" uid="uid://cbhxppf4wejdt" path="res://assets/batch_exports/dungeonwalls/Wall.gltf" id="2_b1iko"]
+[ext_resource type="PackedScene" uid="uid://bngnka4xrkn0n" path="res://assets/batch_exports/dungeonwalls/Block2.gltf" id="3_b1iko"]
+[ext_resource type="PackedScene" uid="uid://dsymqit7hti82" path="res://assets/batch_exports/dungeonwalls/Block4.gltf" id="4_nfer2"]
 
 [node name="MeshLibTemplate" type="Node3D" unique_id=588862806]
 
@@ -9,3 +11,9 @@
 
 [node name="Wall2" parent="." unique_id=1996558561 instance=ExtResource("2_b1iko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Block3" parent="." unique_id=900095881 instance=ExtResource("3_b1iko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1723113, 0, -2.4571314)
+
+[node name="Block4" parent="." unique_id=421343296 instance=ExtResource("4_nfer2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.044512, 0, 4.482919)
