@@ -79,6 +79,7 @@ public partial class NewBurger : RigidBody3D
     {
         currentHealth = 0.0f;
         this.disabled = true;
+        this.RemoveMeta(EnemyMeta);
         //this.QueueFree();
     }
 
