@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqi3n6mx3hx4n"]
 
-[ext_resource type="Script" uid="uid://qjkxuubcyvlr" path="res://Game/Entities/NewBurger.cs" id="1_fg4nj"]
+[ext_resource type="Script" uid="uid://8pprligilybt" path="res://Game/Entities/BigBurger.cs" id="1_fg4nj"]
 [ext_resource type="PackedScene" uid="uid://ded50nkld8k0r" path="res://assets/batch_exports/burger_enemy/Empty.gltf" id="2_mntqf"]
 [ext_resource type="PackedScene" uid="uid://bp37w4rh4ucg7" path="res://Scenes/UI/HealthBar.tscn" id="3_em2t3"]
 
@@ -20,12 +20,13 @@ collision_layer = 7
 collision_mask = 3
 axis_lock_angular_x = true
 axis_lock_angular_z = true
+mass = 10.0
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_fg4nj")
 animPlayer = NodePath("Model/AnimationPlayer")
 maximumFollowingDistance = 15.0
-followSpeed = 3.5
+followSpeed = 1.5
 maxHealth = 200.0
 activatedCollisionShape = NodePath("ActivatedCollisionShape")
 disabledCollisionShape = NodePath("DisabledCollisionShape")
