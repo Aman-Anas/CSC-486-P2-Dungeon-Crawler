@@ -77,6 +77,7 @@ public partial class NewBurger : RigidBody3D
 
     public void Kill()
     {
+        currentHealth = 0.0f;
         this.disabled = true;
         //this.QueueFree();
     }
