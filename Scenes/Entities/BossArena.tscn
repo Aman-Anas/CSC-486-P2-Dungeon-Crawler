@@ -71,6 +71,11 @@ transform = Transform3D(1.4189208e-05, 0.027101697, -0.99963266, 0.99999994, -0.
 size = Vector3(6.703247, 0.6347412, 14.693741)
 material = ExtResource("1_h2pbu")
 
+[node name="CSGBox3D18" type="CSGBox3D" parent="CSGCombiner3D" unique_id=836170660]
+transform = Transform3D(-4.217775e-05, -0.01431112, -0.99989754, -0.0013604906, -0.9998967, 0.014311159, -0.99999934, 0.0013609529, 2.2703256e-05, 6.769997, 9.429145, -8.856629)
+size = Vector3(43.597687, 0.6347412, 27.8321)
+material = ExtResource("1_h2pbu")
+
 [node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D" unique_id=238139484]
 transform = Transform3D(0.00052324, 0.99939984, 0.0346379, 0.99999994, -0.00052355416, 1.8026523e-12, 1.8134808e-05, 0.034637906, -0.9993999, 6.2725725, 6.269618, 8.68488)
 size = Vector3(6.703247, 0.6347412, 5.4474964)
@@ -108,4 +113,10 @@ material = SubResource("StandardMaterial3D_35smj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.120308, 0.06798649, -1.1685181)
 
 [node name="Light" parent="." unique_id=1543946459 instance=ExtResource("6_lyg15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6983813, 5.601591, -4.966029)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.206406, 8.8109045, -4.966029)
+
+[node name="Light2" parent="." unique_id=539849422 instance=ExtResource("6_lyg15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.206406, 8.8109045, -28.38821)
+
+[node name="Light3" parent="." unique_id=1505583519 instance=ExtResource("6_lyg15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.304636, 8.8109045, -0.6892395)
