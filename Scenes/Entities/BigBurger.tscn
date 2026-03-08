@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bqi3n6mx3hx4n"]
+
+[ext_resource type="Script" uid="uid://qjkxuubcyvlr" path="res://Game/Entities/NewBurger.cs" id="1_fg4nj"]
+[ext_resource type="PackedScene" uid="uid://ded50nkld8k0r" path="res://assets/batch_exports/burger_enemy/Empty.gltf" id="2_mntqf"]
+[ext_resource type="PackedScene" uid="uid://bp37w4rh4ucg7" path="res://Scenes/UI/HealthBar.tscn" id="3_em2t3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bpufl"]
+radius = 1.5
+height = 4.181358
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fg4nj"]
+radius = 1.2428492
+height = 2.4856985
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bidsx"]
+viewport_path = NodePath("SubViewport")
+
+[node name="BigBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer", "activatedCollisionShape", "disabledCollisionShape", "healthBar")]
+collision_layer = 7
+collision_mask = 3
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_fg4nj")
+animPlayer = NodePath("Model/AnimationPlayer")
+maximumFollowingDistance = 15.0
+followSpeed = 3.5
+maxHealth = 200.0
+activatedCollisionShape = NodePath("ActivatedCollisionShape")
+disabledCollisionShape = NodePath("DisabledCollisionShape")
+healthBar = NodePath("SubViewport/HealthBar/TextureProgressBar")
+metadata/enemy = 10
+
+[node name="ActivatedCollisionShape" type="CollisionShape3D" parent="." unique_id=1949105434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0534627, 0)
+shape = SubResource("CapsuleShape3D_bpufl")
+
+[node name="DisabledCollisionShape" type="CollisionShape3D" parent="." unique_id=194618303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9012923, 0)
+shape = SubResource("CapsuleShape3D_fg4nj")
+disabled = true
+
+[node name="Model" parent="." unique_id=567961269 instance=ExtResource("2_mntqf")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.173, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2099743218]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 0, 4.396249, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_bidsx")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1896480913]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(186, 32)
+render_target_update_mode = 4
+
+[node name="HealthBar" parent="SubViewport" unique_id=1682764994 instance=ExtResource("3_em2t3")]
+
+[node name="TextureProgressBar" parent="SubViewport/HealthBar" index="0" unique_id=811441812]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 186.0
+offset_bottom = 32.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[editable path="Model"]
+[editable path="SubViewport/HealthBar"]
+[editable path="SubViewport/HealthBar/TextureProgressBar"]
