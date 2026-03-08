@@ -7,10 +7,13 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bpufl"]
 height = 1.8
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bpj5e"]
+height = 1.1349121
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_bidsx"]
 viewport_path = NodePath("SubViewport")
 
-[node name="NewBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer", "healthBar")]
+[node name="NewBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer", "activatedCollisionShape", "disabledCollisionShape", "healthBar")]
 collision_layer = 7
 collision_mask = 3
 axis_lock_angular_x = true
@@ -21,12 +24,19 @@ script = ExtResource("1_bpufl")
 animPlayer = NodePath("Model/AnimationPlayer")
 maximumFollowingDistance = 15.0
 followSpeed = 3.5
+activatedCollisionShape = NodePath("ActivatedCollisionShape")
+disabledCollisionShape = NodePath("DisabledCollisionShape")
 healthBar = NodePath("SubViewport/HealthBar/TextureProgressBar")
 metadata/enemy = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1949105434]
+[node name="ActivatedCollisionShape" type="CollisionShape3D" parent="." unique_id=1949105434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8946848, 0)
 shape = SubResource("CapsuleShape3D_bpufl")
+
+[node name="DisabledCollisionShape" type="CollisionShape3D" parent="." unique_id=811497155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2272286, 0)
+shape = SubResource("CapsuleShape3D_bpj5e")
+disabled = true
 
 [node name="Model" parent="." unique_id=567961269 instance=ExtResource("1_bh6g0")]
 transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 0, 0.068365514, 0)
@@ -38,9 +48,24 @@ texture = SubResource("ViewportTexture_bidsx")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1896480913]
 transparent_bg = true
-size = Vector2i(128, 32)
+handle_input_locally = false
+size = Vector2i(186, 32)
+render_target_update_mode = 4
 
 [node name="HealthBar" parent="SubViewport" unique_id=1682764994 instance=ExtResource("3_bpj5e")]
+
+[node name="TextureProgressBar" parent="SubViewport/HealthBar" index="0" unique_id=811441812]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 186.0
+offset_bottom = 32.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [editable path="Model"]
 [editable path="SubViewport/HealthBar"]
