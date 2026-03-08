@@ -266,6 +266,7 @@ target_position = Vector3(0, -0.2, 0)
 
 [node name="Flashlight" type="SpotLight3D" parent="." unique_id=1083657613]
 transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0, 1.6, -0.1)
+visible = false
 light_energy = 0.799
 spot_range = 19.95469
 spot_angle = 30.26
