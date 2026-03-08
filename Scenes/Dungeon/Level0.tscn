@@ -53,15 +53,24 @@ material = SubResource("StandardMaterial3D_730ue")
 text = "Space to jump"
 font_size = 42
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vtrp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1y05"]
 emission_enabled = true
 emission = Color(0.4506483, 0.4506483, 0.45064825, 1)
 emission_energy_multiplier = 0.0
 
 [sub_resource type="TextMesh" id="TextMesh_w1y05"]
-material = SubResource("StandardMaterial3D_7vtrp")
+material = SubResource("StandardMaterial3D_w1y05")
 text = "Legend says Bob will help
 you if you stand on a button."
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ayn4"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0.16000003, 0.16000003, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vtrp"]
+emission_enabled = true
+emission = Color(0.4506483, 0.4506483, 0.45064825, 1)
+emission_energy_multiplier = 0.0
 
 [sub_resource type="TextMesh" id="TextMesh_2ayn4"]
 material = SubResource("StandardMaterial3D_7vtrp")
@@ -223,10 +232,16 @@ transform = Transform3D(-0.59540766, 0, 0, 0, 0.59540766, 0, 0, 0, -0.59540766, 
 mesh = SubResource("TextMesh_w1y05")
 
 [node name="Area3D" parent="Node3D" index="2" unique_id=1093732334]
-transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 1.4098151, -0.08182329, -0.800411)
+transform = Transform3D(3.6015651, 0, 1.07335005e-07, 0, 3.6015651, 0, -1.07335005e-07, 0, 3.6015651, 20.655537, -2.7604408, 5.5677624)
+
+[node name="MeshInstance3D3" parent="Node3D/Area3D" index="1" unique_id=2130834328]
+surface_material_override/0 = SubResource("StandardMaterial3D_2ayn4")
 
 [node name="Area3D2" parent="Node3D" index="3" unique_id=67594109]
-transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, -1.4830666, -0.083266914, -0.5984812)
+transform = Transform3D(3.6607437, 0, 1.09098664e-07, 0, 3.6607437, 0, -1.09098664e-07, 0, 3.6607437, 29.430647, -2.7545226, -1.8409023)
+
+[node name="MeshInstance3D3" parent="Node3D/Area3D2" index="1" unique_id=701217067]
+surface_material_override/0 = SubResource("StandardMaterial3D_2ayn4")
 
 [node name="NewBurger" parent="." unique_id=941241180 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_7fqh0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.078856, -2.7204838, -3.1941113)
