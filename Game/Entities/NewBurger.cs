@@ -32,19 +32,19 @@ public partial class NewBurger : RigidBody3D
 
     [Export]
     StringName idleAnimation = "RESET";
-    
+
     [Export]
     StringName disabledAnimation = "BAKED_Activate";
-    
+
     [Export]
     String disabledText = "Disabled";
-    
+
     [Export]
     CollisionShape3D activatedCollisionShape = null!;
     
     [Export]
     CollisionShape3D disabledCollisionShape = null!;
-    
+
     bool disabled = false;
 
     [Export]
@@ -88,6 +88,9 @@ public partial class NewBurger : RigidBody3D
     public readonly StringName EnemyMeta = "enemy";
     bool canTakeDamage = true;
 
+    [Export]
+    AudioStreamPlayer3D hurtFx = null!;
+
     public override void _PhysicsProcess(double delta)
     {
         // Figure out if burger is touching a bullet
@@ -117,6 +120,9 @@ public partial class NewBurger : RigidBody3D
             // Reduce burger health
             Damage(amountToReduceHealth);
 
+            if (!disabled)
+                hurtFx.Play();
+
             // Start invulnerability timer
             canTakeDamage = false;
             ResetInvulnerability().Forget();
@@ -131,32 +137,33 @@ public partial class NewBurger : RigidBody3D
 
     public override void _IntegrateForces(PhysicsDirectBodyState3D state)
     {
-        if (disabled) {
+        if (disabled)
+        {
             animPlayer.SpeedScale = -1.0f;
             animPlayer.Play(disabledAnimation);
             healthBar.SetLabelValue(disabledText);
-            
+
             // apply some rotational friction
             state.AngularVelocity *= 0.9f;
-            
+
             // apply some translational friction
             var horizontalVelocity = state.LinearVelocity;
             horizontalVelocity.X *= 0.95f;
             horizontalVelocity.Z *= 0.95f;
             state.LinearVelocity = horizontalVelocity;
-            
+
             // drop to the ground
             activatedCollisionShape.Disabled = true;
             disabledCollisionShape.Disabled = false;
-            
+
             return;
         }
-        
+
         if (playerToFollow == null)
         {
             return;
         }
-        
+
         animPlayer.SpeedScale = 1.0f;
 
         var localLinearVelocity = GlobalBasis.Inverse() * state.LinearVelocity;

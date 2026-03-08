@@ -19,6 +19,7 @@ transform = Transform3D(0.99999976, -2.2351742e-08, -5.2154064e-08, -3.7252903e-
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1590386684]
 stream = ExtResource("4_u4ueg")
-volume_db = -6.303
+volume_db = -10.715
+pitch_scale = 0.88
 max_polyphony = 3
 bus = &"SFX"

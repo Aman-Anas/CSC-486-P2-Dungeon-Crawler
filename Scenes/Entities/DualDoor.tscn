@@ -106,11 +106,12 @@ albedo_color = Color(1, 0.16000003, 0.16000003, 1)
 height = 0.24124146
 radius = 0.21972656
 
-[node name="DualDoor" type="Node3D" unique_id=1525562943 node_paths=PackedStringArray("player", "buttonOne", "buttonTwo")]
+[node name="DualDoor" type="Node3D" unique_id=1525562943 node_paths=PackedStringArray("player", "buttonOne", "buttonTwo", "openFx")]
 script = ExtResource("1_c8pde")
 player = NodePath("AnimationPlayer")
 buttonOne = NodePath("Area3D")
 buttonTwo = NodePath("Area3D2")
+openFx = NodePath("AudioStreamPlayer")
 
 [node name="AnimatableBody" type="AnimatableBody3D" parent="." unique_id=22827499]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
