@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ded50nkld8k0r" path="res://assets/batch_exports/burger_enemy/Empty.gltf" id="1_bh6g0"]
 [ext_resource type="Script" uid="uid://qjkxuubcyvlr" path="res://Game/Entities/NewBurger.cs" id="1_bpufl"]
 [ext_resource type="PackedScene" uid="uid://bp37w4rh4ucg7" path="res://Scenes/UI/HealthBar.tscn" id="3_bpj5e"]
-[ext_resource type="AudioStream" uid="uid://1ldvkmu71kdd" path="res://assets/sounds/hurt.wav" id="4_bidsx"]
+[ext_resource type="AudioStream" uid="uid://dfdwxaf8cuw4n" path="res://assets/sounds/pulse.wav" id="4_bidsx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bpufl"]
 height = 1.8
@@ -14,7 +14,7 @@ height = 1.1349121
 [sub_resource type="ViewportTexture" id="ViewportTexture_bidsx"]
 viewport_path = NodePath("SubViewport")
 
-[node name="NewBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer", "activatedCollisionShape", "disabledCollisionShape", "healthBar")]
+[node name="NewBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer", "activatedCollisionShape", "disabledCollisionShape", "healthBar", "hurtFx")]
 collision_layer = 7
 collision_mask = 3
 axis_lock_angular_x = true
@@ -28,6 +28,7 @@ followSpeed = 3.5
 activatedCollisionShape = NodePath("ActivatedCollisionShape")
 disabledCollisionShape = NodePath("DisabledCollisionShape")
 healthBar = NodePath("SubViewport/HealthBar/TextureProgressBar")
+hurtFx = NodePath("AudioStreamPlayer3D")
 metadata/enemy = 10
 
 [node name="ActivatedCollisionShape" type="CollisionShape3D" parent="." unique_id=1949105434]
@@ -70,6 +71,8 @@ grow_vertical = 1
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=17746506]
 stream = ExtResource("4_bidsx")
+max_db = 1.52
+pitch_scale = 0.69
 
 [editable path="Model"]
 [editable path="SubViewport/HealthBar"]

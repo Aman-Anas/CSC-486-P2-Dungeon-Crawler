@@ -232,13 +232,13 @@ transform = Transform3D(-0.59540766, 0, 0, 0, 0.59540766, 0, 0, 0, -0.59540766, 
 mesh = SubResource("TextMesh_w1y05")
 
 [node name="Area3D" parent="Node3D" index="2" unique_id=1093732334]
-transform = Transform3D(3.6015651, 0, 1.07335005e-07, 0, 3.6015651, 0, -1.07335005e-07, 0, 3.6015651, 20.655537, -2.7604408, 5.5677624)
+transform = Transform3D(3.0788147, 0, 9.175583e-08, 0, 3.0788147, 0, -9.175583e-08, 0, 3.0788147, 21.29237, -3.3355145, 5.030096)
 
 [node name="MeshInstance3D3" parent="Node3D/Area3D" index="1" unique_id=2130834328]
 surface_material_override/0 = SubResource("StandardMaterial3D_2ayn4")
 
 [node name="Area3D2" parent="Node3D" index="3" unique_id=67594109]
-transform = Transform3D(3.6607437, 0, 1.09098664e-07, 0, 3.6607437, 0, -1.09098664e-07, 0, 3.6607437, 29.430647, -2.7545226, -1.8409023)
+transform = Transform3D(3.1294038, 0, 9.32635e-08, 0, 3.1294038, 0, -9.32635e-08, 0, 3.1294038, 29.071993, -3.3385296, -2.0714457)
 
 [node name="MeshInstance3D3" parent="Node3D/Area3D2" index="1" unique_id=701217067]
 surface_material_override/0 = SubResource("StandardMaterial3D_2ayn4")

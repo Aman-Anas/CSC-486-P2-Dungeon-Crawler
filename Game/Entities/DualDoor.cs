@@ -26,6 +26,9 @@ public partial class DualDoor : Node3D
         buttonTwo.BodyEntered += Check;
     }
 
+    [Export]
+    AudioStreamPlayer openFx = null!;
+
     private void Check(Node3D _)
     {
         if (opened)
@@ -45,6 +48,7 @@ public partial class DualDoor : Node3D
         {
             opened = true;
             player.Play(successAnim);
+            openFx.Play();
         }
     }
 }
