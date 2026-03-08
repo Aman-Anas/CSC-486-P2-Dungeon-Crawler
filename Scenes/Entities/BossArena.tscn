@@ -2,8 +2,17 @@
 
 [ext_resource type="Material" uid="uid://cfls41uebm78j" path="res://assets/mats/test_material.tres" id="1_h2pbu"]
 [ext_resource type="Texture2D" uid="uid://ddjspd2d5bp03" path="res://addons/kenney_prototype_textures/light/texture_06.png" id="2_as604"]
+[ext_resource type="Texture2D" uid="uid://cemhdh0e4kiiv" path="res://assets/batch_exports/dungeonwalls/Ucupaint Cube Color.png" id="2_lyg15"]
+[ext_resource type="Texture2D" uid="uid://cg55tacdsagic" path="res://assets/batch_exports/dungeonwalls/Ucupaint Cube Normal.png" id="3_kfcdp"]
 [ext_resource type="PackedScene" uid="uid://cgv3ggu25ffs1" path="res://Scenes/Entities/Farmer.tscn" id="5_as604"]
 [ext_resource type="PackedScene" uid="uid://b3ik2bwecsbva" path="res://assets/batch_exports/dungeonwalls/Light.tscn" id="6_lyg15"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfnct"]
+resource_name = "Cube"
+cull_mode = 2
+albedo_texture = ExtResource("2_lyg15")
+normal_enabled = true
+normal_texture = ExtResource("3_kfcdp")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35smj"]
 albedo_texture = ExtResource("2_as604")
@@ -64,7 +73,7 @@ material = ExtResource("1_h2pbu")
 [node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D" unique_id=927070146]
 transform = Transform3D(-0.00052355416, -0.99999994, 0, 0.99999994, -0.00052355416, 0, 0, 0, 1, 20.738382, 6.269618, -6.59915)
 size = Vector3(6.703247, 0.6347412, 25.959747)
-material = ExtResource("1_h2pbu")
+material = SubResource("StandardMaterial3D_qfnct")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1657673250]
 transform = Transform3D(1.4189208e-05, 0.027101697, -0.99963266, 0.99999994, -0.00052355416, 0, -0.00052336184, -0.9996326, -0.0271017, 13.336595, 6.269618, 6.0015798)
