@@ -32,6 +32,20 @@ public partial class NewBurger : RigidBody3D
 
     [Export]
     StringName idleAnimation = "RESET";
+    
+    [Export]
+    StringName disabledAnimation = "BAKED_Activate";
+    
+    [Export]
+    String disabledText = "Disabled";
+    
+    [Export]
+    CollisionShape3D? activatedCollisionShape;
+    
+    [Export]
+    CollisionShape3D? disabledCollisionShape;
+    
+    bool disabled = false;
 
     [Export]
     float animationBlendAmount = 0.5f;
@@ -63,7 +77,8 @@ public partial class NewBurger : RigidBody3D
 
     public void Kill()
     {
-        this.QueueFree();
+        this.disabled = true;
+        //this.QueueFree();
     }
 
     public readonly StringName EnemyMeta = "enemy";
@@ -112,10 +127,33 @@ public partial class NewBurger : RigidBody3D
 
     public override void _IntegrateForces(PhysicsDirectBodyState3D state)
     {
+        if (disabled) {
+            animPlayer.SpeedScale = -1.0f;
+            animPlayer.Play(disabledAnimation);
+            healthBar.SetLabelValue(disabledText);
+            
+            // apply some rotational friction
+            state.AngularVelocity *= 0.9f;
+            
+            // apply some translational friction
+            var horizontalVelocity = state.LinearVelocity;
+            horizontalVelocity.X *= 0.95f;
+            horizontalVelocity.Z *= 0.95f;
+            state.LinearVelocity = horizontalVelocity;
+            
+            // drop to the ground
+            activatedCollisionShape.Disabled = true;
+            disabledCollisionShape.Disabled = false;
+            
+            return;
+        }
+        
         if (playerToFollow == null)
         {
             return;
         }
+        
+        animPlayer.SpeedScale = 1.0f;
 
         var localLinearVelocity = GlobalBasis.Inverse() * state.LinearVelocity;
         localLinearVelocity.X = 0;
