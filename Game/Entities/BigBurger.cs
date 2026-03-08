@@ -40,10 +40,10 @@ public partial class BigBurger : RigidBody3D
     String disabledText = "Disabled";
 
     [Export]
-    CollisionShape3D? activatedCollisionShape;
+    CollisionShape3D activatedCollisionShape = null!;
 
     [Export]
-    CollisionShape3D? disabledCollisionShape;
+    CollisionShape3D disabledCollisionShape = null!;
 
     bool disabled = false;
 
@@ -60,13 +60,16 @@ public partial class BigBurger : RigidBody3D
     }
 
     [Export]
-    FancyProgressBar healthBar = null!;
+    BigBurgerBars bars = null!;
+
+    //FancyProgressBar healthBar = null!;
 
     public void updateHealthBar()
     {
         // scale health to 100
-        healthBar.SetCoolValue((int)(currentHealth / maxHealth * 100.0f));
-        healthBar.SetLabelValue($"{currentHealth}");
+        bars.SetHealthValue((int)currentHealth);
+        //healthBar.SetCoolValue((int)(currentHealth / maxHealth * 100.0f));
+        //healthBar.SetLabelValue($"{currentHealth}");
     }
 
     public void Damage(float amount)
@@ -135,7 +138,8 @@ public partial class BigBurger : RigidBody3D
         {
             animPlayer.SpeedScale = -1.0f;
             animPlayer.Play(disabledAnimation);
-            healthBar.SetLabelValue(disabledText);
+            bars.SetHealthDisplay(disabledText);
+            //healthBar.SetLabelValue(disabledText);
 
             // apply some rotational friction
             state.AngularVelocity *= 0.9f;

@@ -40,10 +40,10 @@ public partial class NewBurger : RigidBody3D
     String disabledText = "Disabled";
 
     [Export]
-    CollisionShape3D? activatedCollisionShape;
-
+    CollisionShape3D activatedCollisionShape = null!;
+    
     [Export]
-    CollisionShape3D? disabledCollisionShape;
+    CollisionShape3D disabledCollisionShape = null!;
 
     bool disabled = false;
 
