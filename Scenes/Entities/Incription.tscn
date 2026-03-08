@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d1m10f8ly2v8h"]
+
+[sub_resource type="TextMesh" id="TextMesh_r3su2"]
+text = "ᛏ ᛒ ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛋ  ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛋ  ᛞ ᛟ ᚠ ᚢ ᚦ ᚨ ᚱ 
+ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛋ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛋ  ᛞ ᛟ ᚠ ᚢ ᚦ ᚨ ᚱ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛋ  ᛞ ᛟ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛋ  ᛞ ᛟ"
+
+[node name="Label3D" type="Label3D" unique_id=1980051400]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1025286082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56072664, 0)
+mesh = SubResource("TextMesh_r3su2")

@@ -12,6 +12,12 @@ public partial class FancyProgressBar : TextureProgressBar
     public void SetCoolValue(int value)
     {
         this.Value = value;
-        percentLabel.Text = $"{value}";
+        this.SetLabelValue($"{value}");
+        //percentLabel.Text = $"{value}";
+    }
+    
+    public void SetLabelValue(String value)
+    {
+        percentLabel.Text = value;
     }
 }
