@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://btqbusor2ifgk"]
 
+[ext_resource type="Material" uid="uid://bqojwc168v4eo" path="res://assets/batch_exports/dungeonwalls/Dungeonwall.tres" id="1_2ayn4"]
 [ext_resource type="PackedScene" uid="uid://b3ik2bwecsbva" path="res://assets/batch_exports/dungeonwalls/Light.tscn" id="1_oalga"]
 [ext_resource type="PackedScene" uid="uid://bf7havo7wf07d" path="res://assets/batch_exports/ship/escapepod.gltf" id="2_47yog"]
 [ext_resource type="PackedScene" uid="uid://dbi28u8ytw1e2" path="res://Scenes/Entities/Bob.tscn" id="3_730ue"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0ditxd0bw80v" path="res://Scenes/Entities/DualDoor.tscn" id="5_7vtrp"]
 [ext_resource type="PackedScene" uid="uid://dqh0kwyoy2mw0" path="res://Scenes/Entities/NewBurger.tscn" id="6_7fqh0"]
 [ext_resource type="PackedScene" uid="uid://mf8hry3h34j7" path="res://Scenes/Entities/BobTrigger.tscn" id="7_w1y05"]
+[ext_resource type="Script" uid="uid://cf1iwf2dox26n" path="res://Game/Entities/LevelTransitioner.cs" id="9_yy7in"]
 
 [sub_resource type="Environment" id="Environment_730ue"]
 tonemap_mode = 4
@@ -76,6 +78,20 @@ emission_energy_multiplier = 0.0
 material = SubResource("StandardMaterial3D_7vtrp")
 text = "Left mouse to
 shoot cheese."
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy7in"]
+albedo_color = Color(0.89, 0.62833995, 0.14240003, 1)
+emission_enabled = true
+emission = Color(0.4506483, 0.4506483, 0.45064825, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_uhnhe"]
+material = SubResource("StandardMaterial3D_yy7in")
+text = "WARNING
+DO NOT ENTER"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yy7in"]
+size = Vector3(3.35, 1.82, 4.165)
 
 [node name="Level0" type="Node3D" unique_id=589171165]
 
@@ -170,6 +186,18 @@ transform = Transform3D(0.38824248, -0.84508795, 0.367552, -0.28304422, 0.270211
 size = Vector3(5.937805, 18.185177, 5.602585)
 material = SubResource("StandardMaterial3D_47yog")
 
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1275997568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.170911, -6.849082, 0.5)
+size = Vector3(12.314453, 8.503418, 10.177734)
+material = SubResource("StandardMaterial3D_47yog")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1113256616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.492361, -4.9902344, 0)
+operation = 2
+radius = 1.6660156
+height = 11.980469
+material = ExtResource("1_2ayn4")
+
 [node name="Light" parent="." unique_id=1543946459 instance=ExtResource("1_oalga")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41864645, 4.6496763, -0.3958578)
 
@@ -254,6 +282,11 @@ transform = Transform3D(-0.41167378, 0, 3.5155318, 0, 3.539553, 0, -3.5155318, 0
 mesh = SubResource("TextMesh_2ayn4")
 skeleton = NodePath("../Node3D/AnimatableBody")
 
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=2009275035]
+transform = Transform3D(-0.002038598, 0, 3.539553, 0, 3.539553, 0, -3.539553, 0, -0.002038598, -6.221452, -0.2605586, -0.029411934)
+mesh = SubResource("TextMesh_uhnhe")
+skeleton = NodePath("../Node3D/AnimatableBody")
+
 [node name="NewBurger2" parent="." unique_id=1306252785 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_7fqh0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.460447, -2.5410094, -9.638219)
 collision_layer = 1
@@ -276,6 +309,15 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.605942, -3.003419, -11.2683325)
 visible = false
 Dialogue = "Are those mutant cheeseburgers?"
+
+[node name="LevelTransitioner" type="Area3D" parent="." unique_id=1756059231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5820208, -4.8460464, -0.10543513)
+script = ExtResource("9_yy7in")
+NextScene = "uid://dolltncdy5fm"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTransitioner" unique_id=1515660108]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.1940122, 0)
+shape = SubResource("BoxShape3D_yy7in")
 
 [editable path="Light2"]
 [editable path="Light2/Cylinder2"]

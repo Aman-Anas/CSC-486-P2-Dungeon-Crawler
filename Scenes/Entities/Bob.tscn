@@ -21,11 +21,12 @@ physics_material_override = SubResource("PhysicsMaterial_b8lay")
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_b8lay")
-SpeechLabel = NodePath("SubViewport/Interface2/bruh")
+SpeechLabel = NodePath("Interface2/PanelContainer/HBoxContainer/bruh")
 animPlayer = NodePath("RetargetedAnims")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2019877107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_lapoy")
 
 [node name="RetargetedAnims" type="AnimationPlayer" parent="." unique_id=1787527063]
@@ -76,16 +77,16 @@ transform = Transform3D(-0.3895965, 0, 3.4059607e-08, 0, 0.3895965, 0, -3.405960
 billboard = 1
 texture = SubResource("ViewportTexture_nafxl")
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=84425509]
-transparent_bg = true
-size = Vector2i(706, 76)
-
-[node name="Interface2" parent="SubViewport" unique_id=1273395253 instance=ExtResource("5_nafxl")]
+[node name="Interface2" parent="." unique_id=1273395253 instance=ExtResource("5_nafxl")]
 anchors_preset = 15
 anchor_left = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_vertical = 2
 
+[node name="SubViewport" type="SubViewport" parent="." unique_id=84425509]
+transparent_bg = true
+size = Vector2i(706, 76)
+
 [editable path="BobRig2"]
-[editable path="SubViewport/Interface2"]
+[editable path="Interface2"]

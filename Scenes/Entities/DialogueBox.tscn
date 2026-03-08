@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://cxet5s3gtdchi"]
 
 [ext_resource type="Theme" uid="uid://b8qo3exx0pe34" path="res://assets/theme/main_theme.tres" id="1_mjj0w"]
+[ext_resource type="Texture2D" uid="uid://m8twllhmrbv2" path="res://images/6. hangar.png" id="2_wiumt"]
+[ext_resource type="Texture2D" uid="uid://cp4ocxtfckku4" path="res://assets/bobhead.png" id="3_m6uab"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wiumt"]
+texture = ExtResource("2_wiumt")
+region_rect = Rect2(330.06104, 840.7395, 1192.603, 183.4773)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pq6cn"]
-font_size = 32
+font_size = 19
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 7
@@ -20,16 +26,30 @@ mouse_filter = 2
 theme = ExtResource("1_mjj0w")
 metadata/_edit_lock_ = true
 
-[node name="bruh" type="Label" parent="." unique_id=289847816]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=735585520]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -267.0
-offset_top = 22.0
-offset_right = 267.0
-offset_bottom = 54.0
+offset_left = -293.5
+offset_top = 12.0
+offset_right = 293.5
+offset_bottom = 67.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wiumt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=974363654]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer" unique_id=178413992]
+layout_mode = 2
+texture = ExtResource("3_m6uab")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="bruh" type="Label" parent="PanelContainer/HBoxContainer" unique_id=289847816]
+layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Bob says: \"What is that?\""
 label_settings = SubResource("LabelSettings_pq6cn")

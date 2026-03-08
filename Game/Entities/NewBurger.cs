@@ -121,13 +121,25 @@ public partial class NewBurger : RigidBody3D
             Damage(amountToReduceHealth);
 
             if (!disabled)
+            {
                 hurtFx.Play();
-
+                hurtPlayer.Play(hurtAnim);
+                ApplyCentralForce(GlobalBasis * (Vector3.Back * knockback));
+            }
             // Start invulnerability timer
             canTakeDamage = false;
             ResetInvulnerability().Forget();
         }
     }
+
+    [Export]
+    AnimationPlayer hurtPlayer = null!;
+
+    [Export]
+    StringName hurtAnim = "hurt";
+
+    [Export]
+    float knockback = 10;
 
     async GDTaskVoid ResetInvulnerability()
     {
@@ -166,7 +178,7 @@ public partial class NewBurger : RigidBody3D
 
         animPlayer.SpeedScale = 1.0f;
 
-        var localLinearVelocity = GlobalBasis.Inverse() * state.LinearVelocity;
+        var localLinearVelocity = new Vector3();
         localLinearVelocity.X = 0;
 
         var myPos = GlobalPosition;
@@ -187,10 +199,10 @@ public partial class NewBurger : RigidBody3D
         }
         else
         {
-            localLinearVelocity.Z = -followSpeed;
+            localLinearVelocity.Z = -followSpeed * 5;
             animPlayer.Play(runAnimation, customBlend: animationBlendAmount);
         }
 
-        state.LinearVelocity = GlobalBasis * localLinearVelocity;
+        state.ApplyCentralForce(GlobalBasis * localLinearVelocity);
     }
 }
