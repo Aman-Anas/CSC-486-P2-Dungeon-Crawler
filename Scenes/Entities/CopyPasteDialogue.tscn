@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dv4revjxvjrw7"]
+
+[ext_resource type="PackedScene" uid="uid://mf8hry3h34j7" path="res://Scenes/Entities/BobTrigger.tscn" id="1_pq83r"]
+
+[node name="Node3D" type="Node3D" unique_id=2011127586]
+
+[node name="CrashLandingDialogue" parent="." unique_id=760553805 instance=ExtResource("1_pq83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2346148, 0, 2.3371398)
+Dialogue = "Bob: “We made it out alive! How did those Alien Burgers even find us... Wait, where are we? This looks like some sort of ancient template or something... Wait, I kind of recognize these inscriptions, is it some Burger-dialect? Let’s see what it says...It seems that there was some sort of… ancient sandwich civilization? The ‘Old Sandwich Republic’ I think... I haven’t heard of this before.Let’s continue exploring and find our way out of here.”"
+
+[node name="Room1Part1Dialogue" parent="." unique_id=642601051 instance=ExtResource("1_pq83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11114687, 0, 2.6538694)
+Dialogue = "Bob: “What’s that?!? ANCIENT ROBOT BURGER GUARDS?!? BRACE YOURSELF!”"
+
+[node name="Room1Part2Dialogue" parent="." unique_id=1564300865 instance=ExtResource("1_pq83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9013715, 0, 2.8369124)
+Dialogue = "Bob: “Nice job! Let’s see what these inscriptions here say;Hmm... This Old Sandwich Republic seemed to have split into the ‘CIS’ and ‘NBR’. Ah yes, the Confederacy of Independent Sandwiches who were the... Hotdogs? And the New Burg Republic, the nation humans have been at war with all along.I’ve only heard rumours of different types of Burgers, but Hotdogs too? That’s new... Let’s keep moving.”"
+
+[node name="Room2Dialogue" parent="." unique_id=209769351 instance=ExtResource("1_pq83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9250295, 0, 2.8370452)
+Dialogue = "Bob: “Ah! I took a hit, but I’m still good. Let’s take a look;Oh my God... The Hotdogs... No...The Hotdogs killed off the sandwiches. Almost all of them… But, why? I see something about sauce here, but it’s not clear. Let’s keep moving.”"
+
+[node name="Room3Dialogue" parent="." unique_id=1954260684 instance=ExtResource("1_pq83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0112953, 0, 3.019023)
+Dialogue = "Bob: “Let’s see...This... this can't be...The Hotdogs... stole the ancient hot sauce... and framed the humans for stealing it. No way... That’s the whole reason the Human-Burger war started!So while we’ve been killing each other for years, but for what...?Come on, we have to get to the surface and send a message to the New Burg Republic! This war has no purpose other than to exhaust ourselves fighting while the Hotdogs wait in the shadows to seize power! Let's go!”"
+
+[node name="BossPart1Dialogue" parent="." unique_id=1867445585 instance=ExtResource("1_pq83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7792354, 0, 3.0554295)
+Dialogue = "Bob: “Come on, there’s no turning back now! The fate of the galaxy depends on us!”"
+
+[node name="BossPart2Dialogue" parent="." unique_id=640703697 instance=ExtResource("1_pq83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.671448, 0, 3.0554295)
+Dialogue = "Bob: “I can see light, let’s keep moving!\""
+
+[node name="BossPart2Dialogue2" parent="." unique_id=150516395 instance=ExtResource("1_pq83r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.553136, 0, 3.0554295)
+Dialogue = "Bob: “Uhh, what was that...? The doors are locked, what do we do now?!?”"
