@@ -5,7 +5,7 @@ using GodotTask;
 
 namespace Game.Entities;
 
-public partial class NewBurger : RigidBody3D
+public partial class BigBurger : RigidBody3D
 {
     [Export]
     Farmer? playerToFollow;
@@ -14,16 +14,16 @@ public partial class NewBurger : RigidBody3D
     AnimationPlayer animPlayer = null!;
 
     [Export]
-    float maximumFollowingDistance = 5.0f;
+    float maximumFollowingDistance = 15.0f;
 
     [Export]
     float minimumFollowingDistance = 1.0f;
 
     [Export]
-    float followSpeed = 5.0f;
+    float followSpeed = 1.5f;
 
     [Export]
-    float maxHealth = 100.0f;
+    float maxHealth = 200.0f;
 
     float currentHealth = 0.0f;
 
@@ -157,7 +157,7 @@ public partial class NewBurger : RigidBody3D
             return;
         }
         
-        animPlayer.SpeedScale = 1.0f;
+        animPlayer.SpeedScale = 1.0f * 1.5f / 3.5f;
 
         var localLinearVelocity = GlobalBasis.Inverse() * state.LinearVelocity;
         localLinearVelocity.X = 0;
