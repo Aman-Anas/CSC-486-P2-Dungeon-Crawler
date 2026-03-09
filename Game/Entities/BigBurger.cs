@@ -186,10 +186,8 @@ public partial class BigBurger : RigidBody3D
         this.LookAt(playerPos, Vector3.Up);
 
         // Aim the bullet spawn marker at the player (for visual alignment)
-        var markerPos = bulletSpawnPoint.GlobalPosition;
-        // var targetPos = playerToFollow.GlobalPosition with { Y = markerPos.Y };
-        var targetPos = playerToFollow.GlobalPosition;
-        bulletSpawnPoint.LookAt(targetPos, Vector3.Up);
+        var markerAimTarget = playerToFollow.GlobalPosition with { Y = playerToFollow.GlobalPosition.Y + 1.5f };
+        bulletSpawnPoint.LookAt(markerAimTarget, Vector3.Up);
 
         var distanceToPlayer = myPos.DistanceTo(playerPos);
 
@@ -239,7 +237,9 @@ public partial class BigBurger : RigidBody3D
             ((Bullet)newBullet).SetDamageAmount(BulletDamage).SetDamageAppliesTo(DamageManager.FarmerForceName);
 
             newBullet.GlobalTransform = bulletSpawnPoint.GlobalTransform;
-            // Marker uses LookAt so -Z points at player; velocity in marker's forward direction
+            var aimTarget = playerToFollow.GlobalPosition with { Y = playerToFollow.GlobalPosition.Y + 1.5f };
+            newBullet.LookAt(aimTarget, Vector3.Up);
+            newBullet.RotateObjectLocal(Vector3.Up, (float)(-Math.PI / 2));
             newBullet.LinearVelocity = -bulletSpawnPoint.GlobalBasis.Z * bulletSpeed;
 
             GetTree().CurrentScene.AddChild(newBullet);
