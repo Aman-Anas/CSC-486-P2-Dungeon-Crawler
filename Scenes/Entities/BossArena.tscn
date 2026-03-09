@@ -13,6 +13,8 @@ cull_mode = 2
 albedo_texture = ExtResource("2_lyg15")
 normal_enabled = true
 normal_texture = ExtResource("3_kfcdp")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35smj"]
 albedo_texture = ExtResource("2_as604")
@@ -21,7 +23,7 @@ uv1_triplanar = true
 [node name="Node3D" type="Node3D" unique_id=1640892427]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1772589075]
-material_override = ExtResource("1_h2pbu")
+material_override = SubResource("StandardMaterial3D_qfnct")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=495266537]
