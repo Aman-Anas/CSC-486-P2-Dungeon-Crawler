@@ -20,7 +20,6 @@ height = 0.5
 [node name="RigidBody3D" type="RigidBody3D" unique_id=1980703095]
 continuous_cd = true
 script = ExtResource("1_i81ln")
-metadata/enemy = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2012479075]
 shape = SubResource("BoxShape3D_i81ln")
