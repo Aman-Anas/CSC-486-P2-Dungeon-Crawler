@@ -8,7 +8,8 @@ namespace Game.Entities;
 public enum BossState
 {
     Shooting,    // Shoot at player until dash cooldown is ready
-    Charging,    // Stop shooting, charge at player
+    DashWindUp,  // Brief pause when dash is charged, no shooting
+    Charging,    // Charge at player
     DashCooldown // Recovering after charge, then back to Shooting
 }
 
@@ -21,7 +22,7 @@ public partial class BigBurger : RigidBody3D
     AnimationPlayer animPlayer = null!;
 
     [Export]
-    float maximumFollowingDistance = 15.0f;
+    float maximumFollowingDistance = 25.0f;
 
     [Export]
     float minimumFollowingDistance = 1.0f;
@@ -30,7 +31,7 @@ public partial class BigBurger : RigidBody3D
     float followSpeed = 1.5f;
 
     [Export]
-    float maxHealth = 200.0f;
+    float maxHealth = 400.0f;
 
     float currentHealth = 0.0f;
 
@@ -60,14 +61,18 @@ public partial class BigBurger : RigidBody3D
     [Export]
     float InvulnerabilityTime = 0.1f;
 
-    // --- FSM: Shooting -> Charging -> DashCooldown -> Shooting ---
+    // --- FSM: Shooting -> DashWindUp -> Charging -> DashCooldown -> Shooting ---
     BossState currentState = BossState.Shooting;
-    float dashReadinessTimer;  // Countdown in Shooting; when 0, transition to Charging
+    float dashReadinessTimer;  // Countdown in Shooting; when 0, transition to DashWindUp
+    float dashWindUpTimer;     // Brief pause when fully charged before dashing
     float chargeTimer;         // Duration of charge
     float dashCooldownTimer;   // Recovery time after charge
 
     [Export]
     float timeBeforeDashAvailable = 5.0f; // Seconds in Shooting before dash is ready
+
+    [Export]
+    float dashWindUpDuration = 1.0f; // Seconds to pause (no shooting) before charging
 
     [Export]
     float chargeDuration = 1.5f; // How long the charge lasts
@@ -115,6 +120,9 @@ public partial class BigBurger : RigidBody3D
             case BossState.Shooting:
                 // Charge up from 0 to 100% as dash readiness builds
                 percentage = 1f - (dashReadinessTimer / timeBeforeDashAvailable);
+                break;
+            case BossState.DashWindUp:
+                percentage = 1f; // Fully charged, about to dash
                 break;
             case BossState.Charging:
                 // Decrease from 100 to 0% while dashing
@@ -217,7 +225,10 @@ public partial class BigBurger : RigidBody3D
         if (playerToFollow == null)
             return;
 
-        animPlayer.SpeedScale = 1.0f * 1.5f / 3.5f;
+        var baseAnimSpeed = 1.0f * 1.5f / 3.5f;
+        animPlayer.SpeedScale = currentState == BossState.Charging
+            ? baseAnimSpeed * (chargeSpeed / followSpeed)
+            : baseAnimSpeed;
 
         var myPos = GlobalPosition;
         var playerPos = playerToFollow.GlobalPosition with { Y = myPos.Y };
@@ -241,8 +252,8 @@ public partial class BigBurger : RigidBody3D
                 UpdateCooldownBar();
                 if (dashReadinessTimer <= 0)
                 {
-                    currentState = BossState.Charging;
-                    chargeTimer = chargeDuration;
+                    currentState = BossState.DashWindUp;
+                    dashWindUpTimer = dashWindUpDuration;
                 }
                 else
                 {
@@ -258,6 +269,18 @@ public partial class BigBurger : RigidBody3D
                         animPlayer.Play(runAnimation, customBlend: animationBlendAmount);
                     }
                 }
+                break;
+
+            case BossState.DashWindUp:
+                dashWindUpTimer -= delta;
+                UpdateCooldownBar();
+                if (dashWindUpTimer <= 0)
+                {
+                    currentState = BossState.Charging;
+                    chargeTimer = chargeDuration;
+                }
+                localLinearVelocity.Z = 0;
+                animPlayer.Play(idleAnimation, customBlend: animationBlendAmount);
                 break;
 
             case BossState.Charging:
