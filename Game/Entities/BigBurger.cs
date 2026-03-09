@@ -5,6 +5,13 @@ using GodotTask;
 
 namespace Game.Entities;
 
+public enum BossState
+{
+    Shooting,    // Shoot at player until dash cooldown is ready
+    Charging,    // Stop shooting, charge at player
+    DashCooldown // Recovering after charge, then back to Shooting
+}
+
 public partial class BigBurger : RigidBody3D
 {
     [Export]
@@ -53,6 +60,24 @@ public partial class BigBurger : RigidBody3D
     [Export]
     float InvulnerabilityTime = 0.1f;
 
+    // --- FSM: Shooting -> Charging -> DashCooldown -> Shooting ---
+    BossState currentState = BossState.Shooting;
+    float dashReadinessTimer;  // Countdown in Shooting; when 0, transition to Charging
+    float chargeTimer;         // Duration of charge
+    float dashCooldownTimer;   // Recovery time after charge
+
+    [Export]
+    float timeBeforeDashAvailable = 5.0f; // Seconds in Shooting before dash is ready
+
+    [Export]
+    float chargeDuration = 1.5f; // How long the charge lasts
+
+    [Export]
+    float dashCooldownAfterCharge = 2.0f; // Recovery time before shooting again
+
+    [Export]
+    float chargeSpeed = 12.0f; // Speed when charging (faster than followSpeed)
+
     [Export]
     public int BodyDamage = 20;
 
@@ -63,6 +88,8 @@ public partial class BigBurger : RigidBody3D
     {
         currentHealth = maxHealth;
         updateHealthBar();
+        dashReadinessTimer = timeBeforeDashAvailable;
+        UpdateCooldownBar();
 
         // set damage meta
         DamageManager.SetMyForce(this, DamageManager.BurgerForceName);
@@ -77,10 +104,27 @@ public partial class BigBurger : RigidBody3D
 
     public void updateHealthBar()
     {
-        // scale health to 100
         bars.SetHealthValue((int)currentHealth);
-        //healthBar.SetCoolValue((int)(currentHealth / maxHealth * 100.0f));
-        //healthBar.SetLabelValue($"{currentHealth}");
+    }
+
+    void UpdateCooldownBar()
+    {
+        float percentage;
+        switch (currentState)
+        {
+            case BossState.Shooting:
+                // Charge up from 0 to 100% as dash readiness builds
+                percentage = 1f - (dashReadinessTimer / timeBeforeDashAvailable);
+                break;
+            case BossState.Charging:
+                // Decrease from 100 to 0% while dashing
+                percentage = chargeTimer / chargeDuration;
+                break;
+            default:
+                percentage = 0f;
+                break;
+        }
+        bars.SetReloadValue(percentage);
     }
 
     public void Damage(float amount)
@@ -171,39 +215,79 @@ public partial class BigBurger : RigidBody3D
         }
 
         if (playerToFollow == null)
-        {
             return;
-        }
 
         animPlayer.SpeedScale = 1.0f * 1.5f / 3.5f;
+
+        var myPos = GlobalPosition;
+        var playerPos = playerToFollow.GlobalPosition with { Y = myPos.Y };
+        var distanceToPlayer = myPos.DistanceTo(playerPos);
+
+        this.LookAt(playerPos, Vector3.Up);
+
+        // Aim the bullet spawn marker at the player
+        var markerAimTarget = playerToFollow.GlobalPosition with { Y = playerToFollow.GlobalPosition.Y + 1.5f };
+        bulletSpawnPoint.LookAt(markerAimTarget, Vector3.Up);
 
         var localLinearVelocity = GlobalBasis.Inverse() * state.LinearVelocity;
         localLinearVelocity.X = 0;
 
-        var myPos = GlobalPosition;
-        var playerPos = playerToFollow.GlobalPosition with { Y = myPos.Y };
+        var delta = (float)state.Step;
 
-        this.LookAt(playerPos, Vector3.Up);
-
-        // Aim the bullet spawn marker at the player (for visual alignment)
-        var markerAimTarget = playerToFollow.GlobalPosition with { Y = playerToFollow.GlobalPosition.Y + 1.5f };
-        bulletSpawnPoint.LookAt(markerAimTarget, Vector3.Up);
-
-        var distanceToPlayer = myPos.DistanceTo(playerPos);
-
-        // If close enough or too far away, do nothing
-        if (
-            distanceToPlayer <= minimumFollowingDistance
-            || distanceToPlayer >= maximumFollowingDistance
-        )
+        switch (currentState)
         {
-            localLinearVelocity.Z = 0;
-            animPlayer.Play(idleAnimation, customBlend: animationBlendAmount);
-        }
-        else
-        {
-            localLinearVelocity.Z = -followSpeed;
-            animPlayer.Play(runAnimation, customBlend: animationBlendAmount);
+            case BossState.Shooting:
+                dashReadinessTimer -= delta;
+                UpdateCooldownBar();
+                if (dashReadinessTimer <= 0)
+                {
+                    currentState = BossState.Charging;
+                    chargeTimer = chargeDuration;
+                }
+                else
+                {
+                    // Follow player at normal speed
+                    if (distanceToPlayer <= minimumFollowingDistance || distanceToPlayer >= maximumFollowingDistance)
+                    {
+                        localLinearVelocity.Z = 0;
+                        animPlayer.Play(idleAnimation, customBlend: animationBlendAmount);
+                    }
+                    else
+                    {
+                        localLinearVelocity.Z = -followSpeed;
+                        animPlayer.Play(runAnimation, customBlend: animationBlendAmount);
+                    }
+                }
+                break;
+
+            case BossState.Charging:
+                chargeTimer -= delta;
+                UpdateCooldownBar();
+                if (chargeTimer <= 0)
+                {
+                    currentState = BossState.DashCooldown;
+                    dashCooldownTimer = dashCooldownAfterCharge;
+                }
+                else
+                {
+                    // Charge at player (full speed toward player)
+                    localLinearVelocity.Z = -chargeSpeed;
+                    animPlayer.Play(runAnimation, customBlend: animationBlendAmount);
+                }
+                break;
+
+            case BossState.DashCooldown:
+                dashCooldownTimer -= delta;
+                UpdateCooldownBar();
+                if (dashCooldownTimer <= 0)
+                {
+                    currentState = BossState.Shooting;
+                    dashReadinessTimer = timeBeforeDashAvailable;
+                }
+                // Stand still during cooldown
+                localLinearVelocity.Z = 0;
+                animPlayer.Play(idleAnimation, customBlend: animationBlendAmount);
+                break;
         }
 
         state.LinearVelocity = GlobalBasis * localLinearVelocity;
@@ -231,18 +315,21 @@ public partial class BigBurger : RigidBody3D
 
     public override void _Process(double delta)
     {
-        if (Input.IsActionPressed(GameActions.PlayerFire) && readyToFire && playerToFollow != null)
+        // Only shoot when in Shooting state
+        if (currentState != BossState.Shooting || !readyToFire || playerToFollow == null)
+            return;
+
         {
             var newBullet = bulletScene.Instantiate<RigidBody3D>();
             ((Bullet)newBullet).SetDamageAmount(BulletDamage).SetDamageAppliesTo(DamageManager.FarmerForceName);
 
-            newBullet.GlobalTransform = bulletSpawnPoint.GlobalTransform;
+            GetTree().CurrentScene.AddChild(newBullet);
+
             var aimTarget = playerToFollow.GlobalPosition with { Y = playerToFollow.GlobalPosition.Y + 1.5f };
+            newBullet.GlobalPosition = bulletSpawnPoint.GlobalPosition;
             newBullet.LookAt(aimTarget, Vector3.Up);
             newBullet.RotateObjectLocal(Vector3.Up, (float)(-Math.PI / 2));
             newBullet.LinearVelocity = -bulletSpawnPoint.GlobalBasis.Z * bulletSpeed;
-
-            GetTree().CurrentScene.AddChild(newBullet);
             shootfx?.Play();
 
             // Remove the bullet after some time
