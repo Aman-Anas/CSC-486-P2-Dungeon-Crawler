@@ -38,6 +38,7 @@ public partial class Gun : Node3D
         if (Input.IsActionPressed(GameActions.PlayerFire) && readyToFire)
         {
             var newBullet = bulletScene.Instantiate<RigidBody3D>();
+            ((Bullet)newBullet).SetDamageAmount(5).SetDamageAppliesTo(DamageManager.BurgerForceName);
 
             newBullet.GlobalTransform = bulletSpawnPoint.GlobalTransform;
             newBullet.LinearVelocity =
