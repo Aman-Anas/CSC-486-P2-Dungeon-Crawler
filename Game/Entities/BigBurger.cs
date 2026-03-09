@@ -53,10 +53,21 @@ public partial class BigBurger : RigidBody3D
     [Export]
     float InvulnerabilityTime = 0.1f;
 
+    [Export]
+    public int BodyDamage = 20;
+
+    [Export]
+    public int BulletDamage = 10;
+
     public override void _Ready()
     {
         currentHealth = maxHealth;
         updateHealthBar();
+
+        // set damage meta
+        DamageManager.SetMyForce(this, DamageManager.BurgerForceName);
+        DamageManager.SetDamage(this, BodyDamage);
+        DamageManager.SetDamageApplyTo(this, DamageManager.FarmerForceName);
     }
 
     [Export]
@@ -99,12 +110,14 @@ public partial class BigBurger : RigidBody3D
         int amountToReduceHealth = 0;
         foreach (var collider in colliding)
         {
-            if (collider.HasMeta(EnemyMeta))
+            //if (collider.HasMeta(EnemyMeta))
+            if (DamageManager.CanDamageMe(this, collider))
             {
                 touchingBullet = true;
 
                 // Grab the amount to reduce health by
-                amountToReduceHealth = (int)collider.GetMeta(EnemyMeta);
+                amountToReduceHealth = DamageManager.GetDamageAmount(collider);
+                //amountToReduceHealth = (int)collider.GetMeta(EnemyMeta);
 
                 // Kill bullet
                 if (collider is Bullet bullet)
@@ -172,6 +185,12 @@ public partial class BigBurger : RigidBody3D
 
         this.LookAt(playerPos, Vector3.Up);
 
+        // Aim the bullet spawn marker at the player (for visual alignment)
+        var markerPos = bulletSpawnPoint.GlobalPosition;
+        // var targetPos = playerToFollow.GlobalPosition with { Y = markerPos.Y };
+        var targetPos = playerToFollow.GlobalPosition;
+        bulletSpawnPoint.LookAt(targetPos, Vector3.Up);
+
         var distanceToPlayer = myPos.DistanceTo(playerPos);
 
         // If close enough or too far away, do nothing
@@ -190,5 +209,54 @@ public partial class BigBurger : RigidBody3D
         }
 
         state.LinearVelocity = GlobalBasis * localLinearVelocity;
+    }
+
+    [Export]
+    Node3D bulletSpawnPoint = null!;
+
+    [Export]
+    PackedScene bulletScene = null!;
+
+    [Export]
+    float bulletSpeed = 45.0f;
+
+    [Export]
+    float despawnTime = 10.0f;
+
+    [Export]
+    float reloadTime = 0.8f;
+
+    bool readyToFire = true;
+
+    [Export]
+    AudioStreamPlayer? shootfx;
+
+    public override void _Process(double delta)
+    {
+        if (Input.IsActionPressed(GameActions.PlayerFire) && readyToFire && playerToFollow != null)
+        {
+            var newBullet = bulletScene.Instantiate<RigidBody3D>();
+            ((Bullet)newBullet).SetDamageAmount(BulletDamage).SetDamageAppliesTo(DamageManager.FarmerForceName);
+
+            newBullet.GlobalTransform = bulletSpawnPoint.GlobalTransform;
+            // Marker uses LookAt so -Z points at player; velocity in marker's forward direction
+            newBullet.LinearVelocity = -bulletSpawnPoint.GlobalBasis.Z * bulletSpeed;
+
+            GetTree().CurrentScene.AddChild(newBullet);
+            shootfx?.Play();
+
+            // Remove the bullet after some time
+            var timer = GetTree().CreateTimer(despawnTime);
+            timer.Timeout += newBullet.QueueFree;
+
+            readyToFire = false;
+            StartReload();
+        }
+    }
+
+    async void StartReload()
+    {
+        await GDTask.Delay(TimeSpan.FromSeconds(reloadTime));
+        readyToFire = true;
     }
 }
