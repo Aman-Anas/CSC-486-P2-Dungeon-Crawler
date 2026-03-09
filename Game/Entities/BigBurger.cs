@@ -92,6 +92,7 @@ public partial class BigBurger : RigidBody3D
     public override void _Ready()
     {
         currentHealth = maxHealth;
+        bars.SetHealthMax(maxHealth);
         updateHealthBar();
         dashReadinessTimer = timeBeforeDashAvailable;
         UpdateCooldownBar();
