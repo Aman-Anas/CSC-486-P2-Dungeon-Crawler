@@ -103,6 +103,9 @@ public partial class Farmer : RigidBody3D
         yawTarget.TopLevel = true;
 
         progressBar.SetCoolValue(Manager.Instance.Data.CurrentHealth);
+        
+        // set damage meta
+        DamageManager.SetMyForce(this, DamageManager.FarmerForceName);
     }
 
     void UpdateHeadOrientation()
@@ -346,7 +349,7 @@ public partial class Farmer : RigidBody3D
     bool canTakeDamage = true;
 
     // Enemies should be marked with this string metadata
-    public readonly StringName EnemyMeta = "enemy";
+    //public readonly StringName EnemyMeta = "enemy";
 
     // Time in seconds to stay invulnerable after a hit
     [Export]
@@ -376,12 +379,14 @@ public partial class Farmer : RigidBody3D
         int amountToReduceHealth = 0;
         foreach (var collider in colliding)
         {
-            if (collider.HasMeta(EnemyMeta) && !(collider is Bullet))
+            if (DamageManager.CanDamageMe(this, collider))
+            //if (collider.HasMeta(EnemyMeta) && !(collider is Bullet))
             {
                 touchingEnemy = true;
 
                 // Grab the amount to reduce health by
-                amountToReduceHealth = (int)collider.GetMeta(EnemyMeta);
+                //amountToReduceHealth = (int)collider.GetMeta(EnemyMeta);
+                amountToReduceHealth = DamageManager.GetDamageAmount(collider);
 
                 // if (collider is NewBurger burger)
                 //     burger.Kill();
