@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dxc8av0a5bgvm" path="res://addons/kenney_prototype_textures/dark/texture_12.png" id="3_8txr7"]
 [ext_resource type="PackedScene" uid="uid://dbi28u8ytw1e2" path="res://Scenes/Entities/Bob.tscn" id="6_0lhxs"]
 [ext_resource type="PackedScene" uid="uid://mf8hry3h34j7" path="res://Scenes/Entities/BobTrigger.tscn" id="8_gp5al"]
+[ext_resource type="PackedScene" uid="uid://dqh0kwyoy2mw0" path="res://Scenes/Entities/NewBurger.tscn" id="8_silom"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x28rk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -130,3 +131,6 @@ playerToFollow = NodePath("../Farmer")
 [node name="Area3D" parent="." unique_id=760553805 instance=ExtResource("8_gp5al")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1984596, 0.4175012, 1.5382845)
 Dialogue = "That's odd."
+
+[node name="NewBurger" parent="." unique_id=941241180 instance=ExtResource("8_silom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.196899, 0.4799062, -0.5509244)

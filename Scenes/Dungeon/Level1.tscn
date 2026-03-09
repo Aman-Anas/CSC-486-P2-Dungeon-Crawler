@@ -270,7 +270,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.074265, 5.9797506, -44.46
 [node name="OmniLight3D" parent="Light5" index="0" unique_id=803781533]
 light_energy = 0.597
 
-[node name="Cylinder" parent="Light5/Cylinder2" parent_id_path=PackedInt32Array(1327061853, 1273999705) index="0" unique_id=1111109450]
+[node name="Cylinder" parent="Light5/Cylinder2" parent_id_path=PackedInt32Array(1327061853, 1273999705) index="0" unique_id=1161964542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.106733, 0)
 
 [node name="Light7" parent="." unique_id=1620294759 instance=ExtResource("4_kaumn")]
@@ -285,13 +285,13 @@ distance_fade_length = 0.0
 [node name="Cylinder2" parent="Light7" index="1" unique_id=1273999705]
 transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, 0, -1.2339988, 0)
 
-[node name="Cylinder" parent="Light7/Cylinder2" index="0" unique_id=1111109450]
+[node name="Cylinder" parent="Light7/Cylinder2" index="0" unique_id=1161964542]
 transform = Transform3D(0.79, 0, 0, 0, 3.315, 0, 0, 0, 0.79, 0, -2.0052414, 0)
 
-[node name="Cube" parent="Light7/Cylinder2/Cylinder" index="0" unique_id=1391530660]
+[node name="Cube" parent="Light7/Cylinder2/Cylinder" index="0" unique_id=1986426167]
 visible = false
 
-[node name="Torus" parent="Light7/Cylinder2/Cylinder" index="1" unique_id=873467295]
+[node name="Torus" parent="Light7/Cylinder2/Cylinder" index="1" unique_id=55617329]
 visible = false
 
 [node name="Light9" parent="." unique_id=1714637855 instance=ExtResource("4_kaumn")]
@@ -306,13 +306,13 @@ distance_fade_length = 0.0
 [node name="Cylinder2" parent="Light9" index="1" unique_id=1273999705]
 transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, 0, -1.2339988, 0)
 
-[node name="Cylinder" parent="Light9/Cylinder2" index="0" unique_id=1111109450]
+[node name="Cylinder" parent="Light9/Cylinder2" index="0" unique_id=1161964542]
 transform = Transform3D(0.79, 0, 0, 0, 3.315, 0, 0, 0, 0.79, 0, -2.0052414, 0)
 
-[node name="Cube" parent="Light9/Cylinder2/Cylinder" index="0" unique_id=1391530660]
+[node name="Cube" parent="Light9/Cylinder2/Cylinder" index="0" unique_id=1986426167]
 visible = false
 
-[node name="Torus" parent="Light9/Cylinder2/Cylinder" index="1" unique_id=873467295]
+[node name="Torus" parent="Light9/Cylinder2/Cylinder" index="1" unique_id=55617329]
 visible = false
 
 [node name="Light10" parent="." unique_id=714399842 instance=ExtResource("4_kaumn")]
@@ -327,13 +327,13 @@ distance_fade_length = 0.0
 [node name="Cylinder2" parent="Light10" index="1" unique_id=1273999705]
 transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, 0, -1.2339988, 0)
 
-[node name="Cylinder" parent="Light10/Cylinder2" index="0" unique_id=1111109450]
+[node name="Cylinder" parent="Light10/Cylinder2" index="0" unique_id=1161964542]
 transform = Transform3D(0.79, 0, 0, 0, 3.315, 0, 0, 0, 0.79, 0, -2.0052414, 0)
 
-[node name="Cube" parent="Light10/Cylinder2/Cylinder" index="0" unique_id=1391530660]
+[node name="Cube" parent="Light10/Cylinder2/Cylinder" index="0" unique_id=1986426167]
 visible = false
 
-[node name="Torus" parent="Light10/Cylinder2/Cylinder" index="1" unique_id=873467295]
+[node name="Torus" parent="Light10/Cylinder2/Cylinder" index="1" unique_id=55617329]
 visible = false
 
 [node name="NewBurger10" parent="." unique_id=30962519 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
