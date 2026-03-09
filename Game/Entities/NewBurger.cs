@@ -185,7 +185,8 @@ public partial class NewBurger : RigidBody3D
         eatFx?.Play();
 
         // Remove metadata and free the node
-        this.RemoveMeta(EnemyMeta);
+        //this.RemoveMeta(EnemyMeta);
+        DamageManager.ClearDamageMeta(this);
         this.QueueFree();
     }
 
