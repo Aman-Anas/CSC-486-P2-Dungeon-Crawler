@@ -41,7 +41,7 @@ public partial class NewBurger : RigidBody3D
 
     [Export]
     CollisionShape3D activatedCollisionShape = null!;
-    
+
     [Export]
     CollisionShape3D disabledCollisionShape = null!;
 
@@ -73,7 +73,7 @@ public partial class NewBurger : RigidBody3D
     {
         currentHealth = maxHealth;
         updateHealthBar();
-        
+
         // set damage meta
         DamageManager.SetMyForce(this, DamageManager.BurgerForceName);
         DamageManager.SetDamage(this, AmountToDamagePlayer);
@@ -186,7 +186,7 @@ public partial class NewBurger : RigidBody3D
 
         // Debug for BurgersEaten count
         //GD.Print(Manager.Instance.Data.BurgersEaten);
-        
+
 
         // Play optional eat sound
         eatFx?.Play();
