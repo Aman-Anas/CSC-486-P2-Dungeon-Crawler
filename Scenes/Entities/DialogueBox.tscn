@@ -9,12 +9,9 @@ texture = ExtResource("2_wiumt")
 region_rect = Rect2(330.06104, 840.7395, 1192.603, 183.4773)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pq6cn"]
-font_size = 19
+font_size = 13
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 7
-shadow_color = Color(0, 0, 0, 0.5019608)
-shadow_offset = Vector2(4.795, 5.725)
 
 [node name="Interface2" type="Control" unique_id=1273395253]
 layout_mode = 3
@@ -49,8 +46,10 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="bruh" type="Label" parent="PanelContainer/HBoxContainer" unique_id=289847816]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 35
-text = "Bob says: \"What is that?\""
 label_settings = SubResource("LabelSettings_pq6cn")
 horizontal_alignment = 1
+autowrap_mode = 2

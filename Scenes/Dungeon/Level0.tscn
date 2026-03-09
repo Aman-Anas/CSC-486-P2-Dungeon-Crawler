@@ -65,7 +65,7 @@ material = SubResource("StandardMaterial3D_w1y05")
 text = "Legend says Bob will help
 you if you stand on a button."
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ayn4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhnhe"]
 resource_local_to_scene = true
 albedo_color = Color(1, 0.16000003, 0.16000003, 1)
 
@@ -263,13 +263,13 @@ mesh = SubResource("TextMesh_w1y05")
 transform = Transform3D(3.0788147, 0, 9.175583e-08, 0, 3.0788147, 0, -9.175583e-08, 0, 3.0788147, 21.29237, -3.3355145, 5.030096)
 
 [node name="MeshInstance3D3" parent="Node3D/Area3D" index="1" unique_id=2130834328]
-surface_material_override/0 = SubResource("StandardMaterial3D_2ayn4")
+surface_material_override/0 = SubResource("StandardMaterial3D_uhnhe")
 
 [node name="Area3D2" parent="Node3D" index="3" unique_id=67594109]
 transform = Transform3D(3.1294038, 0, 9.32635e-08, 0, 3.1294038, 0, -9.32635e-08, 0, 3.1294038, 29.071993, -3.3385296, -2.0714457)
 
 [node name="MeshInstance3D3" parent="Node3D/Area3D2" index="1" unique_id=701217067]
-surface_material_override/0 = SubResource("StandardMaterial3D_2ayn4")
+surface_material_override/0 = SubResource("StandardMaterial3D_uhnhe")
 
 [node name="NewBurger" parent="." unique_id=941241180 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_7fqh0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.078856, -2.7204838, -3.1941113)
@@ -295,20 +295,20 @@ playerToFollow = NodePath("../Farmer")
 
 [node name="BobTrigger" parent="." unique_id=760553805 instance=ExtResource("7_w1y05")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.426214, -2.6205971, 38.70434)
-visible = false
-Dialogue = "That was a pretty bad crash."
+Dialogue = "That was a pretty bad crash. Where are we? 
+This looks like some sort of ancient temple or something..."
 
 [node name="BobTrigger2" parent="." unique_id=1008142765 instance=ExtResource("7_w1y05")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.530764, -2.6205976, 10.378297)
-Dialogue = "I think we stand on the buttons."
-
-[node name="MeshInstance3D" parent="BobTrigger2" index="0" unique_id=866451377]
-visible = false
+Dialogue = "Wait, I kind of recognize these inscriptions, is it some Burger-dialect? I think it's telling us to stand on the buttons."
 
 [node name="BobTrigger3" parent="." unique_id=197740610 instance=ExtResource("7_w1y05")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.605942, -3.003419, -11.2683325)
-visible = false
-Dialogue = "Are those mutant cheeseburgers?"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.064571, -3.0034199, -6.138863)
+Dialogue = "Bob: “What’s that?!? ANCIENT ROBOT BURGER GUARDS?!? BRACE YOURSELF!”"
+
+[node name="BobTrigger4" parent="." unique_id=279886691 instance=ExtResource("7_w1y05")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46511436, -2.469054, 1.3187494)
+Dialogue = "This says the 'Old Sandwich Republic'  split into factions. The Confederacy of Independent Sandwiches? And the New Burg Republic, the nation humans have been at war with all along."
 
 [node name="LevelTransitioner" type="Area3D" parent="." unique_id=1756059231]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5820208, -4.8460464, -0.10543513)
