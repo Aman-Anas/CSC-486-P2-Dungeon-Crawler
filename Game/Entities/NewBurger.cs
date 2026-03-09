@@ -53,10 +53,18 @@ public partial class NewBurger : RigidBody3D
     [Export]
     float InvulnerabilityTime = 0.1f;
 
+    [Export]
+    public int AmountToDamagePlayer = 10;
+
     public override void _Ready()
     {
         currentHealth = maxHealth;
         updateHealthBar();
+        
+        // set damage meta
+        DamageManager.SetMyForce(this, DamageManager.BurgerForceName);
+        DamageManager.SetDamage(this, AmountToDamagePlayer);
+        DamageManager.SetDamageApplyTo(this, DamageManager.FarmerForceName);
     }
 
     [Export]
@@ -81,11 +89,12 @@ public partial class NewBurger : RigidBody3D
     {
         currentHealth = 0.0f;
         this.disabled = true;
-        this.RemoveMeta(EnemyMeta);
+        //this.RemoveMeta(EnemyMeta);
+        DamageManager.ClearDamageMeta(this);
         //this.QueueFree();
     }
 
-    public readonly StringName EnemyMeta = "enemy";
+    //public readonly StringName EnemyMeta = "enemy";
     bool canTakeDamage = true;
 
     [Export]
@@ -99,12 +108,14 @@ public partial class NewBurger : RigidBody3D
         int amountToReduceHealth = 0;
         foreach (var collider in colliding)
         {
-            if (collider.HasMeta(EnemyMeta))
+            //if (collider.HasMeta(EnemyMeta))
+            if (DamageManager.CanDamageMe(this, collider))
             {
                 touchingBullet = true;
 
                 // Grab the amount to reduce health by
-                amountToReduceHealth = (int)collider.GetMeta(EnemyMeta);
+                amountToReduceHealth = DamageManager.GetDamageAmount(collider);
+                //amountToReduceHealth = (int)collider.GetMeta(EnemyMeta);
 
                 // Kill bullet
                 if (collider is Bullet bullet)

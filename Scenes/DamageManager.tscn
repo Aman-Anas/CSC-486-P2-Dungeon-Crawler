@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://lrcghdtdaxim"]
+
+[ext_resource type="Script" uid="uid://cxufw5257qpk" path="res://Game/DamageManager.cs" id="1_16jww"]
+
+[node name="Manager" type="Node" unique_id=884699410]
+script = ExtResource("1_16jww")
