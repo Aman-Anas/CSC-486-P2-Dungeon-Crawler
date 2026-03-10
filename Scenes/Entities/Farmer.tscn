@@ -11,6 +11,31 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hv5dt"]
 friction = 0.0
 
+[sub_resource type="Gradient" id="Gradient_27jcv"]
+colors = PackedColorArray(0, 0.7846223, 0.38715088, 0.4392157, 0.31431612, 0.31431612, 0.3143161, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xnwpo"]
+gradient = SubResource("Gradient_27jcv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5470086)
+
+[sub_resource type="Curve" id="Curve_27jcv"]
+_data = [Vector2(0.1892583, 1), 0.0, 0.0, 0, 0, Vector2(0.6393862, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xnwpo"]
+curve = SubResource("Curve_27jcv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rbmsy"]
+particle_flag_disable_z = true
+direction = Vector3(1, -6.73, 1.67)
+spread = 108.173
+initial_velocity_max = 60.48
+gravity = Vector3(0, 0, 0)
+scale_min = 0.39999998
+scale_curve = SubResource("CurveTexture_xnwpo")
+
 [sub_resource type="Animation" id="Animation_b03ad"]
 length = 0.001
 tracks/0/type = "value"
@@ -190,8 +215,16 @@ grow_vertical = 2
 modulate = Color(1, 1, 1, 0.6509804)
 scale = Vector2(0.015, 0.015)
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="PlayerUI" unique_id=723049349]
+position = Vector2(74, 575)
+texture = SubResource("GradientTexture2D_xnwpo")
+trail_lifetime = 0.92
+process_material = SubResource("ParticleProcessMaterial_rbmsy")
+
 [node name="TextureProgressBar" parent="PlayerUI" unique_id=811441812 instance=ExtResource("2_b03ad")]
 layout_mode = 1
+offset_top = -150.0
+offset_right = 150.0
 
 [node name="ColorRect" type="ColorRect" parent="PlayerUI" unique_id=1344338588]
 layout_mode = 1
@@ -295,10 +328,10 @@ transform = Transform3D(1.2851145e-08, 0, -0.097999975, -0.025364261, 0.09466071
 [node name="Armature2" parent="YawTarget/PitchTarget/grappler" unique_id=349872458 instance=ExtResource("5_bdrmn")]
 transform = Transform3D(-1.1920929e-07, -4.081633, -2.2737368e-13, 4.081633, -1.1920929e-07, -1.4210855e-14, -1.563194e-13, -5.684342e-14, 4.0816336, -1.2244899, 1.2244899, -6.3948846e-14)
 
-[node name="Armature" parent="YawTarget/PitchTarget/grappler/Armature2" index="0" unique_id=264457695]
+[node name="Armature" parent="YawTarget/PitchTarget/grappler/Armature2" index="0" unique_id=1903091526]
 transform = Transform3D(0.39999995, -7.450581e-09, 2.6645353e-15, 7.450581e-09, 0.39999995, 7.1054274e-15, -8.881784e-16, -7.1054274e-15, 0.40000004, 0.0400002, 0.120000005, 0)
 
-[node name="Skeleton3D" parent="YawTarget/PitchTarget/grappler/Armature2/Armature" index="0" unique_id=1930126642]
+[node name="Skeleton3D" parent="YawTarget/PitchTarget/grappler/Armature2/Armature" index="0" unique_id=1875144193]
 bones/1/position = Vector3(0, 1, 1.1920929e-07)
 bones/1/rotation = Quaternion(3.5527164e-14, 1.7763594e-15, 3.725293e-08, 1)
 bones/1/scale = Vector3(0.9999993, 0.9999993, 1)
@@ -309,7 +342,7 @@ bone_name = "Bone.001"
 bone_idx = 1
 override_pose = true
 
-[node name="Cylinder" parent="YawTarget/PitchTarget/grappler/Armature2/Armature/Skeleton3D" index="1" unique_id=1991128659]
+[node name="Cylinder" parent="YawTarget/PitchTarget/grappler/Armature2/Armature/Skeleton3D" index="1" unique_id=118254207]
 surface_material_override/0 = SubResource("StandardMaterial3D_a4evh")
 
 [node name="CamRay" type="RayCast3D" parent="YawTarget/PitchTarget" unique_id=1274839897]
@@ -327,7 +360,7 @@ transform = Transform3D(-0.047036763, 0, 0.99889314, 0, 1, 0, -0.99889314, 0, -0
 [node name="Pistol_12" parent="YawTarget/PitchTarget/Camera3D/Pistol" index="0" unique_id=1009415633]
 transform = Transform3D(0.321, 0, 9.781473e-10, 0, 0.321, 0, -9.781473e-10, 0, 0.321, -0.23, 0.365, -0.405)
 
-[node name="Pistol_1" parent="YawTarget/PitchTarget/Camera3D/Pistol/Pistol_12" index="0" unique_id=1461646871]
+[node name="Pistol_1" parent="YawTarget/PitchTarget/Camera3D/Pistol/Pistol_12" index="0" unique_id=59134382]
 visible = false
 
 [node name="Muzzle" parent="YawTarget/PitchTarget/Camera3D/Pistol/Pistol_12" index="1" unique_id=677483238]

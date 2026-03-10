@@ -103,7 +103,7 @@ public partial class Farmer : RigidBody3D
         yawTarget.TopLevel = true;
 
         progressBar.SetCoolValue(Manager.Instance.Data.CurrentHealth);
-        
+
         // set damage meta
         DamageManager.SetMyForce(this, DamageManager.FarmerForceName);
     }
@@ -363,7 +363,10 @@ public partial class Farmer : RigidBody3D
     public void AddHealth(int amount)
     {
         // Ensure we don't exceed a 100 hp cap here. Change if you have a different max.
-        Manager.Instance.Data.CurrentHealth = Math.Min(100, Manager.Instance.Data.CurrentHealth + amount);
+        Manager.Instance.Data.CurrentHealth = Math.Min(
+            100,
+            Manager.Instance.Data.CurrentHealth + amount
+        );
         progressBar.SetCoolValue(Manager.Instance.Data.CurrentHealth);
     }
 

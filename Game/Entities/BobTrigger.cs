@@ -27,7 +27,13 @@ public partial class BobTrigger : Area3D
 
             var newTween = GetTree().CreateTween();
             newTween.TweenMethod(
-                Callable.From((float amt) => Bob.SpeechLabel.VisibleRatio = amt),
+                Callable.From(
+                    (float amt) =>
+                    {
+                        if (GodotObject.IsInstanceValid(Bob))
+                            Bob.SpeechLabel.VisibleRatio = amt;
+                    }
+                ),
                 0f,
                 1f,
                 typewriteTime / 1000f
