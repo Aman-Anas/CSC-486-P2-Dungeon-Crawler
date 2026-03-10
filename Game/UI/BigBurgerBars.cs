@@ -12,6 +12,11 @@ public partial class BigBurgerBars : Control
     [Export]
     FancyProgressBar reloadBar = null!;
     
+    public void SetHealthMax(float max)
+    {
+        healthBar.MaxValue = max;
+    }
+
     public void SetHealthValue(int value)
     {
         healthBar.SetCoolValue(value);

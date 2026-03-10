@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using Game.UI;
 using Godot;
@@ -31,7 +32,7 @@ public partial class BigBurger : RigidBody3D
     float followSpeed = 1.5f;
 
     [Export]
-    float maxHealth = 400.0f;
+    float maxHealth = 500.0f;
 
     float currentHealth = 0.0f;
 
@@ -92,6 +93,7 @@ public partial class BigBurger : RigidBody3D
     public override void _Ready()
     {
         currentHealth = maxHealth;
+        bars.SetHealthMax(maxHealth);
         updateHealthBar();
         dashReadinessTimer = timeBeforeDashAvailable;
         UpdateCooldownBar();
@@ -147,11 +149,14 @@ public partial class BigBurger : RigidBody3D
     {
         currentHealth = 0.0f;
         this.disabled = true;
-        this.RemoveMeta(EnemyMeta);
-        //this.QueueFree();
+        DamageManager.ClearDamageMeta(this);
+        foreach (var bullet in spawnedBullets)
+        {
+            if (GodotObject.IsInstanceValid(bullet))
+                bullet.Kill();
+        }
+        spawnedBullets.Clear();
     }
-
-    public readonly StringName EnemyMeta = "enemy";
     bool canTakeDamage = true;
 
     public override void _PhysicsProcess(double delta)
@@ -333,6 +338,8 @@ public partial class BigBurger : RigidBody3D
 
     bool readyToFire = true;
 
+    readonly List<Bullet> spawnedBullets = new();
+
     [Export]
     AudioStreamPlayer? shootfx;
 
@@ -343,8 +350,9 @@ public partial class BigBurger : RigidBody3D
             return;
 
         {
-            var newBullet = bulletScene.Instantiate<RigidBody3D>();
-            ((Bullet)newBullet).SetDamageAmount(BulletDamage).SetDamageAppliesTo(DamageManager.FarmerForceName);
+            var newBullet = bulletScene.Instantiate<Bullet>();
+            newBullet.SetDamageAmount(BulletDamage).SetDamageAppliesTo(DamageManager.FarmerForceName);
+            spawnedBullets.Add(newBullet);
 
             GetTree().CurrentScene.AddChild(newBullet);
 
