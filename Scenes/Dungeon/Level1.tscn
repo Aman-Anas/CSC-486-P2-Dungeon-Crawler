@@ -26,14 +26,6 @@ ssao_horizon = 0.03
 sdfgi_use_occlusion = true
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twyt3"]
-resource_local_to_scene = true
-albedo_color = Color(1, 0.16000003, 0.16000003, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjk7c"]
-resource_local_to_scene = true
-albedo_color = Color(1, 0.16000003, 0.16000003, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjmcn"]
 resource_local_to_scene = true
 albedo_color = Color(1, 0.16000003, 0.16000003, 1)
@@ -43,6 +35,14 @@ resource_local_to_scene = true
 albedo_color = Color(1, 0.16000003, 0.16000003, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1xsi"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0.16000003, 0.16000003, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nq3ai"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0.16000003, 0.16000003, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53ngx"]
 resource_local_to_scene = true
 albedo_color = Color(1, 0.16000003, 0.16000003, 1)
 
@@ -135,53 +135,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.770214, 5.6015906, -49.684
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47703528, 1.999609, -10.845552)
 playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger" parent="." unique_id=941241180 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger" parent="." unique_id=941241180 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.143962, 2.562014, -24.743832)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger2" parent="." unique_id=850938697 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger2" parent="." unique_id=850938697 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.6163, 2.5620143, -8.410236)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger4" parent="." unique_id=1588685645 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger4" parent="." unique_id=1588685645 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.277924, 2.5303798, -52.552956)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger5" parent="." unique_id=202091828 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger5" parent="." unique_id=202091828 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.268723, 2.562016, -46.6122)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger6" parent="." unique_id=343558683 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger6" parent="." unique_id=343558683 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.70964, 2.5620131, -26.68887)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger7" parent="." unique_id=2036709273 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger7" parent="." unique_id=2036709273 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.438805, 2.5620131, -20.149897)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger21" parent="." unique_id=1071739272 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger21" parent="." unique_id=1071739272 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.414396, 2.5620131, -9.679171)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger22" parent="." unique_id=1384196576 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger22" parent="." unique_id=1384196576 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.266209, 2.8232892, -7.9405994)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger23" parent="." unique_id=496951866 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger23" parent="." unique_id=496951866 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.674284, 2.8232892, -10.089474)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger8" parent="." unique_id=258719908 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger8" parent="." unique_id=258719908 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.506323, 2.562016, 4.728125)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger9" parent="." unique_id=432223196 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger9" parent="." unique_id=432223196 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.039955, 2.562016, 9.838561)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger3" parent="." unique_id=475152509 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger3" parent="." unique_id=475152509 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.272636, 2.5620139, -13.780794)
-playerToFollow = NodePath("../Farmer")
 
 [node name="JunkPiece2" parent="." unique_id=2100042895 instance=ExtResource("7_sygtx")]
 transform = Transform3D(0.33093747, 0.8579067, 0.39303485, -0.94365096, 0.3016792, 0.13606128, -0.0018425317, -0.41591543, 0.9094014, -23.532425, 0.98624957, -35.503574)
@@ -229,13 +217,13 @@ transform = Transform3D(1, 0, 3.7396983e-15, 0, 1, 0, -3.7396983e-15, 0, 1, 0, 1
 transform = Transform3D(2.1932633, 0, 6.5364326e-08, 0, 2.193263, 0, -6.5364326e-08, 0, 2.1932633, -50.125343, 2.196846, 5.5252357)
 
 [node name="MeshInstance3D3" parent="Node3D4/Area3D" index="1" unique_id=2130834328]
-surface_material_override/0 = SubResource("StandardMaterial3D_twyt3")
+surface_material_override/0 = SubResource("StandardMaterial3D_tjmcn")
 
 [node name="Area3D2" parent="Node3D4" index="3" unique_id=67594109]
 transform = Transform3D(1.8390813, 0, 5.480888e-08, 0, 1.839081, 0, -5.480888e-08, 0, 1.8390813, -66.286285, 2.183517, -10.301227)
 
 [node name="MeshInstance3D3" parent="Node3D4/Area3D2" index="1" unique_id=701217067]
-surface_material_override/0 = SubResource("StandardMaterial3D_twyt3")
+surface_material_override/0 = SubResource("StandardMaterial3D_tjmcn")
 
 [node name="Node3D6" parent="." unique_id=1525562943 instance=ExtResource("9_5ux22")]
 transform = Transform3D(-9.578377e-08, 0, 2.1912773, 0, 2.1912773, 0, -2.1912773, 0, -9.578377e-08, -35.306705, 1.9852202, -22.022741)
@@ -247,13 +235,13 @@ transform = Transform3D(1, 0, 3.7396983e-15, 0, 1, 0, -3.7396983e-15, 0, 1, 0, 1
 transform = Transform3D(2.1932633, 0, 6.5364326e-08, 0, 2.193263, 0, -6.5364326e-08, 0, 2.1932633, -37.60216, 2.2189353, -26.298296)
 
 [node name="MeshInstance3D3" parent="Node3D6/Area3D" index="1" unique_id=2130834328]
-surface_material_override/0 = SubResource("StandardMaterial3D_jjk7c")
+surface_material_override/0 = SubResource("StandardMaterial3D_tmwta")
 
 [node name="Area3D2" parent="Node3D6" index="3" unique_id=67594109]
 transform = Transform3D(2.0768836, 0, 6.189593e-08, 0, 2.0768833, 0, -6.189593e-08, 0, 2.0768836, -42.661266, 2.2072968, 9.567685)
 
 [node name="MeshInstance3D3" parent="Node3D6/Area3D2" index="1" unique_id=701217067]
-surface_material_override/0 = SubResource("StandardMaterial3D_jjk7c")
+surface_material_override/0 = SubResource("StandardMaterial3D_tmwta")
 
 [node name="Node3D7" parent="." unique_id=662669076 instance=ExtResource("9_5ux22")]
 transform = Transform3D(-9.578377e-08, 0, 2.1912773, 0, 2.1912773, 0, -2.1912773, 0, -9.578377e-08, -35.306705, 1.9852202, 5.8968043)
@@ -265,13 +253,13 @@ transform = Transform3D(1, 0, 3.7396983e-15, 0, 1, 0, -3.7396983e-15, 0, 1, 0, 1
 transform = Transform3D(2.1932633, 0, 6.5364326e-08, 0, 2.193263, 0, -6.5364326e-08, 0, 2.1932633, -29.73878, 2.2189353, -30.471876)
 
 [node name="MeshInstance3D3" parent="Node3D7/Area3D" index="1" unique_id=2130834328]
-surface_material_override/0 = SubResource("StandardMaterial3D_tjmcn")
+surface_material_override/0 = SubResource("StandardMaterial3D_h1xsi")
 
 [node name="Area3D2" parent="Node3D7" index="3" unique_id=67594109]
 transform = Transform3D(2.6147282, 0, 7.7924945e-08, 0, 2.614728, 0, -7.7924945e-08, 0, 2.6147282, -14.693899, 2.2610817, -6.2889614)
 
 [node name="MeshInstance3D3" parent="Node3D7/Area3D2" index="1" unique_id=701217067]
-surface_material_override/0 = SubResource("StandardMaterial3D_tjmcn")
+surface_material_override/0 = SubResource("StandardMaterial3D_h1xsi")
 
 [node name="Node3D2" parent="." unique_id=989438620 instance=ExtResource("9_5ux22")]
 transform = Transform3D(1.6342264e-07, 0, -2.1645985, 0, 2.1645985, 0, 2.1645985, 0, 1.6342264e-07, -44.486248, 2.0477042, -34.04345)
@@ -280,13 +268,13 @@ transform = Transform3D(1.6342264e-07, 0, -2.1645985, 0, 2.1645985, 0, 2.1645985
 transform = Transform3D(2.2905862, 0, 6.826478e-08, 0, 2.290586, 0, -6.826478e-08, 0, 2.2905862, -36.749588, 2.0996087, -33.64945)
 
 [node name="MeshInstance3D3" parent="Node3D2/Area3D" index="1" unique_id=2130834328]
-surface_material_override/0 = SubResource("StandardMaterial3D_tmwta")
+surface_material_override/0 = SubResource("StandardMaterial3D_nq3ai")
 
 [node name="Area3D2" parent="Node3D2" index="3" unique_id=67594109]
 transform = Transform3D(2.1552913, 0, 6.423268e-08, 0, 2.155291, 0, -6.423268e-08, 0, 2.1552913, -42.97673, 2.0996091, -37.842857)
 
 [node name="MeshInstance3D3" parent="Node3D2/Area3D2" index="1" unique_id=701217067]
-surface_material_override/0 = SubResource("StandardMaterial3D_tmwta")
+surface_material_override/0 = SubResource("StandardMaterial3D_nq3ai")
 
 [node name="Node3D3" parent="." unique_id=140366263 instance=ExtResource("9_5ux22")]
 transform = Transform3D(2.2622895, 0, 3.9555127e-07, 0, 2.2622895, 0, -3.9555127e-07, 0, 2.2622895, -65.98919, 1.9573612, -39.634163)
@@ -298,7 +286,7 @@ transform = Transform3D(0.99999994, 0, 1.4210855e-14, 0, 0.99999994, 0, -1.42108
 transform = Transform3D(2.0700204, 0, 6.169141e-08, 0, 2.0700202, 0, -6.169141e-08, 0, 2.0700204, -49.224655, 2.0996084, -29.439718)
 
 [node name="MeshInstance3D3" parent="Node3D3/Area3D" index="1" unique_id=2130834328]
-surface_material_override/0 = SubResource("StandardMaterial3D_h1xsi")
+surface_material_override/0 = SubResource("StandardMaterial3D_53ngx")
 
 [node name="Area3D2" parent="Node3D3" index="3" unique_id=67594109]
 transform = Transform3D(1.8033082, 0, 5.3742742e-08, 0, 1.803308, 0, -5.3742742e-08, 0, 1.8033082, -67.72954, 2.1984055, -47.16397)
@@ -307,7 +295,7 @@ transform = Transform3D(1.8033082, 0, 5.3742742e-08, 0, 1.803308, 0, -5.3742742e
 transform = Transform3D(0.9999998, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 0.9999998, 0.007259369, -0.010239959, -0.014839172)
 
 [node name="MeshInstance3D3" parent="Node3D3/Area3D2" index="1" unique_id=701217067]
-surface_material_override/0 = SubResource("StandardMaterial3D_h1xsi")
+surface_material_override/0 = SubResource("StandardMaterial3D_53ngx")
 
 [node name="TechCylinder2" parent="." unique_id=2067424884 instance=ExtResource("8_rqhny")]
 transform = Transform3D(0.25971168, 0, 0, 0, 0.25971168, 0, 0, 0, 0.25971168, -35.945404, 3.8285518, -35.999256)
@@ -387,57 +375,44 @@ visible = false
 [node name="Torus" parent="Light10/Cylinder2/Cylinder" index="1" unique_id=873467295]
 visible = false
 
-[node name="NewBurger10" parent="." unique_id=30962519 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger10" parent="." unique_id=30962519 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.685516, 2.562014, 4.1676292)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger11" parent="." unique_id=314888282 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger11" parent="." unique_id=314888282 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.59539, 2.562014, -13.413111)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger12" parent="." unique_id=1320339077 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger12" parent="." unique_id=1320339077 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.478104, 2.562014, -7.710237)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger13" parent="." unique_id=949793761 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger13" parent="." unique_id=949793761 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.77399, 2.562014, -4.7416773)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger14" parent="." unique_id=1087744535 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger14" parent="." unique_id=1087744535 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.65867, 2.562014, -21.860655)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger15" parent="." unique_id=1688906867 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger15" parent="." unique_id=1688906867 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.040287, 2.562014, -27.669514)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger16" parent="." unique_id=1609373205 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger16" parent="." unique_id=1609373205 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.28899, 2.562014, -32.822796)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger17" parent="." unique_id=692038204 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger17" parent="." unique_id=692038204 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.10305, 2.562014, -41.53426)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger18" parent="." unique_id=31343852 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger18" parent="." unique_id=31343852 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.08115, 2.562014, -42.027233)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger24" parent="." unique_id=69610566 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger24" parent="." unique_id=69610566 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.585972, 2.562014, -2.9430447)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger25" parent="." unique_id=1166334257 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger25" parent="." unique_id=1166334257 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.791218, 2.562014, -34.142258)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger19" parent="." unique_id=1982993998 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger19" parent="." unique_id=1982993998 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.29131, 2.562014, -44.1509)
-playerToFollow = NodePath("../Farmer")
 
-[node name="NewBurger20" parent="." unique_id=687322008 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_heuc8")]
+[node name="NewBurger20" parent="." unique_id=687322008 instance=ExtResource("6_heuc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.047085, 2.562014, -43.496567)
-playerToFollow = NodePath("../Farmer")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=992629306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.17369, 9.5932045, -21.190409)
@@ -536,11 +511,11 @@ skeleton = NodePath("../Room3Dialogue")
 [node name="LevelTransitioner" type="Area3D" parent="." unique_id=655338262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.884539, 2.249609, 6.007635)
 script = ExtResource("12_tjmcn")
-NextScene = "uid://bgekxsd83w3j3"
+NextScene = "uid://jhjyuiny6v1c"
 metadata/_custom_type_script = "uid://cf1iwf2dox26n"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LevelTransitioner" unique_id=856718451]
-transform = Transform3D(-1.5155868e-07, -3.4672585, 0, 3.4672585, -1.5155868e-07, 0, 0, 0, 3.4672585, 0, 0.91771054, 0)
+transform = Transform3D(-1.5155868e-07, -3.4672585, 0, 3.4672585, -1.5155868e-07, 0, 0, 0, 3.4672585, -0.00041913986, 0.91771054, -0.013862133)
 mesh = SubResource("TorusMesh_nq3ai")
 skeleton = NodePath("../../Light6")
 
@@ -554,6 +529,11 @@ Dialogue = "Bob: “Come on, there’s no turning back now! The fate of the gala
 
 [node name="Light6" parent="." unique_id=34702965 instance=ExtResource("4_kaumn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1592, 5.654235, 6.670589)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1055062324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.699991, 4.5104666, -30.039238)
+light_color = Color(1, 0.56, 0.56, 1)
+omni_range = 3.324
 
 [editable path="Node3D4"]
 [editable path="Node3D6"]

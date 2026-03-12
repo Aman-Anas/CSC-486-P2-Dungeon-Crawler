@@ -1175,6 +1175,18 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_mvw77"]
 size = Vector3(1, 15.775391, 17.519775)
 
+[sub_resource type="Environment" id="Environment_icwdn"]
+tonemap_mode = 4
+tonemap_exposure = 3.3
+tonemap_agx_white = 4.25
+tonemap_agx_contrast = 1.51
+ssao_enabled = true
+ssao_radius = 1.46
+ssao_intensity = 3.65
+ssao_horizon = 0.03
+sdfgi_use_occlusion = true
+glow_enabled = true
+
 [node name="Node3D" type="Node3D" unique_id=1640892427]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1772589075]
@@ -1488,7 +1500,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.85503, 4.023544, -10.57217
 playerToFollow = NodePath("../Farmer")
 
 [node name="Farmer" parent="." unique_id=483625553 instance=ExtResource("5_8m2ta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.111053, 5.1861277, -16.804264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.590254, 1.740663, -0.7850852)
 
 [node name="Light" parent="." unique_id=1543946459 instance=ExtResource("6_icwdn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.206406, 8.8109045, -4.966029)
@@ -1502,7 +1514,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.594907, 11.514063, -31.717
 [node name="LevelTransitioner" type="Area3D" parent="." unique_id=155518563]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 11.244997, 0.024918556, -37.41498)
 script = ExtResource("12_icwdn")
-NextScene = "uid://bgekxsd83w3j3"
+NextScene = "uid://bo8e08nma5kh3"
 metadata/_custom_type_script = "uid://cf1iwf2dox26n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTransitioner" unique_id=2132059999]
@@ -1511,3 +1523,6 @@ shape = SubResource("BoxShape3D_mvw77")
 
 [node name="Light3" parent="." unique_id=1505583519 instance=ExtResource("6_icwdn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.304636, 8.8109045, -0.6892395)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1547256385]
+environment = SubResource("Environment_icwdn")
