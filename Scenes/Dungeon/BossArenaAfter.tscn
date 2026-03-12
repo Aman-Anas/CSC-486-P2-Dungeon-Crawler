@@ -1,20 +1,30 @@
-[gd_scene format=4 uid="uid://bqi3n6mx3hx4n"]
+[gd_scene format=4 uid="uid://bm1flyo6qb4gk"]
 
-[ext_resource type="Script" uid="uid://8pprligilybt" path="res://Game/Entities/BigBurger.cs" id="1_fg4nj"]
-[ext_resource type="PackedScene" uid="uid://q00ixym4idq5" path="res://Scenes/Entities/bullet.tscn" id="2_em2t3"]
-[ext_resource type="Texture2D" uid="uid://g2qi86qfkgp1" path="res://assets/batch_exports/burger_enemy/Ucupaint meat Color.png" id="3_5r88v"]
-[ext_resource type="PackedScene" uid="uid://bp37w4rh4ucg7" path="res://Scenes/UI/HealthBar.tscn" id="3_em2t3"]
-[ext_resource type="Texture2D" uid="uid://n1hgrf62lqda" path="res://assets/batch_exports/burger_enemy/Ucupaint meat Normal.png" id="4_58c5m"]
-[ext_resource type="PackedScene" uid="uid://belxh31phcn2i" path="res://Scenes/UI/BigBurgerBars.tscn" id="4_mntqf"]
-[ext_resource type="Texture2D" uid="uid://pjxnjhpm6lti" path="res://assets/batch_exports/burger_enemy/Ucupaint Bread Color.png" id="5_tdr1w"]
+[ext_resource type="Texture2D" uid="uid://cemhdh0e4kiiv" path="res://assets/batch_exports/dungeonwalls/Ucupaint Cube Color.png" id="1_gsdvu"]
+[ext_resource type="Texture2D" uid="uid://cg55tacdsagic" path="res://assets/batch_exports/dungeonwalls/Ucupaint Cube Normal.png" id="2_awwia"]
+[ext_resource type="Material" uid="uid://cfls41uebm78j" path="res://assets/mats/test_material.tres" id="3_2w6jn"]
+[ext_resource type="Texture2D" uid="uid://ddjspd2d5bp03" path="res://addons/kenney_prototype_textures/light/texture_06.png" id="4_mukin"]
+[ext_resource type="PackedScene" uid="uid://cgv3ggu25ffs1" path="res://Scenes/Entities/Farmer.tscn" id="5_8m2ta"]
+[ext_resource type="PackedScene" uid="uid://mf8hry3h34j7" path="res://Scenes/Entities/BobTrigger.tscn" id="5_awwia"]
+[ext_resource type="Texture2D" uid="uid://g2qi86qfkgp1" path="res://assets/batch_exports/burger_enemy/Ucupaint meat Color.png" id="6_8m2ta"]
+[ext_resource type="PackedScene" uid="uid://dbi28u8ytw1e2" path="res://Scenes/Entities/Bob.tscn" id="6_gsdvu"]
+[ext_resource type="PackedScene" uid="uid://b3ik2bwecsbva" path="res://assets/batch_exports/dungeonwalls/Light.tscn" id="6_icwdn"]
+[ext_resource type="Texture2D" uid="uid://n1hgrf62lqda" path="res://assets/batch_exports/burger_enemy/Ucupaint meat Normal.png" id="7_icwdn"]
+[ext_resource type="Texture2D" uid="uid://pjxnjhpm6lti" path="res://assets/batch_exports/burger_enemy/Ucupaint Bread Color.png" id="8_mvw77"]
+[ext_resource type="Script" uid="uid://cf1iwf2dox26n" path="res://Game/Entities/LevelTransitioner.cs" id="12_icwdn"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bpufl"]
-radius = 1.5
-height = 4.181358
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfnct"]
+resource_name = "Cube"
+cull_mode = 2
+albedo_texture = ExtResource("1_gsdvu")
+normal_enabled = true
+normal_texture = ExtResource("2_awwia")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fg4nj"]
-radius = 1.2428492
-height = 2.4856985
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35smj"]
+albedo_texture = ExtResource("4_mukin")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm02g"]
 resource_name = "Metallegs"
@@ -38,7 +48,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_51wjo"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_mv3up"]
 resource_name = "Empty_Circle"
 _surfaces = [{
 "aabb": AABB(-1, -0.063554525, -1, 2, 0.12710896, 2),
@@ -60,10 +70,10 @@ shadow_mesh = SubResource("ArrayMesh_rqmh1")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4al11"]
 resource_name = "meat"
 cull_mode = 2
-albedo_texture = ExtResource("3_5r88v")
+albedo_texture = ExtResource("6_8m2ta")
 roughness = 0.76379085
 normal_enabled = true
-normal_texture = ExtResource("4_58c5m")
+normal_texture = ExtResource("7_icwdn")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_46a7y"]
 _surfaces = [{
@@ -80,7 +90,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_l4hh5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_xro5d"]
 resource_name = "Empty_Cylinder"
 _surfaces = [{
 "aabb": AABB(-1, -0.1305255, -1, 2, 0.39564914, 2),
@@ -102,7 +112,7 @@ shadow_mesh = SubResource("ArrayMesh_46a7y")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_docal"]
 resource_name = "Bread"
 cull_mode = 2
-albedo_texture = ExtResource("5_tdr1w")
+albedo_texture = ExtResource("8_mvw77")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_181ad"]
@@ -120,7 +130,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7ctet"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_mump0"]
 resource_name = "Empty_Cylinder_001"
 _surfaces = [{
 "aabb": AABB(-1.0413226, -0.286226, -1.0413226, 2.0826452, 0.45599216, 2.0826452),
@@ -139,7 +149,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_181ad")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdr1w"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljx54"]
 albedo_color = Color(0.38766906, 0.27449742, 0.26241615, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxixu"]
@@ -163,7 +173,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xb5rb"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_og2fl"]
 resource_name = "Empty_Cylinder_002"
 _surfaces = [{
 "aabb": AABB(-1.0727589, -0.5073769, -1.0727589, 2.1455178, 0.8352078, 2.1455178),
@@ -203,7 +213,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_iuoeh"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_8nomx"]
 resource_name = "Empty_Icosphere_001"
 _surfaces = [{
 "aabb": AABB(-0.7185134, -0.18289791, 0.82241994, 1.4370269, 0.35210824, 0.26265794),
@@ -222,7 +232,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cpq1q")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5r88v"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8526d"]
 albedo_color = Color(0.46186197, 1.0588765e-06, 2.6471912e-07, 1)
 emission_enabled = true
 emission = Color(0.99, 0.04950001, 0, 1)
@@ -242,7 +252,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_0ytft"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_axtrd"]
 resource_name = "Empty_Icosphere_002"
 _surfaces = [{
 "aabb": AABB(-0.82113814, 0.08648258, 0.5046423, 1.6422763, 0.3192723, 0.4902044),
@@ -276,7 +286,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_bu77i"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_b6iap"]
 resource_name = "Empty_Icosphere"
 _surfaces = [{
 "aabb": AABB(-0.8223372, -0.4292745, 0.41167626, 1.6446744, 0.7083961, 0.6331184),
@@ -294,7 +304,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_81ube")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58c5m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_javsd"]
 albedo_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ighw"]
@@ -318,7 +328,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_s8bpf"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_juq5e"]
 resource_name = "Empty_Plane"
 _surfaces = [{
 "aabb": AABB(-1.077837, -0.43849432, -1.0778369, 2.155674, 0.45335838, 2.155674),
@@ -352,7 +362,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_2nrb3"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0ynly"]
 resource_name = "Empty_Plane2"
 _surfaces = [{
 "aabb": AABB(-1.077837, -0.43849432, -1.0778369, 2.155674, 0.45335838, 2.155674),
@@ -371,7 +381,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ej0ho")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_1husr"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0c0x2"]
 resource_name = "Empty_Cube_004"
 _surfaces = [{
 "aabb": AABB(-1.2825795, -1.5769268, -1.4252224, 2.5651588, 3.1460674, 2.3270957),
@@ -391,7 +401,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="Skin" id="Skin_i4skb"]
+[sub_resource type="Skin" id="Skin_hrn8t"]
 resource_name = "Skin"
 bind_count = 18
 bind/0/name = &"DEF-thigh.L"
@@ -1155,259 +1165,190 @@ tracks/32/interp = 0
 tracks/32/loop_wrap = true
 tracks/32/keys = PackedFloat32Array(0, 1, 3.791898e-07, 0.9612776, -0.27558196, 1.5071855e-07)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w0deh"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7awp"]
 _data = {
 &"BAKED_Activate": SubResource("Animation_2hmxr"),
 &"BAKED_Walk": SubResource("Animation_ttvyt"),
 &"RESET": SubResource("Animation_3yk8y")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bidsx"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="BoxShape3D" id="BoxShape3D_mvw77"]
+size = Vector3(1, 15.775391, 17.519775)
 
-[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_em2t3"]
-data = PackedByteArray("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kkIAAgKDjlVlQccQCBKKJZLLLRYNJpttttttthljCKKIRRRRFFEIAFFFFAoAkooIlElEogSkSEEECgiEEAohEIhEBOEBtpJJIpEsFAESCQQQAARBAAgAoBBBBAQAhAIgkhjtphARThCKcBCBFFFFAooooAoEolkoolBBEggiEgUESESgBJJJJCBJJBIQUQnCE4QAAhaTQAAAKIRAAbJKCHGIApUFV0yKgHAEghAIRAThARCKEhAAoAAAJoANttottpptthTjjhMcIAThEJxwgBEAIhMYQAiAnCY0ExjSaTQCaATQAaRSLJRKJRIEkkIBAEgYjgeAljBDDTAAAoIJJJQKISAIlEootFlNFgWkkmi00Wy0DLbTbbabbbQNtttttNtttA2222020220CaZaTLSLZZYItFosplFIMAUEggiSEgEQBAIyIQBJFIICUCGKqmHAYRAAATSIARRQEoAAJxwgBFMYUQiEAUUUURRQKKKAKAABFAAFAAAoAAASgAAUAAUAABKAAABQKKBRFFAooohFEIoSEQEQE440AAWWSkgiiEQSAIIAJ5ohoNAHCkhAhBIhlASkUk0Wky0mEBEAJwhOEJwSiAiiEUQiiBQKKKIQKKKKEhAoohAhAhASECECECECERRCcBARThCcEgIgBEBNIgoNlJlJlJBMdg2ymWGigigQCAIAK5pggWUI4EEkklEMogimUy00y222EBEBFOFEIogUAUCigUAUCgEUkymUkkkkBZZZYbKSRZYIspMpJJMNMA0ykkwyiikUBZKRZLJQYRIIlEooFAklAgSgCQQhywiUBKGRJJJAQwgE00w0SgEYoAiiUykWkmm0EAIgIhEIohAAspFJFktFhgiymS0Wy2mkDTTTSbSbSaYJsttJpppppA2mk0000mmkCRZZSSKSSKQIpJFFlFIpFAgiSSSSSgQiBCBJIQ4YKJIIEFHggkUHrAYaqaaKAQCgAJIQRKCCRSAMlJItIstMtgk0mm022002FONIgIgIhOEQiEU4UQEU4BIRCcBThThREBAhOAhFOFEQEUQnCE4QExhCccJSJjSaDbYbZZZZaLIIpEsoJAokoAECSCCAQCTjDPVNMNVOWAAAEAghAkkEoRCcaATjjjjjGFEIhAoFAoASgUAUAAAUAA0y02Wk02WmCTTSaaTTTSQNpNNJpltlpgkm0k2GiyWiCSLJZSKSKRQIoslIpElAoAUECSgESQSSAQIAIHCJIJAEgjAECAmA0wTAaBSSCSgiCCSKRZTSLbYQAEQEQEUUQhIQKKIQAKAKBLJZSKLKKaQJMtJJotJJog0kkmi0kyy0CTKZaZZaSTINJotJFIpIsgikkUw0USkECCRRKKJJIRIFAoIEgkEgkgCACCMECT0eAAJNAhyyxoAAgDgooMlosgi2k0mm2022FEBAohAooFEUUCgCgUAACgwmkmky2mWyDZbSaTSbLTYFppltJppJsg2Wy2k0k0UwDRSLKLKLJZQIpFFJFFIlkgQwSSSSSEEQBJJBJBGKJJQEEgkEikEU0AAaYqYDTieEBKKRTKZbTTYQEQiEUCigCgy0my2W2222EAImOEAIhEAU4U4QinCnAxgITgIRRAQIFEIhAhOApwEQiEQiiEU4UxjhARARCcIAFEBOONJpNBMUmgUAAUUUQg822yiykUSUBIQIIBGNNBgAQSk4hEoIlgSmUimmk0mmEIgJwohFEIEUUUUCgUCgCgwkUkk0mW0kDTSZbSaZbSYJNNJpNlstpgW0mW0y2mWkDSKSLKSKRZQFlFhoNEsoogkiSSgUCggSCBJJCBQ6KSIFElBEEgIEAQhjjRTDDFDDAEAoCIIQIRIFBElIpEpItAWWWWmk0y20EBOOOOOOExwXHCAnCnCAgRCIRCKIRCIRFEBAhEIogIEQiEUQiEQiiBRThCcICICIAQCsRANcAXAqgiosKc4pbP/+AAjf5EAQFEAIgJxpONIWgmgAAAAAAAEUkEUCkCgQCIJAIIIAIgQLHKiACjAIkgiSUikiyk00EAJxpOEAIogUUUQgCgUUARQKABQAKATQBbTSTSaaTLYMtNJstNMtpgk0k2k0mmkmDLZaSKRZZRYEspJEtBlJFAUWSyUSUCgUAQKCBJIRBQ4FlIlEkokEIQiQSBhQcIYYCqqpooAJBJIDpJpJtNtNthRCKKKKBQATFJxoJxxxpOEQAiEQEQnCAhKITgIRCKcBEIhEIohEIhEU4CEQinCiERCIQIRCIThCFwgJwhOONIkY0mk0E0E0AAGyiwyWSiUECCBJIQ5IKBIAEiI00Q404wxkSyy0y222EBFFFAABEBEQiECiEUUUUBKKKBQBQKAAEoAJoAJoBNANMtNJpltJpA0mk2Wy2i2yDZaaSbLTKSIMophlkspFFgUiWUUikSyUAQRJCIRIQKA=")
-format = 3
+[node name="Node3D" type="Node3D" unique_id=1640892427]
 
-[sub_resource type="Animation" id="Animation_egn13"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model/Empty/Cylinder_002:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.3502278, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Model/Empty/Plane:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 2.8778539, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Model/Empty/Plane:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Model/Empty/Cylinder:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 2.4, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Model/Empty/Plane_001:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 2.3778539, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Model/Empty/Plane_001:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1772589075]
+material_override = SubResource("StandardMaterial3D_qfnct")
+use_collision = true
 
-[sub_resource type="Animation" id="Animation_78cvw"]
-resource_name = "potato"
-length = 2.6666667
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model/Empty/Cylinder_002:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.34, 2.6666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 3.3502278, 0), Vector3(0, 3.7665014, 0), Vector3(0, 3.3502278, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Model/Empty/Plane:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.2666667, 2.6666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 2.8778539, 0), Vector3(0, 3.2203035, 0), Vector3(0, 2.8778539, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Model/Empty/Plane:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.3, 2.6666667),
-"transitions": PackedFloat32Array(-2, -2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 18.849556, 0), Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Model/Empty/Cylinder:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.27, 2.6666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 2.4, 0), Vector3(0, 2.563939, 0), Vector3(0, 2.4, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Model/Empty/Plane_001:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(4.4703484e-08, 2.6666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 2.368, 0), Vector3(0, 2.368, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Model/Empty/Plane_001:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(4.4703484e-08, 1.2333333, 2.6666667),
-"transitions": PackedFloat32Array(-2, -2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -18.849556, 0), Vector3(0, 0, 0)]
-}
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=495266537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, -4.0791016)
+size = Vector3(13, 4.1, 31.158203)
+material = ExtResource("3_2w6jn")
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5wc3"]
-_data = {
-&"RESET": SubResource("Animation_egn13"),
-&"potato": SubResource("Animation_78cvw")
-}
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=453968417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9240456, 0)
+operation = 2
+size = Vector3(11.87, 4.013091, 21.475)
+material = ExtResource("3_2w6jn")
 
-[node name="BigBurger" type="RigidBody3D" unique_id=941241180 node_paths=PackedStringArray("animPlayer", "activatedCollisionShape", "disabledCollisionShape", "bars", "bulletSpawnPoint", "shootfx")]
-collision_layer = 7
-collision_mask = 3
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-mass = 10.0
-contact_monitor = true
-max_contacts_reported = 10
-script = ExtResource("1_fg4nj")
-animPlayer = NodePath("Model/AnimationPlayer")
-activatedCollisionShape = NodePath("ActivatedCollisionShape")
-disabledCollisionShape = NodePath("DisabledCollisionShape")
-bars = NodePath("SubViewport/Control")
-NextScene = "uid://bm1flyo6qb4gk"
-bulletSpawnPoint = NodePath("Marker3D")
-bulletScene = ExtResource("2_em2t3")
-shootfx = NodePath("AudioStreamPlayer")
-metadata/enemy = 10
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=627162810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4869995, 0.3167969, -12.257553)
+size = Vector3(15.110352, 6.3664064, 36.98166)
+material = ExtResource("3_2w6jn")
 
-[node name="ActivatedCollisionShape" type="CollisionShape3D" parent="." unique_id=1949105434]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0534627, 0)
-shape = SubResource("CapsuleShape3D_bpufl")
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=318566096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54455566, -0.19658196, -2.6413574)
+size = Vector3(3.447998, 0.8068359, 8.32373)
+material = ExtResource("3_2w6jn")
 
-[node name="DisabledCollisionShape" type="CollisionShape3D" parent="." unique_id=194618303]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9012923, 0)
-shape = SubResource("CapsuleShape3D_fg4nj")
-disabled = true
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=582820138]
+transform = Transform3D(-0.00052355416, -0.99999994, 0, 0.99999994, -0.00052355416, 0, 0, 0, 1, -6.1768947, 6.269618, -4.074753)
+size = Vector3(6.703247, 0.6347412, 31.008541)
+material = ExtResource("3_2w6jn")
 
-[node name="Model" type="Node3D" parent="." unique_id=567961269]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.173, 0)
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1202013777]
+transform = Transform3D(-1.3120399e-05, -0.02506025, -0.99968594, 0.99999994, -0.00052355416, 0, -0.0005233897, -0.9996859, 0.025060251, -0.21188974, 6.269618, -19.334911)
+size = Vector3(6.703247, 0.6347412, 12.116149)
+material = ExtResource("3_2w6jn")
 
-[node name="Empty" type="Node3D" parent="Model" unique_id=415067156]
+[node name="CSGBox3D15" type="CSGBox3D" parent="CSGCombiner3D" unique_id=518316540]
+transform = Transform3D(-0.0005233358, -0.99958277, -0.028881274, 0.9999999, -0.00052355416, 6.5372044e-12, -1.51208005e-05, -0.028881274, 0.9995828, 5.6395144, 6.269618, -25.100138)
+size = Vector3(6.703247, 0.6347412, 11.302704)
+material = ExtResource("3_2w6jn")
 
-[node name="Circle" type="MeshInstance3D" parent="Model/Empty" unique_id=568115757]
+[node name="CSGBox3D17" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1518100350]
+transform = Transform3D(-0.0005233358, -0.99958277, -0.028881274, 0.9999999, -0.00052355416, 6.5372044e-12, -1.51208005e-05, -0.028881274, 0.9995828, 21.022587, 6.269618, -25.100138)
+size = Vector3(6.703247, 0.6347412, 11.302704)
+material = ExtResource("3_2w6jn")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1479638699]
+transform = Transform3D(-9.521071e-06, -0.018185228, -0.9998346, 0.9999998, -0.0005235541, 1.1602971e-11, -0.0005234676, -0.99983454, 0.018185228, 13.415952, 6.269618, -30.663128)
+size = Vector3(6.703247, 0.6347412, 15.605225)
+material = ExtResource("3_2w6jn")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D" unique_id=927070146]
+transform = Transform3D(-0.00052355416, -0.99999994, 0, 0.99999994, -0.00052355416, 0, 0, 0, 1, 20.738382, 6.269618, -6.59915)
+size = Vector3(6.703247, 0.6347412, 25.959747)
+material = SubResource("StandardMaterial3D_qfnct")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1657673250]
+transform = Transform3D(1.4189208e-05, 0.027101697, -0.99963266, 0.99999994, -0.00052355416, 0, -0.00052336184, -0.9996326, -0.0271017, 13.336595, 6.269618, 6.0015798)
+size = Vector3(6.703247, 0.6347412, 14.693741)
+material = ExtResource("3_2w6jn")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="CSGCombiner3D" unique_id=836170660]
+transform = Transform3D(-4.217775e-05, -0.01431112, -0.99989754, -0.0013604906, -0.9998967, 0.014311159, -0.99999934, 0.0013609529, 2.2703256e-05, 6.769997, 9.429145, -8.856629)
+size = Vector3(43.597687, 0.6347412, 27.8321)
+material = ExtResource("3_2w6jn")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D" unique_id=238139484]
+transform = Transform3D(0.00052324, 0.99939984, 0.0346379, 0.99999994, -0.00052355416, 1.8026523e-12, 1.8134808e-05, 0.034637906, -0.9993999, 6.2725725, 6.269618, 8.68488)
+size = Vector3(6.703247, 0.6347412, 5.4474964)
+material = ExtResource("3_2w6jn")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1175600047]
+transform = Transform3D(-1.2873906e-05, -0.024589242, 0.99969757, 0.99949056, 0.03190688, 0.0007976743, -0.03191685, 0.99918836, 0.024576297, -0.14103627, 6.2669187, 10.933468)
+size = Vector3(6.703247, 0.6347412, 12.215447)
+material = ExtResource("3_2w6jn")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D" unique_id=191504298]
+transform = Transform3D(-0.010006898, -0.017930236, 0.99978906, 0.39154726, 0.9199315, 0.020417066, -0.92010343, 0.39166892, -0.0021851251, -0.035122097, 1.1444843, -6.4264708)
+size = Vector3(9.9389515, 0.6347412, 11.843182)
+material = ExtResource("3_2w6jn")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1619163443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.132996, 1.9240456, 0)
+operation = 2
+size = Vector3(14.795898, 4.013091, 11.133789)
+material = ExtResource("3_2w6jn")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=568033813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.989, 1.25, 0.0007815361)
+operation = 2
+size = Vector3(5.083618, 4.5, 10.900001)
+material = SubResource("StandardMaterial3D_35smj")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1249250017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.989, 0.79999995, 3.5168946)
+operation = 2
+size = Vector3(5.083618, 5.4, 3.9)
+material = SubResource("StandardMaterial3D_35smj")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1613289604]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 12.566301, 4.849647, -33.76619)
+radius = 5.8720703
+height = 15.419067
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=214615073]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 12.566301, 5.3305435, -24.729218)
+operation = 2
+radius = 3.5546875
+height = 13.088379
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=199711876]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 12.566301, 5.330543, -33.76619)
+operation = 2
+radius = 5.09375
+height = 13.088379
+
+[node name="BobTrigger" parent="." unique_id=760553805 instance=ExtResource("5_awwia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.210556, 3.9999976, -11.353386)
+Dialogue = "We did it! Now how do we get out of here?"
+
+[node name="Model" type="Node3D" parent="BobTrigger" unique_id=2123793671]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -7.523946, -2.2451756, -6.624131)
+
+[node name="Empty" type="Node3D" parent="BobTrigger/Model" unique_id=597884143]
+
+[node name="Circle" type="MeshInstance3D" parent="BobTrigger/Model/Empty" unique_id=1473805035]
 transform = Transform3D(1.3999785, 0, 0, 0, 1.3999785, 0, 0, 0, 1.3999785, 0, 1.5629535, 0)
-mesh = SubResource("ArrayMesh_51wjo")
+mesh = SubResource("ArrayMesh_mv3up")
 skeleton = NodePath("")
 
-[node name="Cylinder" type="MeshInstance3D" parent="Model/Empty" unique_id=1253506535]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
-mesh = SubResource("ArrayMesh_l4hh5")
+[node name="Cylinder" type="MeshInstance3D" parent="BobTrigger/Model/Empty" unique_id=1557544184]
+transform = Transform3D(0.96714365, -0.25423062, 0, 0.25423062, 0.96714365, 0, 0, 0, 1, 1.9862537, 1.9353142, 1.8412521e-08)
+mesh = SubResource("ArrayMesh_xro5d")
 skeleton = NodePath("")
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="Model/Empty" unique_id=105330305]
+[node name="Cylinder_001" type="MeshInstance3D" parent="BobTrigger/Model/Empty" unique_id=1863313440]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9490818, 0)
-mesh = SubResource("ArrayMesh_7ctet")
+mesh = SubResource("ArrayMesh_mump0")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_tdr1w")
+surface_material_override/0 = SubResource("StandardMaterial3D_ljx54")
 
-[node name="Cylinder_002" type="MeshInstance3D" parent="Model/Empty" unique_id=1236240804]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3502278, 0)
-mesh = SubResource("ArrayMesh_xb5rb")
-skeleton = NodePath("")
-
-[node name="Icosphere_001" type="MeshInstance3D" parent="Model/Empty/Cylinder_002" unique_id=1508621942]
-mesh = SubResource("ArrayMesh_iuoeh")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_5r88v")
-
-[node name="Icosphere_002" type="MeshInstance3D" parent="Model/Empty/Cylinder_002" unique_id=6996567]
-mesh = SubResource("ArrayMesh_0ytft")
+[node name="Cylinder_002" type="MeshInstance3D" parent="BobTrigger/Model/Empty" unique_id=1462809060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1102571, 2.3615773, 2.5666943)
+mesh = SubResource("ArrayMesh_og2fl")
 skeleton = NodePath("")
 
-[node name="Icosphere" type="MeshInstance3D" parent="Model/Empty/Cylinder_002" unique_id=1442066183]
-mesh = SubResource("ArrayMesh_bu77i")
+[node name="Icosphere_001" type="MeshInstance3D" parent="BobTrigger/Model/Empty/Cylinder_002" unique_id=434563883]
+mesh = SubResource("ArrayMesh_8nomx")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_58c5m")
+surface_material_override/0 = SubResource("StandardMaterial3D_8526d")
 
-[node name="Plane" type="MeshInstance3D" parent="Model/Empty" unique_id=160953088]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8778539, 0)
-mesh = SubResource("ArrayMesh_s8bpf")
-skeleton = NodePath("")
-
-[node name="Plane_001" type="MeshInstance3D" parent="Model/Empty" unique_id=189028060]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3778539, 0)
-mesh = SubResource("ArrayMesh_2nrb3")
+[node name="Icosphere_002" type="MeshInstance3D" parent="BobTrigger/Model/Empty/Cylinder_002" unique_id=2100329193]
+mesh = SubResource("ArrayMesh_axtrd")
 skeleton = NodePath("")
 
-[node name="rig_deform" type="Node3D" parent="Model/Empty" unique_id=722089989]
+[node name="Icosphere" type="MeshInstance3D" parent="BobTrigger/Model/Empty/Cylinder_002" unique_id=670720825]
+mesh = SubResource("ArrayMesh_b6iap")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_javsd")
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Model/Empty/rig_deform" unique_id=1872389619]
+[node name="Plane" type="MeshInstance3D" parent="BobTrigger/Model/Empty" unique_id=1260713155]
+transform = Transform3D(0.96938056, 0, 0.2455632, 0, 1, 0, -0.2455632, 0, 0.96938056, 2.252765, 1.9783001, 0.100234985)
+mesh = SubResource("ArrayMesh_juq5e")
+skeleton = NodePath("")
+
+[node name="Plane_001" type="MeshInstance3D" parent="BobTrigger/Model/Empty" unique_id=1517328712]
+transform = Transform3D(0.8121452, 0, 0.58345544, 0, 1, 0, -0.58345544, 0, 0.8121452, -0.036898613, 2.3840775, -0.18689156)
+mesh = SubResource("ArrayMesh_0ynly")
+skeleton = NodePath("")
+
+[node name="rig_deform" type="Node3D" parent="BobTrigger/Model/Empty" unique_id=2034747906]
+
+[node name="Skeleton3D" type="Skeleton3D" parent="BobTrigger/Model/Empty/rig_deform" unique_id=933101823]
 bones/0/name = "DEF-thigh.L"
 bones/0/parent = -1
 bones/0/rest = Transform3D(-1, -1.15420935e-08, 1.6168688e-07, -8.5100105e-10, -0.99707425, -0.076439865, 1.620961e-07, -0.076439865, 0.9970742, 0, 1.6, -0.90000004)
@@ -1535,59 +1476,38 @@ bones/17/position = Vector3(6.2917486e-08, 0.387709, -3.2694516e-08)
 bones/17/rotation = Quaternion(3.7918986e-07, 0.9612776, -0.27558196, 1.5071858e-07)
 bones/17/scale = Vector3(1, 0.9999999, 1)
 
-[node name="Cube_003" type="MeshInstance3D" parent="Model/Empty/rig_deform/Skeleton3D" unique_id=415178599]
-mesh = SubResource("ArrayMesh_1husr")
-skin = SubResource("Skin_i4skb")
+[node name="Cube_003" type="MeshInstance3D" parent="BobTrigger/Model/Empty/rig_deform/Skeleton3D" unique_id=1447049049]
+mesh = SubResource("ArrayMesh_0c0x2")
+skin = SubResource("Skin_hrn8t")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Model" unique_id=1378771653]
-libraries/ = SubResource("AnimationLibrary_w0deh")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BobTrigger/Model" unique_id=1568674563]
+libraries/ = SubResource("AnimationLibrary_l7awp")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2099743218]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 0, 4.795813, 0)
-billboard = 1
-texture = SubResource("ViewportTexture_bidsx")
+[node name="Bob" parent="." unique_id=54794360 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("6_gsdvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.85503, 4.023544, -10.572172)
+playerToFollow = NodePath("../Farmer")
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=1896480913]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(186, 70)
-render_target_update_mode = 4
+[node name="Farmer" parent="." unique_id=483625553 instance=ExtResource("5_8m2ta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.111053, 5.1861277, -16.804264)
 
-[node name="HealthBar" parent="SubViewport" unique_id=1682764994 instance=ExtResource("3_em2t3")]
-visible = false
+[node name="Light" parent="." unique_id=1543946459 instance=ExtResource("6_icwdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.206406, 8.8109045, -4.966029)
 
-[node name="TextureProgressBar" parent="SubViewport/HealthBar" index="0" unique_id=811441812]
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 186.0
-offset_bottom = 32.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="Light2" parent="." unique_id=539849422 instance=ExtResource("6_icwdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.206406, 8.8109045, -28.38821)
 
-[node name="Control" parent="SubViewport" unique_id=834127113 instance=ExtResource("4_mntqf")]
-anchors_preset = -1
-anchor_right = 1.6630001
-anchor_bottom = 4.1870003
-offset_right = -47.318024
-offset_bottom = -58.98401
+[node name="Light4" parent="." unique_id=1555038861 instance=ExtResource("6_icwdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.594907, 11.514063, -31.717659)
 
-[node name="Marker3D" type="Marker3D" parent="." unique_id=1351907685]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3.1260655, -2.4079971)
+[node name="LevelTransitioner" type="Area3D" parent="." unique_id=155518563]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 11.244997, 0.024918556, -37.41498)
+script = ExtResource("12_icwdn")
+NextScene = "uid://bgekxsd83w3j3"
+metadata/_custom_type_script = "uid://cf1iwf2dox26n"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=470823940]
-stream = SubResource("AudioStreamWAV_em2t3")
-volume_db = -10.715
-pitch_scale = 0.26
-max_polyphony = 3
-bus = &"SFX"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTransitioner" unique_id=2132059999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2350159, 0)
+shape = SubResource("BoxShape3D_mvw77")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=231472178]
-libraries/ = SubResource("AnimationLibrary_g5wc3")
-
-[editable path="SubViewport/HealthBar"]
-[editable path="SubViewport/HealthBar/TextureProgressBar"]
+[node name="Light3" parent="." unique_id=1505583519 instance=ExtResource("6_icwdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.304636, 8.8109045, -0.6892395)

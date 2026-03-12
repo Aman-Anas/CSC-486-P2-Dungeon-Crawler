@@ -11,6 +11,12 @@ namespace Game.Entities;
 [GlobalClass]
 public partial class Farmer : RigidBody3D
 {
+    [Export]
+    Label burgersEatenCounter = null!;
+
+    [Export]
+    Label gameTimer = null!;
+
     public StandButton? OtherButtonToPress { get; set; }
 
     public bool MovementEnabled { get; set; } = true;
@@ -374,8 +380,16 @@ public partial class Farmer : RigidBody3D
     AnimationPlayer damagePlayer = null!;
     StringName damageAnimName = "takedamage";
 
+    [Export]
+    public AudioStreamPlayer3D EatFx { get; set; } = null!;
+
     public override void _PhysicsProcess(double delta)
     {
+        burgersEatenCounter.Text = $"Burgers eaten: {Manager.Instance.Data.BurgersEaten}";
+
+        double time = (Time.GetTicksMsec() - Manager.Instance.Data.TimeGameStarted) / 1000.0;
+        gameTimer.Text = $"{time:F2}s";
+
         // Figure out if we're touching an enemy
         var colliding = GetCollidingBodies();
         bool touchingEnemy = false;

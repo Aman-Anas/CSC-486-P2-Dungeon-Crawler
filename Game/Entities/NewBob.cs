@@ -30,6 +30,9 @@ public partial class NewBob : RigidBody3D
 
     public override void _Ready() { }
 
+    [Export]
+    float teleportDistance = 24;
+
     public override void _IntegrateForces(PhysicsDirectBodyState3D state)
     {
         if (playerToFollow == null)
@@ -45,6 +48,17 @@ public partial class NewBob : RigidBody3D
             // we need to go and stand on a button.
             nodeToFollow = playerToFollow.OtherButtonToPress;
             followDistance = 0.1f;
+        }
+        else
+        {
+            var dist = (playerToFollow.GlobalPosition - GlobalPosition);
+            // GD.Print(dist.Length());
+            // If we're too far from the player then teleport to the player.
+            if ((dist).LengthSquared() > (teleportDistance * teleportDistance))
+            {
+                GlobalPosition = playerToFollow.GlobalPosition + (Vector3.Left * 1);
+                return;
+            }
         }
 
         var localLinearVelocity = GlobalBasis.Inverse() * state.LinearVelocity;

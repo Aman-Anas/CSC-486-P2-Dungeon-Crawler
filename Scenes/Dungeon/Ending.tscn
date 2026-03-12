@@ -1,0 +1,361 @@
+[gd_scene format=4 uid="uid://bo8e08nma5kh3"]
+
+[ext_resource type="Script" uid="uid://w0llp6n114k4" path="res://Game/Entities/Ending.cs" id="1_w3ccq"]
+[ext_resource type="PackedScene" uid="uid://dk30fk7rndok4" path="res://assets/batch_exports/dungeonwalls/Cylinder.gltf" id="1_ycoic"]
+[ext_resource type="PackedScene" uid="uid://dqh0kwyoy2mw0" path="res://Scenes/Entities/NewBurger.tscn" id="2_o6nf3"]
+[ext_resource type="Material" uid="uid://buvera7aogvu6" path="res://assets/batch_exports/dungeonwalls/metal.tres" id="2_w3ccq"]
+[ext_resource type="PackedScene" uid="uid://cgv3ggu25ffs1" path="res://Scenes/Entities/Farmer.tscn" id="4_3hd3m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fvwfc"]
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6nf3"]
+font_size = 109
+font_color = Color(5.7756904e-07, 0.659357, 0.38441384, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ycoic"]
+font_size = 33
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3ccq"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0.12, 0.12, 0.12, 0.7137255)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 17
+
+[sub_resource type="LabelSettings" id="LabelSettings_w3ccq"]
+font_size = 34
+
+[sub_resource type="LabelSettings" id="LabelSettings_iobdu"]
+font_size = 109
+font_color = Color(1, 0.17000002, 0.17000002, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3hd3m"]
+font_size = 22
+
+[sub_resource type="Environment" id="Environment_rnngl"]
+tonemap_mode = 4
+tonemap_exposure = 3.3
+tonemap_agx_white = 4.25
+tonemap_agx_contrast = 1.51
+ssao_enabled = true
+ssao_radius = 2.85
+ssao_intensity = 16.0
+ssao_horizon = 0.03
+sdfgi_use_occlusion = true
+glow_enabled = true
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rnngl"]
+load_path = "res://.godot/imported/Ucupaint Cube Normal.png-b0db1af90eb2d2106e6261944a75e0a1.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iobdu"]
+albedo_color = Color(0.65834004, 0.6583399, 0.6583399, 1)
+metallic = 1.0
+roughness = 0.25
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_rnngl")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycoic"]
+albedo_color = Color(0.3665946, 0.3665946, 0.36659458, 1)
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3ccq"]
+albedo_color = Color(0.30323282, 0.30323282, 0.30323282, 1)
+emission_enabled = true
+emission = Color(0.5810154, 0.058517203, 0, 1)
+emission_energy_multiplier = 5.73
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sfqu"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.06532062, 0.06532062, 0.06532062, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3hd3m"]
+_surfaces = [{
+"aabb": AABB(-0.82113814, 0.08648258, 0.5046423, 1.6422763, 0.3192723, 0.4902044),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYACAAJAAoACAALAAkACgAJAAwADAAJAAsACgANAAgADQALAAgACgAMAA4ACgAOAA0ADAALAA8ADgAMAA8ADQAPAAsADgAPAA0A"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AADanmxcAABKFb3mAAAAABsG//9sXAAALg+YhQAAAAAjYBtQd5sAAFBQQRn//wAA9FBdaeP3AAB/XwAAkqMAAP//2p5sXAAAtOq95gAAAADQ8JiFAAAAAOP5//9sXAAA258bUHebAACur0EZ//8AAH+gAACSowAACq9daeP3AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_o6nf3"]
+resource_name = "Empty_Icosphere_002"
+_surfaces = [{
+"aabb": AABB(-0.82113814, 0.08648258, 0.5046423, 1.6422763, 0.3192723, 0.4902044),
+"attribute_data": PackedByteArray("/1////+fEK//n////18Qr/9fEK//n/9//58Qr/9f/3//X/9//5//P/+f/3//X/8//1//P/+f7xD/n/8//1/vEO8w/3//X/8//1//f+8w/z//n/9/D8//Pw/P/3//n/8//1////+fEK//XxCv/5////9fEK//n/9//1//f/+fEK//X/9//5//P/9f/z//n/9//1//P/+f7xD/X+8Q/5//P+8w/3//X/8/7zD/P/9f/3//n/9/D8//P/+f/z8Pz/9/"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0A"),
+"material": SubResource("StandardMaterial3D_8sfqu"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("AADanmxcG95KFb3mAAAb3hsG//9sXBveLg+YhQAAG94uD5iFAACX7iNgG1B3mzHtShW95gAAye5/XwAAkqMG7X9fAACSo7nG9FBdaeP3ucYjYBtQd5u5xlBQQRn//7nGUFBBGf//0MAbBv//bFwVuPRQXWnj96/CAADanmxc97YuD5iFAABzwFBQQRn//3PAf18AAJKjc8AAANqebFxzwCNgG1B3m6/mGwb//2xcr+ZKFb3mAACv5vRQXWnj96/m///anmxcUBi06r3mAABQGNDwmIUAAFAY4/n//2xcUBjQ8JiFAAAzDNufG1B3m/cJf6AAAJKjpgm06r3mAAB5DH+gAACSowkxCq9daeP3CTGur0EZ//8JMdufG1B3mwkxrq9BGf//VDvj+f//bFxpMv//2p5sXD8xCq9daeP3NT3Q8JiFAAAXBq6vQRn//xcG///anmxcFwZ/oAAAkqMXBtufG1B3m2s54/n//2xcazkKr11p4/drObTqveYAAGs5n9RjxJ/UY8Sf1GPEn9RjxHoxzUG3Ocg7bzCRQt068Tq9J+AfvSfgH70n4B+9J+AfavBU47DrLeNV8VzjBOso430k+K19JPitfST4rX0k+K12wEgFdsBIBXbASAV2wEgFizdqKIs3aiiLN2ooizdqKNbAgNA2yCTKNclIyd6/VtH94Zfa/eGX2v3hl9r94ZfauRsRD+0X3BB4FxMRnBymDoYyhOmGMoTphjKE6YYyhOkB+Q9UAfkPVAH5D1QB+Q9U")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3hd3m")
+
+[node name="Ending" type="Node3D" unique_id=1182989688 node_paths=PackedStringArray("GoodEndingRoot", "BadEndingRoot", "GoodDialogue", "BadDialogue", "timeInfo", "farmer", "spawnBurgerPoint")]
+script = ExtResource("1_w3ccq")
+GoodEndingRoot = NodePath("Good")
+BadEndingRoot = NodePath("Bad")
+GoodDialogue = NodePath("Good/PanelContainer/Label3")
+BadDialogue = NodePath("Bad/PanelContainer/AteChildren")
+timeInfo = NodePath("TimeInfo")
+burgerScene = ExtResource("2_o6nf3")
+farmer = NodePath("Farmer")
+spawnBurgerPoint = NodePath("SpawnBurgerPoint")
+
+[node name="TimeInfo" type="Label" parent="." unique_id=502039502]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -129.5
+offset_top = -32.0
+offset_right = 129.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Your time: "
+label_settings = SubResource("LabelSettings_fvwfc")
+horizontal_alignment = 1
+
+[node name="Good" type="Control" parent="." unique_id=1846039180]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label2" type="Label" parent="Good" unique_id=2051720336]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -464.0
+offset_top = 26.0
+offset_right = 464.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GOOD ENDING"
+label_settings = SubResource("LabelSettings_o6nf3")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Good" unique_id=1198708820]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = 149.0
+offset_right = 201.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thank you for playing!"
+label_settings = SubResource("LabelSettings_ycoic")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Good" unique_id=1184977258]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -501.0
+offset_top = 51.0
+offset_right = 501.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3ccq")
+
+[node name="Label3" type="Label" parent="Good/PanelContainer" unique_id=1967258991]
+layout_mode = 2
+text = "You have freed my children. I will now repay the favor.
+The knowledge you seek lays ahead. 
+
+Go, before I get hungry."
+label_settings = SubResource("LabelSettings_w3ccq")
+horizontal_alignment = 1
+
+[node name="Bad" type="Control" parent="." unique_id=746871091]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label2" type="Label" parent="Bad" unique_id=801804683]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -408.0
+offset_top = -9.0
+offset_right = 408.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BAD ENDING"
+label_settings = SubResource("LabelSettings_iobdu")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Bad" unique_id=1570153892]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = 129.0
+offset_right = 201.0
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thank you for playing!"
+label_settings = SubResource("LabelSettings_ycoic")
+
+[node name="Label" type="Label" parent="Bad/Label" unique_id=1442544548]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = 40.0
+offset_right = 206.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "(Try not to eat the Lab Overlord's 
+burger children next time)"
+label_settings = SubResource("LabelSettings_3hd3m")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Bad" unique_id=473065200]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -501.0
+offset_top = 51.0
+offset_right = 501.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w3ccq")
+
+[node name="AteChildren" type="Label" parent="Bad/PanelContainer" unique_id=1731353323]
+layout_mode = 2
+text = "You ate my children. Prepare to die."
+label_settings = SubResource("LabelSettings_w3ccq")
+horizontal_alignment = 1
+
+[node name="SpawnBurgerPoint" type="Node3D" parent="." unique_id=423450096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4149566, 1.8537028, 3.9786353)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1778335288]
+environment = SubResource("Environment_rnngl")
+
+[node name="Light" type="Node3D" parent="WorldEnvironment" unique_id=1543946459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7516463, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment/Light" unique_id=803781533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8399999, 0)
+light_color = Color(1, 0.8926667, 0.72, 1)
+light_energy = 1.223
+shadow_enabled = true
+omni_range = 12.0
+
+[node name="Cylinder2" parent="WorldEnvironment/Light" unique_id=1273999705 instance=ExtResource("1_ycoic")]
+transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0)
+
+[node name="Cylinder" parent="WorldEnvironment/Light/Cylinder2" index="0" unique_id=1111109450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2, 0)
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_w3ccq")
+
+[node name="Torus" parent="WorldEnvironment/Light/Cylinder2/Cylinder" index="1" unique_id=873467295]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_w3ccq")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1882393402]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1166832546]
+size = Vector3(11.669922, 7.272461, 15.862305)
+material = SubResource("StandardMaterial3D_iobdu")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=817946122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16052246, 0)
+operation = 2
+size = Vector3(10.338867, 5.9992676, 14.532227)
+material = SubResource("StandardMaterial3D_iobdu")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="." unique_id=588974692]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1497298719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.509552, -1.4460135, -0.3190682)
+size = Vector3(2.3793945, 4.3222656, 6.0220947)
+material = SubResource("StandardMaterial3D_ycoic")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=450420634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.700165, 0.16391087, -0.3190682)
+size = Vector3(1.998169, 7.5421143, 3.859375)
+material = SubResource("StandardMaterial3D_ycoic")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1004624224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5747986, -1.9700308, -0.3190682)
+operation = 2
+size = Vector3(0.63830566, 0.38043213, 5.11499)
+material = SubResource("StandardMaterial3D_ycoic")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1218437859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5747986, -0.44939733, 1.6076286)
+operation = 2
+size = Vector3(0.63830566, 0.5970459, 1.2615967)
+material = SubResource("StandardMaterial3D_w3ccq")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=1719640498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5747986, -0.44939733, -2.4087675)
+operation = 2
+size = Vector3(0.63830566, 0.5970459, 1.2615967)
+material = SubResource("StandardMaterial3D_w3ccq")
+
+[node name="Icosphere_002" type="MeshInstance3D" parent="CSGCombiner3D2/CSGBox3D4" unique_id=264736377]
+transform = Transform3D(0.16587768, 0, 2.3841207, 0, 2.3898845, 0, -2.3841207, 0, 0.16587768, -1.7981441, 0.6851647, 2.2528205)
+mesh = SubResource("ArrayMesh_o6nf3")
+skeleton = NodePath("")
+
+[node name="Farmer" parent="." unique_id=483625553 instance=ExtResource("4_3hd3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020635366, -1.3610635, 1.2760468)
+
+[editable path="WorldEnvironment/Light/Cylinder2"]

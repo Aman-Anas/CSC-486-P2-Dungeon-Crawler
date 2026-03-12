@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using Game.UI;
 using Godot;
 using GodotTask;
@@ -8,9 +8,9 @@ namespace Game.Entities;
 
 public enum BossState
 {
-    Shooting,    // Shoot at player until dash cooldown is ready
-    DashWindUp,  // Brief pause when dash is charged, no shooting
-    Charging,    // Charge at player
+    Shooting, // Shoot at player until dash cooldown is ready
+    DashWindUp, // Brief pause when dash is charged, no shooting
+    Charging, // Charge at player
     DashCooldown // Recovering after charge, then back to Shooting
 }
 
@@ -64,10 +64,10 @@ public partial class BigBurger : RigidBody3D
 
     // --- FSM: Shooting -> DashWindUp -> Charging -> DashCooldown -> Shooting ---
     BossState currentState = BossState.Shooting;
-    float dashReadinessTimer;  // Countdown in Shooting; when 0, transition to DashWindUp
-    float dashWindUpTimer;     // Brief pause when fully charged before dashing
-    float chargeTimer;         // Duration of charge
-    float dashCooldownTimer;   // Recovery time after charge
+    float dashReadinessTimer; // Countdown in Shooting; when 0, transition to DashWindUp
+    float dashWindUpTimer; // Brief pause when fully charged before dashing
+    float chargeTimer; // Duration of charge
+    float dashCooldownTimer; // Recovery time after charge
 
     [Export]
     float timeBeforeDashAvailable = 5.0f; // Seconds in Shooting before dash is ready
@@ -156,7 +156,17 @@ public partial class BigBurger : RigidBody3D
                 bullet.Kill();
         }
         spawnedBullets.Clear();
+        CallDeferred(MethodName.SwitchToEndScene);
     }
+
+    public void SwitchToEndScene()
+    {
+        GetTree().ChangeSceneToFile(NextScene);
+    }
+
+    [Export(PropertyHint.File)]
+    public string NextScene = "";
+
     bool canTakeDamage = true;
 
     public override void _PhysicsProcess(double delta)
@@ -231,9 +241,10 @@ public partial class BigBurger : RigidBody3D
             return;
 
         var baseAnimSpeed = 1.0f * 1.5f / 3.5f;
-        animPlayer.SpeedScale = currentState == BossState.Charging
-            ? baseAnimSpeed * (chargeSpeed / followSpeed)
-            : baseAnimSpeed;
+        animPlayer.SpeedScale =
+            currentState == BossState.Charging
+                ? baseAnimSpeed * (chargeSpeed / followSpeed)
+                : baseAnimSpeed;
 
         var myPos = GlobalPosition;
         var playerPos = playerToFollow.GlobalPosition with { Y = myPos.Y };
@@ -242,7 +253,10 @@ public partial class BigBurger : RigidBody3D
         this.LookAt(playerPos, Vector3.Up);
 
         // Aim the bullet spawn marker at the player
-        var markerAimTarget = playerToFollow.GlobalPosition with { Y = playerToFollow.GlobalPosition.Y + 1.5f };
+        var markerAimTarget = playerToFollow.GlobalPosition with
+        {
+            Y = playerToFollow.GlobalPosition.Y + 1.5f
+        };
         bulletSpawnPoint.LookAt(markerAimTarget, Vector3.Up);
 
         var localLinearVelocity = GlobalBasis.Inverse() * state.LinearVelocity;
@@ -263,7 +277,10 @@ public partial class BigBurger : RigidBody3D
                 else
                 {
                     // Follow player at normal speed
-                    if (distanceToPlayer <= minimumFollowingDistance || distanceToPlayer >= maximumFollowingDistance)
+                    if (
+                        distanceToPlayer <= minimumFollowingDistance
+                        || distanceToPlayer >= maximumFollowingDistance
+                    )
                     {
                         localLinearVelocity.Z = 0;
                         animPlayer.Play(idleAnimation, customBlend: animationBlendAmount);
@@ -351,12 +368,17 @@ public partial class BigBurger : RigidBody3D
 
         {
             var newBullet = bulletScene.Instantiate<Bullet>();
-            newBullet.SetDamageAmount(BulletDamage).SetDamageAppliesTo(DamageManager.FarmerForceName);
+            newBullet
+                .SetDamageAmount(BulletDamage)
+                .SetDamageAppliesTo(DamageManager.FarmerForceName);
             spawnedBullets.Add(newBullet);
 
             GetTree().CurrentScene.AddChild(newBullet);
 
-            var aimTarget = playerToFollow.GlobalPosition with { Y = playerToFollow.GlobalPosition.Y + 1.5f };
+            var aimTarget = playerToFollow.GlobalPosition with
+            {
+                Y = playerToFollow.GlobalPosition.Y + 1.5f
+            };
             newBullet.GlobalPosition = bulletSpawnPoint.GlobalPosition;
             newBullet.LookAt(aimTarget, Vector3.Up);
             newBullet.RotateObjectLocal(Vector3.Up, (float)(-Math.PI / 2));
