@@ -63,13 +63,17 @@ public partial class Ending : Node3D
     {
         while (GodotObject.IsInstanceValid(this) && GodotObject.IsInstanceValid(farmer))
         {
-            var newBurger = burgerScene.Instantiate<NewBurger>();
-            GetTree().Root.AddChild(newBurger);
-
-            newBurger.PlayerProp = farmer;
-            newBurger.GlobalPosition = spawnBurgerPoint.GlobalPosition;
-
+            CallDeferred(MethodName.SpawnBurger);
             await GDTask.Delay(TimeSpan.FromSeconds(3));
         }
+    }
+
+    public void SpawnBurger()
+    {
+        var newBurger = burgerScene.Instantiate<NewBurger>();
+        GetTree().Root.AddChild(newBurger);
+
+        newBurger.PlayerProp = farmer;
+        newBurger.GlobalPosition = spawnBurgerPoint.GlobalPosition;
     }
 }
