@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b3ik2bwecsbva" path="res://assets/batch_exports/dungeonwalls/Light.tscn" id="6_ll6s0"]
 [ext_resource type="PackedScene" uid="uid://bqi3n6mx3hx4n" path="res://Scenes/Entities/BigBurger.tscn" id="7_b8d83"]
 [ext_resource type="PackedScene" uid="uid://dbi28u8ytw1e2" path="res://Scenes/Entities/Bob.tscn" id="8_wipm4"]
+[ext_resource type="PackedScene" uid="uid://mf8hry3h34j7" path="res://Scenes/Entities/BobTrigger.tscn" id="9_8ihae"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfnct"]
 resource_name = "Cube"
@@ -156,3 +157,7 @@ environment = SubResource("Environment_ycf3f")
 [node name="Bob" parent="." unique_id=54794360 node_paths=PackedStringArray("playerToFollow") instance=ExtResource("8_wipm4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3032055, -0.08249855, -1.3573208)
 playerToFollow = NodePath("../Farmer")
+
+[node name="BobTrigger" parent="." unique_id=760553805 instance=ExtResource("9_8ihae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.486628, 0.41750145, -2.4519768)
+Dialogue = "It's a giant burger!"
